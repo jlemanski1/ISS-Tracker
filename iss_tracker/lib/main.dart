@@ -19,22 +19,38 @@ Future<Post> fetchPost() async {
 }
 
 
+// Object containing the nested positon data from the API
+class Position {
+  final String lat;
+  final String long;
+
+  Position({this.lat, this.long});
+
+  // Map iss_position to lat & long using factory constructor
+  factory Position.fromJson(Map<String, dynamic> json) {
+    return Position(
+      lat: json['latitude'],
+      long: json['longitude']
+    );
+  }
+
+}
+
+
 // Object containing the data fetched from the API
 class Post {
   final int time;
-  final double lat;
-  final double long;
   final String message;
+  final Position position;
 
-  Post({this.time, this.lat, this.long, this.message});
+  Post({this.time, this.message, this.position});
 
   // Map Json to members using factory constructor
-  factory Post.fromJson(Map<String, dynamic> json) {
+  factory Post.fromJson(Map<String, dynamic> parsedJson) {
     return Post(
-      time: json['timestamp'],
-      lat: json['iss_position: {latitude}'],
-      long: json['iss_position/longitude'],
-      message: json['success']
+      time: parsedJson['timestamp'],
+      message: parsedJson['message'],
+      position: Position.fromJson(parsedJson['iss_position'])
     );
   }
 }
@@ -108,7 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Text(
-                "Time: ${snapshot.data.time}\nPos: [lat/long]: [${snapshot.data.lat}/${snapshot.data.long}]");
+                "Time: ${snapshot.data.time}\nPos: [lat/long]: ${snapshot.data.position}"
+                );
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
