@@ -6,8 +6,16 @@ import 'package:http/http.dart' as http;
 
 
 // Fetch JSON data from OpenNotify ISS position API
-Future<http.Response> fetchPost() {
-  return http.get('http://api.open-notify.org/iss-now.json');
+Future<Post> fetchPost() async {
+  final response = await http.get('http://api.open-notify.org/iss-now.json');
+  
+  if (response.statusCode == 200) {
+    // Server returns OK response, parse data
+    return Post.fromJson(json.decode(response.body));
+  } else {
+    // Server response not okay, throw error
+    throw Exception('Failed to fetch post');
+  }
 }
 
 // Object containing the data fetched from the API
