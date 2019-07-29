@@ -18,6 +18,7 @@ Future<Post> fetchPost() async {
   }
 }
 
+
 // Object containing the data fetched from the API
 class Post {
   final int time;
@@ -31,7 +32,7 @@ class Post {
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       time: json['timestamp'],
-      lat: json['iss_position/latitude'],
+      lat: json['iss_position: {latitude}'],
       long: json['iss_position/longitude'],
       message: json['success']
     );
@@ -83,6 +84,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Future<Post> post;
+
+  // Fetch data when state is initialized. Called once and only once (TODO: Fetch every 5 sec while screen active)
+  @override
+  void initState() {
+    super.initState();
+    post = fetchPost();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,25 +103,19 @@ class _MyHomePageState extends State<MyHomePage> {
         
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          
+        child: FutureBuilder<Post>(
+          future: post,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(
+                "Time: ${snapshot.data.time}\nPos: [lat/long]: [${snapshot.data.lat}/${snapshot.data.long}]");
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+
+            // Default, show loading spinner
+            return CircularProgressIndicator();
+          },
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
