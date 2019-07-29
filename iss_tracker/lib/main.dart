@@ -1,4 +1,35 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+
+// Fetch JSON data from OpenNotify ISS position API
+Future<http.Response> fetchPost() {
+  return http.get('http://api.open-notify.org/iss-now.json');
+}
+
+// Object containing the data fetched from the API
+class Post {
+  final int time;
+  final double lat;
+  final double long;
+  final String message;
+
+  Post({this.time, this.lat, this.long, this.message});
+
+  // Map Json to members using factory constructor
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      time: json['timestamp'],
+      lat: json['iss_position/latitude'],
+      long: json['iss_position/longitude'],
+      message: json['success']
+    );
+  }
+}
+
 
 void main() => runApp(MyApp());
 
@@ -52,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      
+        
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

@@ -1,5 +1,7 @@
 name: iss_tracker
-description: A new Flutter project.
+description: "An app to track the current, and future location of the Internation Space station.
+Uses data scraped from NASA, the app notifies the user of an upcoming ISS pass over their location,
+displays some stats about the craft, the number of people onboard at any given moment, it's coords, etc."
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -17,9 +19,9 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  http: ^0.12.0+2
   flutter:
     sdk: flutter
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
