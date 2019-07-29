@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Text(
-                "Time: ${snapshot.data.time}\nPos: [lat/long]: ${snapshot.data.position}"
+                "Time: ${snapshot.data.time}\nPos: (lat/long): (${snapshot.data.position.lat}/${snapshot.data.position.long})"
                 );
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
