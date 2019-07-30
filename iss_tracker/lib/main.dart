@@ -3,7 +3,9 @@ import 'dart:convert';
 
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
+
 
 
 // Fetch JSON data from OpenNotify ISS position API
@@ -95,11 +97,31 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<Post> post;
   int currentPage;
 
+  var location = new Location();
+  Map<String, double> userLocation;
+
+  // Get user location from gps
+  Future<Map<String, double>> _getLocation() async {
+    var currentLocation = <String, double>{};
+    try {
+      currentLocation = await location.getLocation();
+    } catch(e) {
+      currentLocation = null;
+    }
+    return currentLocation;
+  }
   // Fetch data when state is initialized. Called once and only once (TODO: Fetch every 5 sec while screen active)
   @override
   void initState() {
     super.initState();
+
+    //MOVE OUT OF INIT
     post = fetchPost();
+    _getLocation().then((value) {
+      setState(() {
+        userLocation = value;
+      });
+    });
   }
 
   @override
@@ -114,7 +136,11 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Text(
-                "Time: ${snapshot.data.time}\nPos: (lat/long): (${snapshot.data.position.lat}/${snapshot.data.position.long})"
+                '''
+                Time: ${snapshot.data.time}\n
+                User Pos: (${userLocation["latitude"].toString()}/${userLocation["longitude"].toString()})\n
+                ISS Pos: (${snapshot.data.position.lat}/${snapshot.data.position.long})
+                '''
                 );
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
