@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -92,6 +93,7 @@ class MyHomePage extends StatefulWidget {
 */
 class _MyHomePageState extends State<MyHomePage> {
   Future<Post> post;
+  int currentPage;
 
   // Fetch data when state is initialized. Called once and only once (TODO: Fetch every 5 sec while screen active)
   @override
@@ -105,7 +107,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        
       ),
       body: Center(
         child: FutureBuilder<Post>(
@@ -124,23 +125,19 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.hotel),
-            title: new Text('2nd Page'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.motorcycle),
-            title: new Text('3rd Page'),
-          )
+      bottomNavigationBar: FancyBottomNavigation(
+        tabs: [
+          TabData(iconData: Icons.satellite, title: "Location"),
+          TabData(iconData: Icons.scatter_plot, title: "2nd Page"),
+          TabData(iconData: Icons.schedule, title: "Next Pass"),
+          TabData(iconData: Icons.settings, title: "Settings")
         ],
-      ),
+        onTabChangedListener: (position) {
+          setState(() {
+            currentPage = position;
+          });
+        },
+      )
     );
   }
 }
