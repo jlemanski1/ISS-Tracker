@@ -13,6 +13,7 @@ class MapLocation extends StatefulWidget {
 
 class MapLocationState extends State<MapLocation> {
   GoogleMapController mapController;
+  MapType currentMapType = MapType.satellite;
 
   //tmp: get latlng from ISS data
   final LatLng _center = const LatLng(45.521563, -122.677433);
@@ -35,6 +36,7 @@ class MapLocationState extends State<MapLocation> {
             target: _center,
             zoom: 11.0,
           ),
+        mapType: currentMapType,
         ),
       )
     );
