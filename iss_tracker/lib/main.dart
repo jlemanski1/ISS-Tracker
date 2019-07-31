@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
-
+import 'locmap.dart';
 
 // Fetch JSON data from OpenNotify ISS position API
 Future<Post> fetchPost() async {
@@ -71,7 +71,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
         accentColor: Colors.amberAccent
       ),
-      home: MyHomePage(title: 'ISS Current Location'),
+      home: MapLocation(),
+      //home: MyHomePage(title: 'ISS Current Location'),
     );
   }
 }
