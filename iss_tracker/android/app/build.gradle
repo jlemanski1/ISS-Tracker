@@ -59,3 +59,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+// Just added, app launches now but says Google play services out of date
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.android.gms:play-services-basement:16.0.1'
+        force 'com.google.android.gms:play-services-base:16.0.1'
+        force 'com.google.android.gms:play-services-tasks:16.0.1'
+    }
+}
