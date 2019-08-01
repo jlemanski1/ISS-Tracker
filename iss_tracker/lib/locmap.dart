@@ -27,12 +27,14 @@ class MapLocationState extends State<MapLocation> {
   Future<Map<String, double>> _getLocation() async {
     var currentLocation = <String, double>{};
     try {
+      location.hasPermission();
       currentLocation = await location.getLocation();
     } catch(e) {
       currentLocation = null;
     }
     return currentLocation;
   }
+
 
   @override
   void initState() {
@@ -45,6 +47,7 @@ class MapLocationState extends State<MapLocation> {
       });
     });
   }
+
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;

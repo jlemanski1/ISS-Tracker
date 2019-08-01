@@ -105,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<Map<String, double>> _getLocation() async {
     var currentLocation = <String, double>{};
     try {
+      location.hasPermission();
       currentLocation = await location.getLocation();
     } catch(e) {
       currentLocation = null;
@@ -125,6 +126,8 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
