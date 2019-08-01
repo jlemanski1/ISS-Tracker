@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
+import 'package:location/location.dart';  //remove when moving everything to locmap
 import 'package:http/http.dart' as http;
 
 import 'locmap.dart';
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var location = new Location();
   Map<String, double> userLocation;
 
-  // Get user location from gps
+  // Get user location from gps REMOVEABLE SOON
   Future<Map<String, double>> _getLocation() async {
     var currentLocation = <String, double>{};
     try {
@@ -111,6 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return currentLocation;
   }
+
   // Fetch data when state is initialized. Called once and only once (TODO: Fetch every 5 sec while screen active)
   @override
   void initState() {
