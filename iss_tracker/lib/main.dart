@@ -1,13 +1,9 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';  //remove when moving everything to locmap
-import 'package:http/http.dart' as http;
 
 import 'locmap.dart';
 
+/*
 // Fetch JSON data from OpenNotify ISS position API
 Future<Post> fetchPost() async {
   final response = await http.get('http://api.open-notify.org/iss-now.json');
@@ -57,7 +53,7 @@ class Post {
     );
   }
 }
-
+*/
 
 void main() => runApp(MyApp());
 
@@ -77,7 +73,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+/*
 /*
     HOMEPAGE (Current ISS location)
 */
@@ -91,27 +87,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 
-/*
-    HOMEPAGE STATE (Current ISS location)
-*/
 class _MyHomePageState extends State<MyHomePage> {
   Future<Post> post;
   int currentPage;
 
-  var location = new Location();
-  Map<String, double> userLocation;
-
-  // Get user location from gps REMOVEABLE SOON
-  Future<Map<String, double>> _getLocation() async {
-    var currentLocation = <String, double>{};
-    try {
-      location.hasPermission();
-      currentLocation = await location.getLocation();
-    } catch(e) {
-      currentLocation = null;
-    }
-    return currentLocation;
-  }
 
   // Fetch data when state is initialized. Called once and only once (TODO: Fetch every 5 sec while screen active)
   @override
@@ -120,11 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //MOVE OUT OF INIT
     post = fetchPost();
-    _getLocation().then((value) {
-      setState(() {
-        userLocation = value;
-      });
-    });
   }
 
   
@@ -172,3 +146,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
+
