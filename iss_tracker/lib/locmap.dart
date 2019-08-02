@@ -72,8 +72,13 @@ class MapLocationState extends State<MapLocation> {
   MapType currentMapType = MapType.normal;
   int currentPage;
 
+  Future<Post> post;
+
   var location = new Location();
   Map<String, double> userLocation;
+  final Set<Marker> _markers = {};
+ 
+
 
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
@@ -92,6 +97,9 @@ class MapLocationState extends State<MapLocation> {
   void initState() {
     super.initState();
 
+    // Get ISS location
+    post = fetchPost();
+
     // Get user location
     _getLocation().then((value) {
       setState(() {
@@ -104,6 +112,7 @@ class MapLocationState extends State<MapLocation> {
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -124,8 +133,21 @@ class MapLocationState extends State<MapLocation> {
           ),
         myLocationEnabled: true,
         mapType: currentMapType,
-        
         ),
+        /*
+        FutureBuilder<Post>(
+          future: post,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              var issLoc = LatLng(snapshot.data.position.lat, snapshot.data.position.long)
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+
+            return CircularProgressIndicator();
+          }
+        ),
+        */
         bottomNavigationBar: FancyBottomNavigation(
           tabs: [
             TabData(iconData: Icons.satellite, title: "Location"),
