@@ -12,7 +12,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
-import 'package:json_annotation/json_annotation.dart';
 
 
 // Fetch JSON data from OpenNotify ISS position API
@@ -33,7 +32,7 @@ Future<Post> fetchPost() async {
 
 // Object containing the nested positon data from the API
 class Position {
-  final String lat; // formerly String
+  final String lat;
   final String long;
 
   Position({this.lat, this.long});
@@ -88,13 +87,30 @@ class MapLocationState extends State<MapLocation> {
         position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
-          snippet: "${iss_loc.time}\n${iss_loc.position.lat}/${iss_loc.position.long}"
+          snippet: "Lat:${iss_loc.position.lat} Long:${iss_loc.position.long}"
         ),
       );
       _markers[iss_loc.time.toString()] = marker;
     });
   }
 
+  // Updates the marker with the ISS' current location
+  Future<void> _getISSLocation() async {
+    final iss_loc = await fetchPost();
+    
+    setState(() {
+      _markers.clear();
+      final marker = Marker(
+        markerId: MarkerId(iss_loc.time.toString()),
+        position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
+        infoWindow: InfoWindow(
+          title: 'Current ISS Location',
+          snippet: "Lat:${iss_loc.position.lat} Long:${iss_loc.position.long}"
+        ),
+      );
+      _markers[iss_loc.time.toString()] = marker;
+    });
+  }
 
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
@@ -152,7 +168,7 @@ class MapLocationState extends State<MapLocation> {
                   child: Column(
                     children: <Widget>[
                       FloatingActionButton(
-                        onPressed: (){},  //Make function
+                        onPressed: _getISSLocation,  //Make function
                         materialTapTargetSize: MaterialTapTargetSize.padded,
                         backgroundColor: Colors.black26,
                         child: const Icon(Icons.map, size : 36.0),
