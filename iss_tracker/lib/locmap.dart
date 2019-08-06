@@ -12,11 +12,10 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
-
 // Fetch JSON data from OpenNotify ISS position API
 Future<Post> fetchPost() async {
   final response = await http.get('http://api.open-notify.org/iss-now.json');
-  
+
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
     return Post.fromJson(json.decode(response.body));
@@ -25,7 +24,6 @@ Future<Post> fetchPost() async {
     throw Exception('Failed to fetch post');
   }
 }
-
 
 // Object containing the nested positon data from the API
 class Position {
@@ -36,12 +34,8 @@ class Position {
 
   // Map iss_position to lat & long using factory constructor
   factory Position.fromJson(Map<String, dynamic> json) {
-    return Position(
-      lat: json['latitude'],
-      long: json['longitude']
-    );
+    return Position(lat: json['latitude'], long: json['longitude']);
   }
-
 }
 
 // Object containing the data fetched from the API
@@ -55,10 +49,9 @@ class Post {
   // Map Json to members using factory constructor
   factory Post.fromJson(Map<String, dynamic> parsedJson) {
     return Post(
-      time: parsedJson['timestamp'],
-      message: parsedJson['message'],
-      position: Position.fromJson(parsedJson['iss_position'])
-    );
+        time: parsedJson['timestamp'],
+        message: parsedJson['message'],
+        position: Position.fromJson(parsedJson['iss_position']));
   }
 }
 
@@ -77,8 +70,6 @@ class MapLocationState extends State<MapLocation> {
   var location = new Location();
   Map<String, double> userLocation;
   final Set<Marker> _markers = {};
- 
-
 
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
@@ -86,12 +77,11 @@ class MapLocationState extends State<MapLocation> {
     try {
       location.hasPermission();
       currentLocation = await location.getLocation();
-    } catch(e) {
+    } catch (e) {
       currentLocation = null;
     }
     return currentLocation;
   }
-
 
   @override
   void initState() {
@@ -108,33 +98,29 @@ class MapLocationState extends State<MapLocation> {
     });
   }
 
-
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("ISS Current Location"),
-        ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(
-              userLocation['latitude'],
-              userLocation['longitude']
+        theme: ThemeData.dark(),
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("ISS Current Location"),
             ),
-            zoom: 11.0,
-          ),
-        myLocationEnabled: true,
-        mapType: currentMapType,
-        ),
-        /*
+            body: GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target:
+                    LatLng(userLocation['latitude'], userLocation['longitude']),
+                zoom: 11.0,
+              ),
+              myLocationEnabled: true,
+              mapType: currentMapType,
+            ),
+            /*
         FutureBuilder<Post>(
           future: post,
           builder: (context, snapshot) {
@@ -148,20 +134,18 @@ class MapLocationState extends State<MapLocation> {
           }
         ),
         */
-        bottomNavigationBar: FancyBottomNavigation(
-          tabs: [
-            TabData(iconData: Icons.satellite, title: "Location"),
-            TabData(iconData: Icons.scatter_plot, title: "2nd Page"),
-            TabData(iconData: Icons.schedule, title: "Next Pass"),
-            TabData(iconData: Icons.settings, title: "Settings")
-          ],
-          onTabChangedListener: (position) {
-            setState(() {
-              currentPage = position;
-            });
-          },
-        )
-      )
-    );
+            bottomNavigationBar: FancyBottomNavigation(
+              tabs: [
+                TabData(iconData: Icons.satellite, title: "Location"),
+                TabData(iconData: Icons.scatter_plot, title: "2nd Page"),
+                TabData(iconData: Icons.schedule, title: "Next Pass"),
+                TabData(iconData: Icons.settings, title: "Settings")
+              ],
+              onTabChangedListener: (position) {
+                setState(() {
+                  currentPage = position;
+                });
+              },
+            )));
   }
 }

@@ -64,9 +64,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ISS Tracker',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
-        accentColor: Colors.amberAccent
-      ),
+          primarySwatch: Colors.amber, accentColor: Colors.amberAccent),
       home: MapLocation(),
       //home: MyHomePage(title: 'ISS Current Location'),
     );
@@ -147,4 +145,3 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 */
-
