@@ -33,7 +33,7 @@ Future<Post> fetchPost() async {
 
 // Object containing the nested positon data from the API
 class Position {
-  final String lat;
+  final String lat; // formerly String
   final String long;
 
   Position({this.lat, this.long});
@@ -52,27 +52,13 @@ class Post {
 
   Post({this.time, this.message, this.position});
 
-  // Map Json to members using factory constructor
+  // Map Json to object members using factory constructor
   factory Post.fromJson(Map<String, dynamic> parsedJson) {
     return Post(
         time: parsedJson['timestamp'],
         message: parsedJson['message'],
         position: Position.fromJson(parsedJson['iss_position']));
   }
-}
-
-@jsonSerializable()
-class LatLng {
-  LatLng({
-    this.lat,
-    this.long
-  });
-
-  factory LatLng.fromJson(Map<String, dynamic> json) => _$LatLngFromJson(json);
-  Map<String, dynamic> toJson() => _$LatLngToJson(this);
-
-  final double lat;
-  final double lng;
 }
 
 
@@ -83,14 +69,31 @@ class MapLocation extends StatefulWidget {
 
 class MapLocationState extends State<MapLocation> {
   GoogleMapController mapController;
-  MapType currentMapType = MapType.normal;
   int currentPage;
 
   Future<Post> post;
 
   var location = new Location();
   Map<String, double> userLocation;
-  final Set<Marker> _markers = {};
+  final Map<String, Marker> _markers = {};
+  Future<void> _onMapCreated(GoogleMapController controller) async {
+    final iss_loc = await fetchPost();
+    
+    setState(() {
+      _markers.clear();
+      final marker = Marker(
+        markerId: MarkerId(iss_loc.time.toString()),
+        position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
+        infoWindow: InfoWindow(
+          title: 'Current ISS Location',
+          snippet: "${iss_loc.time}\n${iss_loc.position.lat}/${iss_loc.position.long}"
+        ),
+      );
+      _markers[iss_loc.time.toString()] = marker;
+    });
+  }
+
+
 
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
@@ -119,10 +122,6 @@ class MapLocationState extends State<MapLocation> {
     });
   }
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -138,9 +137,11 @@ class MapLocationState extends State<MapLocation> {
                     LatLng(userLocation['latitude'], userLocation['longitude']),
                 zoom: 11.0,
               ),
+              markers: _markers.values.toSet(),
               myLocationEnabled: true,
-              mapType: currentMapType,
+              mapType: MapType.hybrid,
             ),
+            
             /*
         FutureBuilder<Post>(
           future: post,
