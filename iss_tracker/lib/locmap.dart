@@ -76,6 +76,8 @@ class MapLocationState extends State<MapLocation> {
   var location = new Location();
   Map<String, double> userLocation;
   final Map<String, Marker> _markers = {};
+  
+  // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final iss_loc = await fetchPost();
     
@@ -94,7 +96,6 @@ class MapLocationState extends State<MapLocation> {
   }
 
 
-
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
     var currentLocation = <String, double>{};
@@ -107,12 +108,10 @@ class MapLocationState extends State<MapLocation> {
     return currentLocation;
   }
 
+
   @override
   void initState() {
     super.initState();
-
-    // Get ISS location
-    post = fetchPost();
 
     // Get user location
     _getLocation().then((value) {
@@ -122,40 +121,55 @@ class MapLocationState extends State<MapLocation> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData.dark(),
         home: Scaffold(
             appBar: AppBar(
-              title: Text("ISS Current Location"),
+              title: Text("Current ISS Location"),
             ),
-            body: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target:
-                    LatLng(userLocation['latitude'], userLocation['longitude']),
-                zoom: 11.0,
+            body: Stack(
+              children: <Widget>[
+                GoogleMap(
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target:
+                        LatLng(userLocation['latitude'], userLocation['longitude']),
+                    zoom: 1.0,
+                  ),
+                  zoomGesturesEnabled: true,
+                  rotateGesturesEnabled: true,
+                  markers: _markers.values.toSet(),
+                  //myLocationEnabled: true,  // Replace with floating action button
+                  mapType: MapType.hybrid, 
               ),
-              markers: _markers.values.toSet(),
-              myLocationEnabled: true,
-              mapType: MapType.hybrid,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Column(
+                    children: <Widget>[
+                      FloatingActionButton(
+                        onPressed: (){},  //Make function
+                        materialTapTargetSize: MaterialTapTargetSize.padded,
+                        backgroundColor: Colors.black26,
+                        child: const Icon(Icons.map, size : 36.0),
+                      ),
+                      SizedBox(height: 16.0),
+                      FloatingActionButton(
+                        onPressed: (){},  //Make function
+                        materialTapTargetSize: MaterialTapTargetSize.padded,
+                        backgroundColor: Colors.black26,
+                        child: const Icon(Icons.add_location, size: 36.0),
+                      )
+                    ],
+                  ),
+                ),
+              )
+              ],
             ),
-            
-            /*
-        FutureBuilder<Post>(
-          future: post,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              var issLoc = LatLng(snapshot.data.position.lat, snapshot.data.position.long)
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-
-            return CircularProgressIndicator();
-          }
-        ),
-        */
             bottomNavigationBar: FancyBottomNavigation(
               tabs: [
                 TabData(iconData: Icons.satellite, title: "Location"),
@@ -166,8 +180,10 @@ class MapLocationState extends State<MapLocation> {
               onTabChangedListener: (position) {
                 setState(() {
                   currentPage = position;
-                });
-              },
-            )));
+              });
+            },
+          )
+        )
+      );
   }
 }
