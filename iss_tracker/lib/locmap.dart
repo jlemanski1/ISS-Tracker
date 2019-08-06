@@ -79,6 +79,7 @@ class MapLocationState extends State<MapLocation> {
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final iss_loc = await fetchPost();
+    //TODO: Make lil ISS icon to replace the std marker icon
     
     setState(() {
       _markers.clear();
@@ -97,7 +98,7 @@ class MapLocationState extends State<MapLocation> {
   // Updates the marker with the ISS' current location
   Future<void> _getISSLocation() async {
     final iss_loc = await fetchPost();
-    
+    //TODO: Make lil ISS icon to replace the std marker icon
     setState(() {
       _markers.clear();
       final marker = Marker(
@@ -118,6 +119,7 @@ class MapLocationState extends State<MapLocation> {
     try {
       location.hasPermission();
       currentLocation = await location.getLocation();
+      
     } catch (e) {
       currentLocation = null;
     }
@@ -128,7 +130,7 @@ class MapLocationState extends State<MapLocation> {
   @override
   void initState() {
     super.initState();
-
+    
     // Get user location
     _getLocation().then((value) {
       setState(() {
@@ -168,17 +170,17 @@ class MapLocationState extends State<MapLocation> {
                   child: Column(
                     children: <Widget>[
                       FloatingActionButton(
-                        onPressed: _getISSLocation,  //Make function
+                        onPressed: _getISSLocation,
                         materialTapTargetSize: MaterialTapTargetSize.padded,
                         backgroundColor: Colors.black26,
-                        child: const Icon(Icons.map, size : 36.0),
+                        child: const Icon(Icons.add_location, size : 36.0),
                       ),
                       SizedBox(height: 16.0),
                       FloatingActionButton(
-                        onPressed: (){},  //Make function
+                        onPressed: (){},  // Replace (){} with function
                         materialTapTargetSize: MaterialTapTargetSize.padded,
                         backgroundColor: Colors.black26,
-                        child: const Icon(Icons.add_location, size: 36.0),
+                        child: const Icon(Icons.map, size: 36.0),
                       )
                     ],
                   ),
@@ -189,7 +191,7 @@ class MapLocationState extends State<MapLocation> {
             bottomNavigationBar: FancyBottomNavigation(
               tabs: [
                 TabData(iconData: Icons.satellite, title: "Location"),
-                TabData(iconData: Icons.scatter_plot, title: "2nd Page"),
+                TabData(iconData: Icons.scatter_plot, title: "Astronauts"),
                 TabData(iconData: Icons.schedule, title: "Next Pass"),
                 TabData(iconData: Icons.settings, title: "Settings")
               ],
