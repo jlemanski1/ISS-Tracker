@@ -5,12 +5,15 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
+import 'package:json_annotation/json_annotation.dart';
+
 
 // Fetch JSON data from OpenNotify ISS position API
 Future<Post> fetchPost() async {
@@ -21,7 +24,10 @@ Future<Post> fetchPost() async {
     return Post.fromJson(json.decode(response.body));
   } else {
     // Server response not okay, throw error
-    throw Exception('Failed to fetch post');
+    throw HttpException(
+      'Unexpected status code ${response.statusCode}:'
+      ' ${response.reasonPhrase}',
+      uri: Uri.parse('http://api.open-notify.org/iss-now.json'));
   }
 }
 
@@ -54,6 +60,21 @@ class Post {
         position: Position.fromJson(parsedJson['iss_position']));
   }
 }
+
+@jsonSerializable()
+class LatLng {
+  LatLng({
+    this.lat,
+    this.long
+  });
+
+  factory LatLng.fromJson(Map<String, dynamic> json) => _$LatLngFromJson(json);
+  Map<String, dynamic> toJson() => _$LatLngToJson(this);
+
+  final double lat;
+  final double lng;
+}
+
 
 class MapLocation extends StatefulWidget {
   @override
