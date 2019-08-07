@@ -15,6 +15,9 @@ class _NextPassState extends State<NextPass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Next Pass Date & Time"),
+      ),
       body: Center(
         child: Text("Nothing here yet either")),
     );
