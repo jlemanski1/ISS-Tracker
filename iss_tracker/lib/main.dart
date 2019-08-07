@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       home: MapLocation(),
       
-
+    //TODO: refactor _getPage into here to make LocationMap just like the other pages in the switch
+    // Make each appbar part of each page so they can all have their own name
       
     );
   }

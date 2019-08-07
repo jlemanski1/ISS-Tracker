@@ -74,7 +74,7 @@ class MapLocationState extends State<MapLocation> {
   int currentPage = 0;
   GlobalKey bottomNavigationKey = GlobalKey();
 
-  final Text title = Text("Current ISS Location");
+  Text pageTitle = Text("Current ISS Location");
 
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
@@ -155,7 +155,7 @@ class MapLocationState extends State<MapLocation> {
         theme: ThemeData.dark(),
         home: Scaffold(
             appBar: AppBar(
-              title: title,
+              title: pageTitle,
             ),
             body: Container(
               child: Center(
@@ -180,7 +180,13 @@ class MapLocationState extends State<MapLocation> {
                     final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
                     fState.setPage(1);
                   }),
-                TabData(iconData: Icons.schedule, title: "Next Pass"),
+                TabData(
+                  iconData: Icons.schedule,
+                  title: "Next Pass",
+                  onclick: () {
+                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+                    fState.setPage(2);
+                  }),
                 TabData(iconData: Icons.settings, title: "Settings")
               ],
               onTabChangedListener: (position) {
