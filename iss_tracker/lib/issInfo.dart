@@ -16,6 +16,9 @@ class _ISSInfoState extends State<ISSInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("ISS Info"),
+      ),
       body: Center(
         child: Text("Nothing here yet")),
     );

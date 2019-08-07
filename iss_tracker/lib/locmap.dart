@@ -74,8 +74,6 @@ class MapLocationState extends State<MapLocation> {
   int currentPage = 0;
   GlobalKey bottomNavigationKey = GlobalKey();
 
-  Text pageTitle = Text("Current ISS Location");
-
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
@@ -154,9 +152,6 @@ class MapLocationState extends State<MapLocation> {
     return MaterialApp(
         theme: ThemeData.dark(),
         home: Scaffold(
-            appBar: AppBar(
-              title: pageTitle,
-            ),
             body: Container(
               child: Center(
                 child: _getPage(currentPage),
@@ -207,18 +202,23 @@ class MapLocationState extends State<MapLocation> {
       case 0:
         return Stack(
           children: <Widget>[
-                GoogleMap(
-                  onMapCreated: _onMapCreated,
-                  initialCameraPosition: CameraPosition(
-                    target:
-                        LatLng(userLocation['latitude'], userLocation['longitude']),
-                    zoom: 1.0,
-                  ),
-                  zoomGesturesEnabled: true,
-                  rotateGesturesEnabled: true,
-                  markers: _markers.values.toSet(),
-                  //myLocationEnabled: true,  // Replace with floating action button
-                  mapType: MapType.hybrid, 
+            Scaffold(
+              appBar: AppBar(
+                title: Text("Current ISS Location"),
+              ),
+            ),
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target:
+                    LatLng(userLocation['latitude'], userLocation['longitude']),
+                zoom: 1.0,
+              ),
+              zoomGesturesEnabled: true,
+              rotateGesturesEnabled: true,
+              markers: _markers.values.toSet(),
+              //myLocationEnabled: true,  // Replace with floating action button
+              mapType: MapType.hybrid, 
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
