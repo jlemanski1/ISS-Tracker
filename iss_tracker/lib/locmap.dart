@@ -73,6 +73,8 @@ class MapLocationState extends State<MapLocation> {
   int currentPage = 0;
   GlobalKey bottomNavigationKey = GlobalKey();
 
+  final Text title = Text("Current ISS Location");
+
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
@@ -145,16 +147,59 @@ class MapLocationState extends State<MapLocation> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData.dark(),
         home: Scaffold(
             appBar: AppBar(
-              title: Text("Current ISS Location"),
+              title: title,
             ),
-            body: Stack(
-              children: <Widget>[
+            body: Container(
+              child: Center(
+                child: _getPage(currentPage),
+                
+              ),
+            ),
+            bottomNavigationBar: FancyBottomNavigation(
+              initialSelection: 0,
+              tabs: [
+                TabData(
+                  iconData: Icons.satellite,
+                  title: "Location",
+                  onclick: () {
+                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+                    fState.setPage(0);
+                  }),
+                TabData(
+                  iconData: Icons.scatter_plot,
+                  title: "Information",
+                  onclick: () {
+                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+                    fState.setPage(1);
+                  }),
+                TabData(iconData: Icons.schedule, title: "Next Pass"),
+                TabData(iconData: Icons.settings, title: "Settings")
+              ],
+              onTabChangedListener: (position) {
+                setState(() {
+                  currentPage = position;
+              });
+            },
+          ),
+        )
+      );
+  }
+
+
+  _getPage(int page) {
+    switch (page) {
+
+      // ISS current location route
+      case 0:
+        return Stack(
+          children: <Widget>[
                 GoogleMap(
                   onMapCreated: _onMapCreated,
                   initialCameraPosition: CameraPosition(
@@ -192,22 +237,13 @@ class MapLocationState extends State<MapLocation> {
                 ),
               )
               ],
-            ),
-            bottomNavigationBar: FancyBottomNavigation(
-              initialSelection: 0,
-              tabs: [
-                TabData(iconData: Icons.satellite, title: "Location"),
-                TabData(iconData: Icons.scatter_plot, title: "Information"),
-                TabData(iconData: Icons.schedule, title: "Next Pass"),
-                TabData(iconData: Icons.settings, title: "Settings")
-              ],
-              onTabChangedListener: (position) {
-                setState(() {
-                  currentPage = position;
-              });
-            },
-          )
-        )
-      );
+        );
+      
+      // Show ISS Info route
+      case 1:
+        return ISSInfo();
+
+
+    }
   }
 }

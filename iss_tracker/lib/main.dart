@@ -7,8 +7,6 @@ import 'issInfo.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  int currentPage;
-
 
   @override
   Widget build(BuildContext context) {
