@@ -13,6 +13,8 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
+import 'issInfo.dart';
+
 
 // Fetch JSON data from OpenNotify ISS position API
 Future<Post> fetchPost() async {
@@ -67,10 +69,12 @@ class MapLocation extends StatefulWidget {
 }
 
 class MapLocationState extends State<MapLocation> {
-  GoogleMapController mapController;
-  int currentPage;
+  // Route Navigation
+  int currentPage = 0;
+  GlobalKey bottomNavigationKey = GlobalKey();
 
-  Future<Post> post;
+  GoogleMapController mapController;
+  Future<Post> post;  // ISS Json data
 
   var location = new Location();
   Map<String, double> userLocation;
@@ -98,6 +102,7 @@ class MapLocationState extends State<MapLocation> {
   // Updates the marker with the ISS' current location
   Future<void> _getISSLocation() async {
     final iss_loc = await fetchPost();
+
     //TODO: Make lil ISS icon to replace the std marker icon
     setState(() {
       _markers.clear();
@@ -189,9 +194,10 @@ class MapLocationState extends State<MapLocation> {
               ],
             ),
             bottomNavigationBar: FancyBottomNavigation(
+              initialSelection: 0,
               tabs: [
                 TabData(iconData: Icons.satellite, title: "Location"),
-                TabData(iconData: Icons.scatter_plot, title: "Astronauts"),
+                TabData(iconData: Icons.scatter_plot, title: "Information"),
                 TabData(iconData: Icons.schedule, title: "Next Pass"),
                 TabData(iconData: Icons.settings, title: "Settings")
               ],
