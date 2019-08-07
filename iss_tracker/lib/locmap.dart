@@ -10,11 +10,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:iss_tracker/nextPass.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
+// Routes
 import 'issInfo.dart';
+import 'nextPass.dart';
+import 'settings.dart';
 
 
 // Fetch JSON data from OpenNotify ISS position API
@@ -182,7 +184,14 @@ class MapLocationState extends State<MapLocation> {
                     final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
                     fState.setPage(2);
                   }),
-                TabData(iconData: Icons.settings, title: "Settings")
+                TabData(
+                  iconData: Icons.settings,
+                  title: "Settings",
+                  onclick: () {
+                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+                    fState.setPage(3);
+                  }
+                )
               ],
               onTabChangedListener: (position) {
                 setState(() {
@@ -254,6 +263,9 @@ class MapLocationState extends State<MapLocation> {
       case 2:
         return NextPass();
 
+      // Settings route
+      case 3:
+        return Settings();
 
     }
   }
