@@ -10,6 +10,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:iss_tracker/nextPass.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
@@ -239,9 +240,13 @@ class MapLocationState extends State<MapLocation> {
               ],
         );
       
-      // Show ISS Info route
+      // ISS Info route
       case 1:
         return ISSInfo();
+
+      // ISS Next Pass route
+      case 2:
+        return NextPass();
 
 
     }
