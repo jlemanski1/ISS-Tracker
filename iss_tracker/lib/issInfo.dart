@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 
-
-Future<Post> _fetchPost() async {
+// Fetch json from api
+Future<AstroData> _fetchAstros() async {
   final response = await http.get('http://api.open-notify.org/astros.json');
 
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
-    return Post.fromJson(json.decode(response.body));
+    return AstroData.fromJson(json.decode(response.body));
   } else {
     throw HttpException(
       'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
@@ -24,35 +24,37 @@ Future<Post> _fetchPost() async {
   }
 }
 
-// object containing the astronaughts (onboard) data fetched from the api
-class Post {
-  final Astronaut astronaut;  // The object containing the name data
-  final int count;  // How many are onboard
+// object containing the astronauts info from the data fetched from the api
+class AstroData {
+  final int count;  // Number of astronauts onboard
+  final List<Astronaut> astros;
 
-  Post({this.astronaut, this.count});
+  AstroData({this.count, this.astros});
 
-  // Maps json data to object members
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
-      astronaut: Astronaut.fromJson(json['people']),
-      count: json['number']
+  factory AstroData.fromJson(Map<String, dynamic> json) {
+    var list = json['people'] as List;
+    print(list.runtimeType);
+    // Map each object to a new list
+    List<Astronaut> astroList = list.map((i) => Astronaut.fromJson(i)).toList();
+
+    return AstroData(
+      count: json['number'],
+      astros: astroList
     );
   }
 }
 
 
-// Parsing needs fixing, json goes  people:[{name, craft},{name,craft},...]
 class Astronaut {
-  final String name;  // The astronaut's name
-  final String craft; // The Craft they're aboard
+  final String name;
+  final String craft;
 
   Astronaut({this.name, this.craft});
-  
-  // Maps json data to object members
-  factory Astronaut.fromJson(Map<String, dynamic> parsedJson) {
+
+  factory Astronaut.fromJson(Map<String, dynamic> json) {
     return Astronaut(
-      name: parsedJson['name'],
-      craft: parsedJson['craft']
+      name: json['name'],
+      craft: json['craft']
     );
   }
 }
@@ -65,18 +67,25 @@ class ISSInfo extends StatefulWidget {
   _ISSInfoState createState() => _ISSInfoState();
 }
 
+
 class _ISSInfoState extends State<ISSInfo> {
+  
+  Future<void> _BuilderAstroTile() async {
+    final AstroData astroData = await _fetchAstros();
 
-  Future<void> _getAstroData() async {
-    final astroData = await _fetchPost();
+    return ListView.builder(
+      itemCount: astroData.count,
+      itemBuilder: (BuildContext context, int index) {
+        return new ListTile(
+          title: Text(astroData.astros[index].name),
+          subtitle: Text(astroData.astros[index].craft),
+        );
+      },
+    );
 
-    final names = Text(
-      '''There are currently ${astroData.count} astronauts onboard the ${astroData.astronaut.craft},
-      they are ${astroData.astronaut.name}
-      ''');
-
-      return names;
   }
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +93,7 @@ class _ISSInfoState extends State<ISSInfo> {
       appBar: AppBar(
         title: Text("ISS Info"),
       ),
-      body: Center(
-        child: Text(_getAstroData().toString())),
+      body: _BuilderAstroTile()
     );
   }
 }
