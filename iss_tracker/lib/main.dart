@@ -1,8 +1,5 @@
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 
 // Pages / Routes
 import 'issInfo.dart';
@@ -13,7 +10,6 @@ import 'settings.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +28,6 @@ class PageNav extends StatefulWidget {
 class _PageNavState extends State<PageNav> {
   int currentPage = 0;
   GlobalKey bottomNavigationKey = GlobalKey();
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +77,7 @@ class _PageNavState extends State<PageNav> {
               });
             },
           ),
-        )
-      );
+        );
   }
 
 

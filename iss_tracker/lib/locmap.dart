@@ -139,53 +139,50 @@ class MapLocationState extends State<MapLocation> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData.dark(),
-        home: Stack(
-          children: <Widget>[
-            Scaffold(
-              appBar: AppBar(
-                title: Text("Current ISS Location"),
-              ),
-            ),
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target:
-                    LatLng(userLocation['latitude'], userLocation['longitude']),
-                zoom: 1.0,
-              ),
-              zoomGesturesEnabled: true,
-              rotateGesturesEnabled: true,
-              markers: _markers.values.toSet(),
-              //myLocationEnabled: true,  // Replace with floating action button
-              mapType: MapType.hybrid, 
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Column(
-                    children: <Widget>[
-                      FloatingActionButton(
-                        onPressed: _getISSLocation,
-                        materialTapTargetSize: MaterialTapTargetSize.padded,
-                        backgroundColor: Colors.black26,
-                        child: const Icon(Icons.add_location, size : 36.0),
-                      ),
-                      SizedBox(height: 16.0),
-                      FloatingActionButton(
-                        onPressed: (){},  // Replace (){} with function
-                        materialTapTargetSize: MaterialTapTargetSize.padded,
-                        backgroundColor: Colors.black26,
-                        child: const Icon(Icons.map, size: 36.0),
-                      )
-                    ],
-                  ),
+    return Stack(
+            children: <Widget>[
+              Scaffold(
+                appBar: AppBar(
+                  title: Text("Current ISS Location"),
                 ),
-              )
-              ],
-          ),
-      );
+              ),
+              GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target:
+                      LatLng(userLocation['latitude'], userLocation['longitude']),
+                  zoom: 1.0,
+                ),
+                zoomGesturesEnabled: true,
+                rotateGesturesEnabled: true,
+                markers: _markers.values.toSet(),
+                //myLocationEnabled: true,  // Replace with floating action button
+                mapType: MapType.hybrid, 
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Column(
+                      children: <Widget>[
+                        FloatingActionButton(
+                          onPressed: _getISSLocation,
+                          materialTapTargetSize: MaterialTapTargetSize.padded,
+                          backgroundColor: Colors.black26,
+                          child: const Icon(Icons.add_location, size : 36.0),
+                        ),
+                        SizedBox(height: 16.0),
+                        FloatingActionButton(
+                          onPressed: (){},  // Replace (){} with function
+                          materialTapTargetSize: MaterialTapTargetSize.padded,
+                          backgroundColor: Colors.black26,
+                          child: const Icon(Icons.map, size: 36.0),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+                ],
+            );
   }
 }
