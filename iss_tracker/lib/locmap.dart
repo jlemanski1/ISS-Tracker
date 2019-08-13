@@ -9,14 +9,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
-// Routes
-import 'issInfo.dart';
-import 'nextPass.dart';
-import 'settings.dart';
 
 
 // Fetch JSON data from OpenNotify ISS position API
@@ -72,10 +67,6 @@ class MapLocation extends StatefulWidget {
 }
 
 class MapLocationState extends State<MapLocation> {
-  // Route Navigation
-  int currentPage = 0;
-  GlobalKey bottomNavigationKey = GlobalKey();
-
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
@@ -134,7 +125,6 @@ class MapLocationState extends State<MapLocation> {
     return currentLocation;
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -147,69 +137,11 @@ class MapLocationState extends State<MapLocation> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData.dark(),
-        home: Scaffold(
-            body: Container(
-              child: Center(
-                child: _getPage(currentPage),
-                
-              ),
-            ),
-            bottomNavigationBar: FancyBottomNavigation(
-              initialSelection: 0,
-              tabs: [
-                TabData(
-                  iconData: Icons.satellite,
-                  title: "Location",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(0);
-                  }),
-                TabData(
-                  iconData: Icons.scatter_plot,
-                  title: "Information",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(1);
-                  }),
-                TabData(
-                  iconData: Icons.schedule,
-                  title: "Next Pass",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(2);
-                  }),
-                TabData(
-                  iconData: Icons.settings,
-                  title: "Settings",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(3);
-                  }
-                )
-              ],
-              onTabChangedListener: (position) {
-                setState(() {
-                  currentPage = position;
-              });
-            },
-          ),
-        )
-      );
-  }
-
-
-  _getPage(int page) {
-    switch (page) {
-
-      // ISS current location route
-      case 0:
-        return Stack(
+        home: Stack(
           children: <Widget>[
             Scaffold(
               appBar: AppBar(
@@ -253,20 +185,7 @@ class MapLocationState extends State<MapLocation> {
                 ),
               )
               ],
-        );
-      
-      // ISS Info route
-      case 1:
-        return ISSInfo();
-
-      // ISS Next Pass route
-      case 2:
-        return NextPass();
-
-      // Settings route
-      case 3:
-        return Settings();
-
-    }
+          ),
+      );
   }
 }
