@@ -15,6 +15,7 @@ Future<AstroData> _fetchAstros() async {
 
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
+    print(AstroData.fromJson(json.decode(response.body)));
     return AstroData.fromJson(json.decode(response.body));
   } else {
     throw HttpException(
@@ -84,16 +85,39 @@ class _ISSInfoState extends State<ISSInfo> {
     );
 
   }
+
+  dynamic astroListBuilder() async {
+    var astroList = await _fetchAstros();
+    
+    return astroList;
+  }
   
+  @override
+  void initState() {
+    super.initState();
+    
+  }
 
 
   @override
   Widget build(BuildContext context) {
+    var astroListo = astroListBuilder();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("ISS Info"),
       ),
-      body: _BuilderAstroTile()
+      body: //_BuilderAstroTile()
+        new Container(
+          padding: new EdgeInsets.all(32.0),
+          child: new Center(
+            child: new Column(
+              children: <Widget>[
+                Text("Astronauts in Space", style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(astroListo.toString()),
+              ],)
+          ),
+        )
     );
   }
 }
