@@ -99,12 +99,42 @@ class _ISSInfoState extends State<ISSInfo> {
         title: Text("ISS Info"),
       ),
       body: Container(
-        padding: new EdgeInsets.all(32.0),
+        padding: new EdgeInsets.all(16.0),
         child: new Center(
           child: new Column(
             children: <Widget>[
-              Text("Astronauts in Space", style: TextStyle(fontWeight: FontWeight.bold),),
-              Text("${_astroList[0].name} is onboard the ${_astroList[0].craft}"),
+              Column (
+                children: <Widget>[
+                  Text(
+                    "Information about the International Space Station",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Center(
+                    child: 
+                      Image.asset("assets/images/ISS.png", fit: BoxFit.fill)
+                  )
+                ]
+              ),
+              // Info from API below
+              Text (
+                "There are currently ${_astroList.length} astronauts in space. They are:",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Expanded (
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8.0),
+                  itemCount: _astroList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    //return Text(_astroList.elementAt(index).name);
+                    return Container (
+                      height: 30,
+                      color: Colors.blueGrey,
+                      child: 
+                      Text("Craft: ${_astroList.elementAt(index).craft} | Name: ${_astroList.elementAt(index).name}"),
+                    );
+                  },
+                ),
+              ),
             ],
           )
         ),
