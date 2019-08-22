@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 
-// Fetch json from api
+// Fetch json from OpenNotify
 Future<AstroData> _fetchAstros() async {
   final response = await http.get('http://api.open-notify.org/astros.json');
 
@@ -34,10 +34,8 @@ class AstroData {
 
   factory AstroData.fromJson(Map<String, dynamic> json) {
     var list = json['people'] as List;
-    print("Astro list: ${list}");
     
     // Map each object to a new list
-    //TODO ISSUE possibly around here
     List<Astronaut> astroList = list.map((i) => Astronaut.fromJson(i)).toList();
 
     return AstroData(
@@ -64,52 +62,20 @@ class Astronaut {
 }
 
 
-
 class ISSInfo extends StatefulWidget {
-
   @override
   _ISSInfoState createState() => _ISSInfoState();
 }
 
 
 class _ISSInfoState extends State<ISSInfo> {
-  List _astroList;
+  List<Astronaut> _astroList;  // List of astronauts
 
-
-  Future<void> _BuilderAstroTile() async {
-    final AstroData astroData = await _fetchAstros();
-
-    return ListView.builder(
-      itemCount: astroData.count,
-      itemBuilder: (BuildContext context, int index) {
-        return new ListTile(
-          title: Text(astroData.astros[index].name),
-          subtitle: Text(astroData.astros[index].craft),
-        );
-      },
-    );
-
-  }
 
   Future<List> astroListBuilder() async {
     var astroList = await _fetchAstros();
 
-    print(astroList.astros[0].name);
     return astroList.astros;
-    
-    /*return Container(
-      padding: EdgeInsets.all(32.0),
-      child: Center (
-        child: Column(
-          children: <Widget>[
-            Text("Astronauts Currently in Space"),
-            Text(astroList.astros[0].name),
-            Text(astroList.astros[0].craft),
-          ],
-        )
-      )
-    );
-    */
   }
   
   @override
@@ -127,25 +93,22 @@ class _ISSInfoState extends State<ISSInfo> {
 
   @override
   Widget build(BuildContext context) {
-    //var astroListo = astroListBuilder();
     
     return Scaffold(
       appBar: AppBar(
         title: Text("ISS Info"),
       ),
-      body: //astroListBuilder();
-        
-        new Container(
-          padding: new EdgeInsets.all(32.0),
-          child: new Center(
-            child: new Column(
-              children: <Widget>[
-                Text("Astronauts in Space", style: TextStyle(fontWeight: FontWeight.bold),),
-                Text("${_astroList[0].name} is onboard the ${_astroList[0].craft}"),
-              ],
-            )
-          ),
-        )
+      body: Container(
+        padding: new EdgeInsets.all(32.0),
+        child: new Center(
+          child: new Column(
+            children: <Widget>[
+              Text("Astronauts in Space", style: TextStyle(fontWeight: FontWeight.bold),),
+              Text("${_astroList[0].name} is onboard the ${_astroList[0].craft}"),
+            ],
+          )
+        ),
+      )
     );
   }
 }
