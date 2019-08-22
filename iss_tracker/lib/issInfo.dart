@@ -15,7 +15,7 @@ Future<AstroData> _fetchAstros() async {
 
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
-    print(AstroData.fromJson(json.decode(response.body)));
+    //print(AstroData.fromJson(json.decode(response.body)));
     return AstroData.fromJson(json.decode(response.body));
   } else {
     throw HttpException(
@@ -34,13 +34,16 @@ class AstroData {
 
   factory AstroData.fromJson(Map<String, dynamic> json) {
     var list = json['people'] as List;
-    print(list.runtimeType);
+    print("Astro list: ${list}");
+    
     // Map each object to a new list
+    //TODO ISSUE possibly around here
     List<Astronaut> astroList = list.map((i) => Astronaut.fromJson(i)).toList();
 
     return AstroData(
       count: json['number'],
       astros: astroList
+      //astroList
     );
   }
 }
@@ -70,7 +73,9 @@ class ISSInfo extends StatefulWidget {
 
 
 class _ISSInfoState extends State<ISSInfo> {
-  
+  List _astroList;
+
+
   Future<void> _BuilderAstroTile() async {
     final AstroData astroData = await _fetchAstros();
 
@@ -86,36 +91,59 @@ class _ISSInfoState extends State<ISSInfo> {
 
   }
 
-  dynamic astroListBuilder() async {
+  Future<List> astroListBuilder() async {
     var astroList = await _fetchAstros();
+
+    print(astroList.astros[0].name);
+    return astroList.astros;
     
-    return astroList;
+    /*return Container(
+      padding: EdgeInsets.all(32.0),
+      child: Center (
+        child: Column(
+          children: <Widget>[
+            Text("Astronauts Currently in Space"),
+            Text(astroList.astros[0].name),
+            Text(astroList.astros[0].craft),
+          ],
+        )
+      )
+    );
+    */
   }
   
   @override
   void initState() {
     super.initState();
+
+  astroListBuilder().then((value) {
+    setState(() {
+     _astroList = value; 
+    });
+  });
     
   }
 
 
   @override
   Widget build(BuildContext context) {
-    var astroListo = astroListBuilder();
-
+    //var astroListo = astroListBuilder();
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("ISS Info"),
       ),
-      body: //_BuilderAstroTile()
+      body: //astroListBuilder();
+        
         new Container(
           padding: new EdgeInsets.all(32.0),
           child: new Center(
             child: new Column(
               children: <Widget>[
                 Text("Astronauts in Space", style: TextStyle(fontWeight: FontWeight.bold),),
-                Text(astroListo.toString()),
-              ],)
+                Text("${_astroList[0].name} is onboard the ${_astroList[0].craft}"),
+              ],
+            )
           ),
         )
     );
