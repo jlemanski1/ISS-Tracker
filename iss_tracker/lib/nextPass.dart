@@ -10,6 +10,24 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 
+// Fetch Next Pass Time data from OpenNotify
+Future<Pass> fetchNextPasses() async {
+  final response = await http.get('http://api.open-notify.org/astros.json');
+
+  if (response.statusCode == 200) {
+    // Server returns OK response, parse data
+    //print(Pass.fromJson(json.decode(response.body)));
+    return Pass.fromJson(json.decode(response.body));
+  } else {
+    throw HttpException(
+      'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
+      uri: Uri.parse('http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635') //Yeg coords
+        //Uri.parse('http://api.open-notify.org/iss-pass.json?lat=${USERLAT}&lon=${USERLONG}')
+    );
+  }
+}
+
+
 // Pass data containing error message and next 5 passes
 class Pass {
   final String message;
@@ -34,7 +52,7 @@ class PassTime {
 
   PassTime({this.duration, this.risetime});
 
-  factory PassTime.fromJson(Map<String, int> json) {
+  factory PassTime.fromJson(Map<String, dynamic> json) {
     return PassTime(
       duration: json['duration'],
       risetime: json['risetime']
@@ -51,6 +69,26 @@ class NextPass extends StatefulWidget {
 }
 
 class _NextPassState extends State<NextPass> {
+  List<Pass> _nextPasses;
+
+  Future<List> _getNextPasses() async {
+    var passList = await fetchNextPasses();
+    if (passList.message == 'success') {
+      return passList.passes;
+    }
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    _getNextPasses().then((value) {
+      setState(() {
+        _nextPasses = value;
+      });
+    });
+  }
 
 
   @override

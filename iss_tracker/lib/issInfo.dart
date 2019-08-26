@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 
 // Fetch json from OpenNotify
-Future<AstroData> _fetchAstros() async {
+Future<AstroData> fetchAstros() async {
   final response = await http.get('http://api.open-notify.org/astros.json');
 
   if (response.statusCode == 200) {
@@ -73,7 +73,7 @@ class _ISSInfoState extends State<ISSInfo> {
 
 
   Future<List> astroListBuilder() async {
-    var astroList = await _fetchAstros();
+    var astroList = await fetchAstros();
 
     return astroList.astros;
   }
