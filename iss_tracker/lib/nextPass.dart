@@ -7,6 +7,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -26,6 +27,7 @@ Future<Pass> fetchNextPasses() async {
     );
   }
 }
+
 
 
 // Pass data containing error message and next 5 passes
@@ -70,6 +72,9 @@ class NextPass extends StatefulWidget {
 
 class _NextPassState extends State<NextPass> {
   List<Pass> _nextPasses;
+  var location = new Location();
+  Map<String, double> userLocation;
+
 
   Future<List> _getNextPasses() async {
     var passList = await fetchNextPasses();
@@ -77,6 +82,20 @@ class _NextPassState extends State<NextPass> {
       return passList.passes;
     }
   }
+
+  // Get user location from gps
+  Future<Map<String, double>> _getLocation() async {
+    var currentLocation = <String, double>{};
+    try {
+      location.hasPermission();
+      currentLocation = await location.getLocation();
+      
+    } catch (e) {
+      currentLocation = null;
+    }
+    return currentLocation;
+  }
+
 
 
   @override
@@ -86,6 +105,12 @@ class _NextPassState extends State<NextPass> {
     _getNextPasses().then((value) {
       setState(() {
         _nextPasses = value;
+      });
+    });
+
+    _getLocation().then((value) {
+      setState(() {
+        userLocation = value;
       });
     });
   }
