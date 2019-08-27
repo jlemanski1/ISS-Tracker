@@ -14,6 +14,7 @@ import 'package:http/http.dart' as http;
 // Fetch Next Pass Time data from OpenNotify
 Future<Pass> fetchNextPasses() async {
   final response = await http.get('http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635');
+  //('http://api.open-notify.org/iss-pass.json?lat=${USERLAT}&lon=${USERLONG}')
 
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
@@ -23,7 +24,6 @@ Future<Pass> fetchNextPasses() async {
     throw HttpException(
       'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
       uri: Uri.parse('http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635') //Yeg coords
-        //Uri.parse('http://api.open-notify.org/iss-pass.json?lat=${USERLAT}&lon=${USERLONG}')
     );
   }
 }
@@ -39,8 +39,11 @@ class Pass {
 
   factory Pass.fromJson(Map<String, dynamic> json) {
     var list = json['response'] as List;
-    print(json['response']);
+
     List<PassTime> passList = list.map((i) => PassTime.fromJson(i)).toList();
+    //Test Print
+    print('JSON: ${json['response']}\npassList: ${passList[0].risetime}');
+    
     return Pass(
       message: json['message'],
       passes: passList
@@ -75,6 +78,7 @@ class _NextPassState extends State<NextPass> {
   var _nextPasses;
   var location = new Location();
   Map<String, double> userLocation;
+  double userLat, userLong, userAlt;
 
 
   Future<List> _getNextPasses() async {
@@ -104,12 +108,18 @@ class _NextPassState extends State<NextPass> {
   void initState() {
     super.initState();
 
-    _nextPasses = _getNextPasses();
-
-
+    // Get User Coords
     _getLocation().then((value) {
       setState(() {
         userLocation = value;
+      });
+    });
+
+    // Get Next 5 Passtimes
+    //_nextPasses = _getNextPasses();
+    _getNextPasses().then((val) {
+      setState(() {
+        _nextPasses = val;
       });
     });
   }
@@ -121,8 +131,34 @@ class _NextPassState extends State<NextPass> {
       appBar: AppBar(
         title: Text("Next Pass Date & Time"),
       ),
-      body: Center(
-        child: Text("Nothing here yet either")),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text('The ISS will pass over your current location on:',
+              style: TextStyle(fontWeight: FontWeight.bold)
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8.0),
+                  itemCount: 3, //TODO: Change to length of _nextPasses
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 50,
+                      color: Colors.blueGrey,
+                      child: Text(
+                        '''Duration: ${_nextPasses.elementAt(index).duration}\nRiseTime: ${_nextPasses.elementAt(index).risetime}
+                        '''
+                        ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
+        ),
+      )
     );
   }
 }
