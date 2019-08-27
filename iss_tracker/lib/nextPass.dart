@@ -41,8 +41,7 @@ class Pass {
     var list = json['response'] as List;
 
     List<PassTime> passList = list.map((i) => PassTime.fromJson(i)).toList();
-    //Test Print
-    print('JSON: ${json['response']}\npassList: ${passList[0].risetime}');
+
     
     return Pass(
       message: json['message'],
@@ -81,6 +80,7 @@ class _NextPassState extends State<NextPass> {
   double userLat, userLong, userAlt;
 
 
+  // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
     var passList = await fetchNextPasses();
     if (passList.message == 'success') {
@@ -148,8 +148,7 @@ class _NextPassState extends State<NextPass> {
                       height: 50,
                       color: Colors.blueGrey,
                       child: Text(
-                        '''Duration: ${_nextPasses.elementAt(index).duration}\nRiseTime: ${_nextPasses.elementAt(index).risetime}
-                        '''
+                        'Duration: ${_nextPasses.elementAt(index).duration}\nRiseTime: ${_nextPasses.elementAt(index).risetime}'
                         ),
                     );
                   },
