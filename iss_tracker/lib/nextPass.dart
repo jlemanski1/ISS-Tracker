@@ -142,7 +142,7 @@ class _NextPassState extends State<NextPass> {
               Expanded(
                 child: ListView.builder(
                   padding: EdgeInsets.all(8.0),
-                  itemCount: 3, //TODO: Change to length of _nextPasses
+                  itemCount: _nextPasses.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 50,
