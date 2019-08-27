@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 
 // Fetch Next Pass Time data from OpenNotify
 Future<Pass> fetchNextPasses() async {
-  final response = await http.get('http://api.open-notify.org/astros.json');
+  final response = await http.get('http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635');
 
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
@@ -39,6 +39,7 @@ class Pass {
 
   factory Pass.fromJson(Map<String, dynamic> json) {
     var list = json['response'] as List;
+    print(json['response']);
     List<PassTime> passList = list.map((i) => PassTime.fromJson(i)).toList();
     return Pass(
       message: json['message'],
@@ -71,7 +72,7 @@ class NextPass extends StatefulWidget {
 }
 
 class _NextPassState extends State<NextPass> {
-  List<Pass> _nextPasses;
+  var _nextPasses;
   var location = new Location();
   Map<String, double> userLocation;
 
@@ -79,6 +80,7 @@ class _NextPassState extends State<NextPass> {
   Future<List> _getNextPasses() async {
     var passList = await fetchNextPasses();
     if (passList.message == 'success') {
+      
       return passList.passes;
     }
   }
@@ -102,11 +104,8 @@ class _NextPassState extends State<NextPass> {
   void initState() {
     super.initState();
 
-    _getNextPasses().then((value) {
-      setState(() {
-        _nextPasses = value;
-      });
-    });
+    _nextPasses = _getNextPasses();
+
 
     _getLocation().then((value) {
       setState(() {
