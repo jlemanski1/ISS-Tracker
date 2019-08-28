@@ -147,7 +147,7 @@ class _NextPassState extends State<NextPass> {
                       height: 50,
                       color: Colors.blueGrey,
                       child: Text(
-                        'Duration: ${_nextPasses.elementAt(index).duration}\nRiseTime: ${_nextPasses.elementAt(index).risetime}'
+                        'Duration: ${_nextPasses.elementAt(index).duration} seconds\nRiseTime: ${_nextPasses.elementAt(index).risetime}'
                         ),
                     );
                   },
