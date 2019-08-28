@@ -13,7 +13,6 @@ import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
 
-
 // Fetch JSON data from OpenNotify ISS position API
 Future<Post> fetchPost() async {
   final response = await http.get('http://api.open-notify.org/iss-now.json');
@@ -71,6 +70,7 @@ class MapLocationState extends State<MapLocation> {
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
+  var iss_pos;
   var location = new Location();
   Map<String, double> userLocation;
   final Map<String, Marker> _markers = {};
@@ -78,6 +78,7 @@ class MapLocationState extends State<MapLocation> {
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final iss_loc = await fetchPost();
+    
     //TODO: Make lil ISS icon to replace the std marker icon
     
     setState(() {
@@ -95,7 +96,7 @@ class MapLocationState extends State<MapLocation> {
   }
 
   // Updates the marker with the ISS' current location
-  Future<void> _getISSLocation() async {
+  Future<void> _placeMarkerISSLocation() async {
     final iss_loc = await fetchPost();
 
     //TODO: Make lil ISS icon to replace the std marker icon
@@ -111,6 +112,15 @@ class MapLocationState extends State<MapLocation> {
       );
       _markers[iss_loc.time.toString()] = marker;
     });
+  }
+
+  // Fetch iss data and return the position obj
+  Future<void> _getISSLocation() async {
+    var iss_pos = await fetchPost();
+    if (iss_pos.message == 'success') {
+      print('ISS_POS: ${iss_pos.position}');
+      return iss_pos;
+    }
   }
 
   // Get user location from gps
@@ -136,54 +146,56 @@ class MapLocationState extends State<MapLocation> {
         userLocation = value;
       });
     });
+
+    iss_pos = _getISSLocation();
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-            children: <Widget>[
-              Scaffold(
-                appBar: AppBar(
-                  title: Text("Current ISS Location"),
-                ),
-              ),
-              GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target:
-                      LatLng(userLocation['latitude'], userLocation['longitude']),
-                  zoom: 1.0,
-                ),
-                zoomGesturesEnabled: true,
-                rotateGesturesEnabled: true,
-                markers: _markers.values.toSet(),
-                //myLocationEnabled: true,  // Replace with floating action button
-                mapType: MapType.hybrid, 
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Column(
-                      children: <Widget>[
-                        FloatingActionButton(
-                          onPressed: _getISSLocation,
-                          materialTapTargetSize: MaterialTapTargetSize.padded,
-                          backgroundColor: Colors.black26,
-                          child: const Icon(Icons.add_location, size : 36.0),
-                        ),
-                        SizedBox(height: 16.0),
-                        FloatingActionButton(
-                          onPressed: (){},  // Replace (){} with function
-                          materialTapTargetSize: MaterialTapTargetSize.padded,
-                          backgroundColor: Colors.black26,
-                          child: const Icon(Icons.map, size: 36.0),
-                        )
-                      ],
-                    ),
+      children: <Widget>[
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Current ISS Location"),
+          ),
+        ),
+        GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: //LatLng(double.parse(iss_pos.position.lat), double.parse(iss_pos.position.long)),
+                LatLng(userLocation['latitude'], userLocation['longitude']),
+            zoom: 1.0,
+          ),
+          zoomGesturesEnabled: true,
+          rotateGesturesEnabled: true,
+          markers: _markers.values.toSet(),
+          //myLocationEnabled: true,  // Replace with floating action button
+          mapType: MapType.hybrid, 
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Column(
+                children: <Widget>[
+                  FloatingActionButton(
+                    onPressed: _placeMarkerISSLocation,
+                    materialTapTargetSize: MaterialTapTargetSize.padded,
+                    backgroundColor: Colors.black26,
+                    child: const Icon(Icons.add_location, size : 36.0),
                   ),
-                )
+                  SizedBox(height: 16.0),
+                  FloatingActionButton(
+                    onPressed: (){},  // Replace (){} with function
+                    materialTapTargetSize: MaterialTapTargetSize.padded,
+                    backgroundColor: Colors.black26,
+                    child: const Icon(Icons.map, size: 36.0),
+                  )
                 ],
-            );
+              ),
+            ),
+          )
+          ],
+      );
   }
 }

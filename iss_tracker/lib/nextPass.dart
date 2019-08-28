@@ -84,7 +84,6 @@ class _NextPassState extends State<NextPass> {
   Future<List> _getNextPasses() async {
     var passList = await fetchNextPasses();
     if (passList.message == 'success') {
-      
       return passList.passes;
     }
   }
