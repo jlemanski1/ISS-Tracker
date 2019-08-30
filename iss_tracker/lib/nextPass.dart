@@ -135,6 +135,13 @@ class _NextPassState extends State<NextPass> {
         child: Center(
           child: Column(
             children: <Widget>[
+              Text(
+                'The Internation Space Station (ISS) is an orbital outpost circling high above our heads.'
+                +"Sometimes it's overhead, but when? Given your current location, this tool will compute the"
+                +"pass times for up to several weeks. \n\nBe wary though, the orbit of the ISS decays unpredictably over time"
+                +"and because station controllers periodically move the station to higher and lower orbits for docking,"
+                +"re-boost, and debris avoidance; because of this, the times are less accurate the further you go into the future."
+              ),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(fontWeight: FontWeight.bold)
               ),
@@ -144,12 +151,12 @@ class _NextPassState extends State<NextPass> {
                   itemCount: _nextPasses.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      height: 50,
+                      height: 40,
                       color: Colors.blueGrey,
                       child: Text(
-                        'Duration: ${_nextPasses.elementAt(index).duration} seconds'+
-                        '\nStarting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
-                        ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'
+                        'Starting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
+                        ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'+
+                        '\nAnd will be visible for ${_nextPasses.elementAt(index).duration} seconds'
                         ),
                     );
                   },
