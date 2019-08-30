@@ -149,7 +149,7 @@ class _NextPassState extends State<NextPass> {
                       color: Colors.blueGrey,
                       child: Text(
                         'Duration: ${_nextPasses.elementAt(index).duration} seconds'+
-                        '\nStarting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).toUtc()}'
+                        '\nStarting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'
                         ),
                     );
                   },
