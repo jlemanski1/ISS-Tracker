@@ -142,6 +142,7 @@ class _NextPassState extends State<NextPass> {
                 +"and because station controllers periodically move the station to higher and lower orbits for docking,"
                 +"re-boost, and debris avoidance; because of this, the times are less accurate the further you go into the future."
               ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 48.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(fontWeight: FontWeight.bold)
               ),
@@ -152,7 +153,7 @@ class _NextPassState extends State<NextPass> {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 40,
-                      color: Colors.blueGrey,
+                      color: Colors.deepOrangeAccent,
                       child: Text(
                         'Starting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
                         ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'+
