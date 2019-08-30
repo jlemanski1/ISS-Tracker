@@ -126,7 +126,6 @@ class _NextPassState extends State<NextPass> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Next Pass Date & Time"),
@@ -149,7 +148,8 @@ class _NextPassState extends State<NextPass> {
                       color: Colors.blueGrey,
                       child: Text(
                         'Duration: ${_nextPasses.elementAt(index).duration} seconds'+
-                        '\nStarting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'
+                        '\nStarting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
+                        ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'
                         ),
                     );
                   },
