@@ -67,6 +67,7 @@ class MapLocation extends StatefulWidget {
 
 
 class MapLocationState extends State<MapLocation> {
+  Completer<GoogleMapController> _controller = Completer();
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
@@ -134,6 +135,12 @@ class MapLocationState extends State<MapLocation> {
       currentLocation = null;
     }
     return currentLocation;
+  }
+
+  // Animates the camera to the marker(the ISS' latest received position)
+  Future<void> _goToMarker(var marker) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(marker));
   }
 
   @override
