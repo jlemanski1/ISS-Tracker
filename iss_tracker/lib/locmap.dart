@@ -170,7 +170,7 @@ class MapLocationState extends State<MapLocation> {
           rotateGesturesEnabled: true,
           markers: _markers.values.toSet(),
           //myLocationEnabled: true,  // Replace with floating action button
-          mapType: MapType.hybrid, 
+          mapType: MapType.normal, 
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
