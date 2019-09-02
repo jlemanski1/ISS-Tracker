@@ -79,7 +79,6 @@ class _NextPassState extends State<NextPass> {
   Map<String, double> userLocation;
   double userLat, userLong, userAlt;
 
-
   // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
     var passList = await fetchNextPasses();
@@ -135,14 +134,39 @@ class _NextPassState extends State<NextPass> {
         child: Center(
           child: Column(
             children: <Widget>[
-              Text(
-                'The Internation Space Station (ISS) is an orbital outpost circling high above our heads.'
-                +"Sometimes it's overhead, but when? Given your current location, this tool will compute the"
-                +"pass times for up to several weeks. \n\nBe wary though, the orbit of the ISS decays unpredictably over time"
-                +"and because station controllers periodically move the station to higher and lower orbits for docking,"
-                +"re-boost, and debris avoidance; because of this, the times are less accurate the further you go into the future."
+              Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const ListTile(
+                      leading: Icon(Icons.info),
+                      title: Text('PlaceHolder Title'),
+                      subtitle: Text(
+                        'The Internation Space Station (ISS) is an orbital outpost circling high above our heads. '
+                        +"Sometimes it's overhead, but when? Given your current location, this tool will compute the"
+                        +"pass times for up to several weeks."
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Padding(padding: EdgeInsets.symmetric(vertical: 48.0),),
+              Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const ListTile(
+                      leading: Icon(Icons.info),
+                      title: Text('PlaceHolder Title'),
+                      subtitle: Text(
+                        "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
+                        +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
+                        +"re-boost, and debris avoidance"
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 16.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(fontWeight: FontWeight.bold)
               ),
