@@ -9,6 +9,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:iss_tracker/issInfo.dart';
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
@@ -138,9 +139,16 @@ class MapLocationState extends State<MapLocation> {
   }
 
   // Animates the camera to the marker(the ISS' latest received position)
-  Future<void> _goToMarker(var marker) async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(marker));
+  Future<void> _goToISS() async {
+    var _iss_pos = await fetchPost();
+    
+    if (_iss_pos.message == 'success') {
+      double lat = double.parse(_iss_pos.position.lat);
+      double long = double.parse(_iss_pos.position.long);
+      
+      GoogleMapController controller = await _controller.future;
+      controller.animateCamera(CameraUpdate.newLatLng(LatLng(lat, long)));
+    }
   }
 
   @override
