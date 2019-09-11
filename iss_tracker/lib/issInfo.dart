@@ -99,7 +99,7 @@ class _ISSInfoState extends State<ISSInfo> {
         title: Text("ISS Info"),
       ),
       body: Container(
-        padding: new EdgeInsets.all(16.0),
+        padding: new EdgeInsets.symmetric(vertical: 16.0),
         child: new Center(
           child: new Column(
             children: <Widget>[
@@ -110,7 +110,12 @@ class _ISSInfoState extends State<ISSInfo> {
                     "Information about the International Space Station",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  
+                  /*
+                  Center(
+                    child: 
+                      Image.asset("assets/images/ISS.png", fit: BoxFit.fill)
+                  )
+                  */
                   Card(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -128,10 +133,10 @@ class _ISSInfoState extends State<ISSInfo> {
                     
                 ]
               ),
+
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 32.0),
               ),
-
               // Info from API below
               Text (
                 "There are currently ${_astroList.length} astronauts in space. They are:",

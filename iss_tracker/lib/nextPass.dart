@@ -130,7 +130,7 @@ class _NextPassState extends State<NextPass> {
         title: Text("Next Pass Date & Time"),
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Center(
           child: Column(
             children: <Widget>[
@@ -178,11 +178,13 @@ class _NextPassState extends State<NextPass> {
                     return Container(
                       height: 40,
                       color: Colors.deepOrangeAccent,
-                      child: Text(
-                        'Starting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
-                        ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'+
-                        '\nAnd will be visible for ${_nextPasses.elementAt(index).duration} seconds'
-                        ),
+                      child: Center(
+                        child: Text(
+                          'Starting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
+                          ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'+
+                          '\nAnd will be visible for ${_nextPasses.elementAt(index).duration} seconds'
+                          ),
+                      ),
                     );
                   },
                 ),
