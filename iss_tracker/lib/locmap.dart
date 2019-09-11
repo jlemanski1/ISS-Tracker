@@ -193,13 +193,14 @@ class MapLocationState extends State<MapLocation> {
               alignment: Alignment.topRight,
               child: Column(
                 children: <Widget>[
+                  Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
                   FloatingActionButton(
                     onPressed: _placeMarkerISSLocation,
                     materialTapTargetSize: MaterialTapTargetSize.padded,
                     backgroundColor: Colors.black26,
                     child: const Icon(Icons.add_location, size : 36.0),
                   ),
-                  SizedBox(height: 16.0),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
                   FloatingActionButton(
                     onPressed: (){},  // Replace (){} with function
                     materialTapTargetSize: MaterialTapTargetSize.padded,
