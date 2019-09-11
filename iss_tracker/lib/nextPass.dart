@@ -66,12 +66,12 @@ class PassTime {
 }
 
 
-
 class NextPass extends StatefulWidget {
 
   @override
   _NextPassState createState() => _NextPassState();
 }
+
 
 class _NextPassState extends State<NextPass> {
   var _nextPasses;

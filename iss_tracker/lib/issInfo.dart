@@ -110,12 +110,7 @@ class _ISSInfoState extends State<ISSInfo> {
                     "Information about the International Space Station",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  /*
-                  Center(
-                    child: 
-                      Image.asset("assets/images/ISS.png", fit: BoxFit.fill)
-                  )
-                  */
+                  
                   Card(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
