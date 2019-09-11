@@ -211,7 +211,7 @@ class MapLocationState extends State<MapLocation> {
               ),
             ),
           )
-          ],
+        ],
       );
   }
 }

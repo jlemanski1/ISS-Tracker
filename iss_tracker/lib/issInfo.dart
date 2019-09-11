@@ -151,9 +151,11 @@ class _ISSInfoState extends State<ISSInfo> {
                     return Container (
                       height: 30,
                       color: Colors.blueGrey,
-                      child: 
-                      Text("Craft: ${_astroList.elementAt(index).craft} | Name: ${_astroList.elementAt(index).name}"),
-                    );
+                      child: Text(
+                        "Craft: ${_astroList.elementAt(index).craft} | Name: ${_astroList.elementAt(index).name}",
+                        textAlign: TextAlign.center,
+                      ),    
+                    );  
                   },
                 ),
               ),
