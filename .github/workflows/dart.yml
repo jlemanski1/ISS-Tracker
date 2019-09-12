@@ -14,5 +14,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: pub get
+      working-drectory: iss-tracker/
     - name: Run tests
       run: pub run test
