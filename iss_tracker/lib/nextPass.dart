@@ -166,7 +166,7 @@ class _NextPassState extends State<NextPass> {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.symmetric(vertical: 16.0),),
+              Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(fontWeight: FontWeight.bold)
               ),
@@ -175,15 +175,22 @@ class _NextPassState extends State<NextPass> {
                   padding: EdgeInsets.all(8.0),
                   itemCount: _nextPasses.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 40,
-                      color: Colors.deepOrangeAccent,
-                      child: Center(
-                        child: Text(
-                          'Starting on: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'+
-                          ' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'+
-                          '\nAnd will be visible for ${_nextPasses.elementAt(index).duration} seconds'
+                    return Card(
+                      color: Colors.transparent,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          ListTile(
+                            leading: Icon(Icons.satellite),
+                            title: Text(
+                              'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'
+                              +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'
+                              ),
+                            subtitle: Text(
+                              'And will be visible for ${_nextPasses.elementAt(index).duration} seconds'
+                            ),
                           ),
+                        ],
                       ),
                     );
                   },
