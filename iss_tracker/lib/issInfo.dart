@@ -147,15 +147,19 @@ class _ISSInfoState extends State<ISSInfo> {
                   padding: EdgeInsets.all(8.0),
                   itemCount: _astroList.length,
                   itemBuilder: (BuildContext context, int index) {
-                    //return Text(_astroList.elementAt(index).name);
-                    return Container (
-                      height: 30,
-                      color: Colors.blueGrey,
-                      child: Text(
-                        "Craft: ${_astroList.elementAt(index).craft} | Name: ${_astroList.elementAt(index).name}",
-                        textAlign: TextAlign.center,
-                      ),    
-                    );  
+                    return Card(
+                      color: Colors.transparent,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          ListTile(
+                            leading: Icon(Icons.nature),
+                            title: Text('Name: ${_astroList.elementAt(index).name}'),
+                            subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                 ),
               ),
