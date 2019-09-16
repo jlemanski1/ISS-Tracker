@@ -20,7 +20,29 @@ class _HistoryState extends State<History> {
         title: Text("History of the Space Station"),
       ),
       body: Center(
-        child: Text("Nothing here yet either... Should get on that")),
+        child: ListView(
+          padding: EdgeInsets.all(8.0),
+          children: <Widget>[
+            Card(
+              color: Colors.transparent,
+              child: ListTile(
+                leading: Icon(Icons.history),
+                title: Text('Placeholder'),
+                subtitle: Text('placeholder'),
+              )
+            ),
+            Card(
+              color: Colors.transparent,
+              child: ListTile(
+                leading: Icon(Icons.history),
+                title: Text('Placeholder'),
+                subtitle: Text('placeholder'),
+              )
+            ),
+          ],
+          
+        ),
+      ),
     );
   }
 }
