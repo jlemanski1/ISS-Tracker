@@ -11,18 +11,7 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
-  bool tile0, tile1, tile2, tile3, tile4, tilet5 = false;
 
-  // Toggles whether a ListTile is selected or not
-  bool _toggleSelected(bool tileSelected) {
-    setState(() {
-      if (tileSelected)
-        tileSelected = false;
-      else
-        tileSelected = true;
-      return tileSelected;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +36,16 @@ class _HistoryState extends State<History> {
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 selected: false,
-                onTap: (){
-
+                onTap: () {
+                  showModalBottomSheet(context: context, builder: (builder) {
+                  return Column(
+                    children: <Widget>[
+                      Card(
+                        child: ListTile(title: Text("Feb. 24, 2011"),),
+                      ),
+                    ],
+                  );
+                });
                 }
               )
             ),
@@ -64,8 +61,14 @@ class _HistoryState extends State<History> {
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 selected: false,
-                onTap: (){
-
+                onTap: () {
+                  showModalBottomSheet(context: context, builder: (builder) {
+                  return Column(
+                    children: <Widget>[
+                      Text("Placeholder"),
+                    ],
+                  );
+                });
                 }
               )
             ),
@@ -81,8 +84,14 @@ class _HistoryState extends State<History> {
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 selected: false,
-                onTap: (){
-
+                onTap: () {
+                  showModalBottomSheet(context: context, builder: (builder) {
+                  return Column(
+                    children: <Widget>[
+                      Text("Placeholder"),
+                    ],
+                  );
+                });
                 }
               )
             ),
@@ -99,7 +108,13 @@ class _HistoryState extends State<History> {
                 trailing: Icon(Icons.keyboard_arrow_right),
                 selected: false,
                 onTap: (){
-
+                  showModalBottomSheet(context: context, builder: (builder) {
+                  return Column(
+                    children: <Widget>[
+                      Text("Placeholder"),
+                    ],
+                  );
+                });
                 }
               )
             ),
