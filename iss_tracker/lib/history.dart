@@ -34,6 +34,7 @@ class _HistoryState extends State<History> {
                   +" as well as the full array of power cells. The ISS relies mainly on Russian Soyuz capsules"
                   +" to receive new supplies and exchange crew."
                 ),
+                trailing: Icon(Icons.keyboard_arrow_right),
                 //ontap open two floating widgets showing major milestones those years
               )
             ),
@@ -47,6 +48,7 @@ class _HistoryState extends State<History> {
                   +" In 2006 the assembly of the station resumes, and by 2008, the majority of the"
                   +" main components of the orbital outpost were in place."
                 ),
+                trailing: Icon(Icons.keyboard_arrow_right),
               )
             ),
             Card(
@@ -59,6 +61,7 @@ class _HistoryState extends State<History> {
                   +" sustaining a permanent crew of three. The first research module, Destiny, an American"
                   +" laboratory, becomes operational"
                 ),
+                trailing: Icon(Icons.keyboard_arrow_right),
               )
             ),
             Card(
@@ -70,7 +73,8 @@ class _HistoryState extends State<History> {
                   "The Russian-built Functional Cargo Block, known as Zarya (Sunrise), is launched into orbit to"
                   +" become the first module of the station. This component gives the outpost its initial power,"
                   +" storage, and propulsion capabilities."
-                  ),
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right),
               )
             ),
           ],
