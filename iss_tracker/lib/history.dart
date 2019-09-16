@@ -11,16 +11,16 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
-  bool isSelected = false;
+  bool tile0, tile1, tile2, tile3, tile4, tilet5 = false;
 
   // Toggles whether a ListTile is selected or not
-  bool _toggleSelected() {
+  bool _toggleSelected(bool tileSelected) {
     setState(() {
-      if (isSelected)
-        isSelected = false;
-      else if (!isSelected)
-        isSelected = true;
-      return isSelected;
+      if (tileSelected)
+        tileSelected = false;
+      else
+        tileSelected = true;
+      return tileSelected;
     });
   }
 
@@ -46,9 +46,9 @@ class _HistoryState extends State<History> {
                   +" to receive new supplies and exchange crew."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
-                selected: isSelected,
+                selected: false,
                 onTap: (){
-                  _toggleSelected();
+
                 }
               )
             ),
@@ -63,6 +63,10 @@ class _HistoryState extends State<History> {
                   +" main components of the orbital outpost were in place."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
+                selected: false,
+                onTap: (){
+
+                }
               )
             ),
             Card(
@@ -76,6 +80,10 @@ class _HistoryState extends State<History> {
                   +" laboratory, becomes operational"
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
+                selected: false,
+                onTap: (){
+
+                }
               )
             ),
             Card(
@@ -89,6 +97,10 @@ class _HistoryState extends State<History> {
                   +" storage, and propulsion capabilities."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
+                selected: false,
+                onTap: (){
+
+                }
               )
             ),
           ],
