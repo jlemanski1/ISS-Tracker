@@ -140,11 +140,14 @@ class _NextPassState extends State<NextPass> {
                   children: <Widget>[
                     const ListTile(
                       leading: Icon(Icons.info),
-                      title: Text('PlaceHolder Title'),
+                      title: Text('Spot the ISS'),
                       subtitle: Text(
+                        "The ISS is moving ~28000km/h so its location changes really fast !Refer to the date & times below, and if you look above 10deg over the horizon,"
+                        +"you'll be able to spot a small shooting star looking object zipping across the sky."/*
                         'The Internation Space Station (ISS) is an orbital outpost circling high above our heads. '
                         +"Sometimes it's overhead, but when? Given your current location, this tool will compute the"
                         +"pass times for up to several weeks."
+                        */
                       ),
                     ),
                   ],
@@ -156,7 +159,7 @@ class _NextPassState extends State<NextPass> {
                   children: <Widget>[
                     const ListTile(
                       leading: Icon(Icons.info),
-                      title: Text('PlaceHolder Title'),
+                      title: Text('Caution'),
                       subtitle: Text(
                         "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
                         +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
@@ -187,7 +190,7 @@ class _NextPassState extends State<NextPass> {
                               +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'
                               ),
                             subtitle: Text(
-                              'And will be visible for ${_nextPasses.elementAt(index).duration} seconds'
+                              'Visible for ${_nextPasses.elementAt(index).duration} seconds'
                             ),
                           ),
                         ],

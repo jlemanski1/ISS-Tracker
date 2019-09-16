@@ -1,11 +1,12 @@
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:iss_tracker/history.dart';
 
 // Pages / Routes
 import 'issInfo.dart';
 import 'nextPass.dart';
 import 'locmap.dart';
-import 'settings.dart';
+import 'history.dart';
 
 void main() => runApp(MyApp());
 
@@ -63,8 +64,8 @@ class _PageNavState extends State<PageNav> {
                     fState.setPage(2);
                   }),
                 TabData(
-                  iconData: Icons.settings,
-                  title: "Settings",
+                  iconData: Icons.calendar_view_day,
+                  title: "History",
                   onclick: () {
                     final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
                     fState.setPage(3);
@@ -98,7 +99,7 @@ class _PageNavState extends State<PageNav> {
 
       // Settings route
       case 3:
-        return Settings();
+        return History();
 
     }
   }

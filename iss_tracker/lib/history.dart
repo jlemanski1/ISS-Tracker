@@ -4,20 +4,20 @@
 */
 import 'package:flutter/material.dart';
 
-class Settings extends StatefulWidget {
+class History extends StatefulWidget {
 
   @override
-  _SettingsState createState() => _SettingsState();
+  _HistoryState createState() => _HistoryState();
 }
 
-class _SettingsState extends State<Settings> {
+class _HistoryState extends State<History> {
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: Text("History of the Space Station"),
       ),
       body: Center(
         child: Text("Nothing here yet either... Should get on that")),
