@@ -2,6 +2,7 @@
   Page displaying settings and allows the user to configure the app-level settings
   such set units (kph/mph), location, etc.
 */
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class History extends StatefulWidget {
@@ -41,7 +42,25 @@ class _HistoryState extends State<History> {
                   return Column(
                     children: <Widget>[
                       Card(
-                        child: ListTile(title: Text("Feb. 24, 2011"),),
+                        child: ListTile(
+                          title: Text("Nov. 2, 2010", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "The station celebrates the 10-year anniversary of its continuous human occupation."
+                            +" Since Expedition 1 in the fall of 2000, 202 people have visited the station at that point."
+                            ),
+                          ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("Feb. 24, 2011", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "The space shuttle Discovery launches on its final planned mission to deliver the"
+                            +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS"
+                            +", as well as equipment and supplies. Among the cargo aboard the Leonardo was Robonaut 2,"
+                            +" a robot that could be a precursor of new humanoid remote devices to help during spacewalks."
+                            ),
+                          ),
                       ),
                     ],
                   );
