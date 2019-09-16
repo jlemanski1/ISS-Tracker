@@ -23,6 +23,7 @@ class _HistoryState extends State<History> {
         child: ListView(
           padding: EdgeInsets.all(8.0),
           children: <Widget>[
+            Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
             Card(
               color: Colors.transparent,
               child: ListTile(
@@ -33,6 +34,7 @@ class _HistoryState extends State<History> {
                   +" as well as the full array of power cells. The ISS relies mainly on Russian Soyuz capsules"
                   +" to receive new supplies and exchange crew."
                 ),
+                //ontap open two floating widgets showing major milestones those years
               )
             ),
             Card(
@@ -45,7 +47,6 @@ class _HistoryState extends State<History> {
                   +" In 2006 the assembly of the station resumes, and by 2008, the majority of the"
                   +" main components of the orbital outpost were in place."
                 ),
-                //ontap open two floating widgets showing major milestones those years
               )
             ),
             Card(
@@ -53,7 +54,11 @@ class _HistoryState extends State<History> {
               child: ListTile(
                 leading: Text('2002', style: TextStyle(fontWeight: FontWeight.bold),),
                 title: Text('Rapid Growth'),
-                subtitle: Text('placeholder'),
+                subtitle: Text(
+                  "Four years after its first component was put into orbit, the station is capable of"
+                  +" sustaining a permanent crew of three. The first research module, Destiny, an American"
+                  +" laboratory, becomes operational"
+                ),
               )
             ),
             Card(
@@ -61,7 +66,11 @@ class _HistoryState extends State<History> {
               child: ListTile(
                 leading: Text('1998', style: TextStyle(fontWeight: FontWeight.bold),),
                 title: Text('Fully Energized'),
-                subtitle: Text('placeholder'),
+                subtitle: Text(
+                  "The Russian-built Functional Cargo Block, known as Zarya (Sunrise), is launched into orbit to"
+                  +" become the first module of the station. This component gives the outpost its initial power,"
+                  +" storage, and propulsion capabilities."
+                  ),
               )
             ),
           ],
