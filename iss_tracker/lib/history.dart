@@ -11,7 +11,18 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
+  bool isSelected = false;
 
+  // Toggles whether a ListTile is selected or not
+  bool _toggleSelected() {
+    setState(() {
+      if (isSelected)
+        isSelected = false;
+      else if (!isSelected)
+        isSelected = true;
+      return isSelected;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +46,10 @@ class _HistoryState extends State<History> {
                   +" to receive new supplies and exchange crew."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
-                //ontap open two floating widgets showing major milestones those years
+                selected: isSelected,
+                onTap: (){
+                  _toggleSelected();
+                }
               )
             ),
             Card(
