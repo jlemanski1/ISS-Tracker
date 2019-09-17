@@ -13,7 +13,6 @@ class History extends StatefulWidget {
 
 class _HistoryState extends State<History> {
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +40,7 @@ class _HistoryState extends State<History> {
                   showModalBottomSheet(context: context, builder: (builder) {
                   return Column(
                     children: <Widget>[
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
                       Card(
                         child: ListTile(
                           title: Text("Nov. 2, 2010", style: TextStyle(color: Colors.orangeAccent),),
@@ -84,7 +84,33 @@ class _HistoryState extends State<History> {
                   showModalBottomSheet(context: context, builder: (builder) {
                   return Column(
                     children: <Widget>[
-                      Text("Placeholder"),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("July 26, 2006", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            ""
+                            ),
+                          ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("Feb. 7, 2008", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            ""
+                            ),
+                          ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("March 15, 2009", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            ""
+                            ),
+                          ),
+                      ),
                     ],
                   );
                 });
@@ -107,7 +133,66 @@ class _HistoryState extends State<History> {
                   showModalBottomSheet(context: context, builder: (builder) {
                   return Column(
                     children: <Widget>[
-                      Text("Placeholder"),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("April 8, 2002", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "The central segment of the station truss, SO, is installed on top of Destiny"
+                            ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("Feb. 1, 2003", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "The space shuttle Columbia disintegrates during atmospheric reentry. The construction"
+                            +" is halted."
+                            ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("2003-2006", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "During the space shuttle moratorium (2003-2006) and after the end of the program,"
+                            +" the Russian spacecraft Soyuz TMA became the main transport to the station. The"
+                            +" capsule has more than 47 years of service with the same basic design."
+                            ),
+                        ),
+                      ),
+                    ],
+                  );
+                });
+                }
+              )
+            ),
+            Card(
+              color: Colors.transparent,
+              child: ListTile(
+                leading: Text('2000', style: TextStyle(fontWeight: FontWeight.bold),),
+                title: Text('All Aboard!'),
+                subtitle: Text(
+                  "Astronaut Bill Shepherd and cosmonauts Yuri Gidzenko and Sergei Krikalev become the"
+                  +" first crew members aboard the station. They stayed in obrit for several months."
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                selected: false,
+                onTap: () {
+                  showModalBottomSheet(context: context, builder: (builder) {
+                  return Column(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            ""
+                            ),
+                          ),
+                      ),
                     ],
                   );
                 });
@@ -130,7 +215,15 @@ class _HistoryState extends State<History> {
                   showModalBottomSheet(context: context, builder: (builder) {
                   return Column(
                     children: <Widget>[
-                      Text("Placeholder"),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            ""
+                            ),
+                          ),
+                      ),
                     ],
                   );
                 });
