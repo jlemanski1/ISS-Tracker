@@ -42,11 +42,21 @@ class _HistoryState extends State<History> {
                       Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
                       Card(
                         child: ListTile(
-                          title: Text("", style: TextStyle(color: Colors.orangeAccent),),
+                          title: Text("Oct. 20, 1998", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
-                            ""
+                            "A Russian Proton rocket launches the first module of the station: Zarya (Sunrise)."
                             ),
-                          ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("Dec. 4, 1998", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "Unity, the first U.S.-built component of the station, launches with the first"
+                            +" space shuttle mission dedicated to the assembly of the outpost."
+                            ),
+                        ),
                       ),
                     ],
                   );
@@ -72,9 +82,30 @@ class _HistoryState extends State<History> {
                       Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
                       Card(
                         child: ListTile(
-                          title: Text("", style: TextStyle(color: Colors.orangeAccent),),
+                          title: Text("Nov. 30, 2000", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
-                            ""
+                            "The P6 truss is installed. This component includes the first piece of the main"
+                            +" solar-cel array that powers the station."
+                            ),
+                          ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("Feb. 7, 2001", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "Destiny, the U.S. laboratory module, becomes part of the station. Destiny is still"
+                            +" the primary research facility for U.S. payloads."
+                            ),
+                          ),
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+                      Card(
+                        child: ListTile(
+                          title: Text("April 19, 2001", style: TextStyle(color: Colors.orangeAccent),),
+                          subtitle: Text(
+                            "Canadarm2, the station's robotic arm, is added. The key robotic system plays a key role"
+                            +" in the assembly of the station."
                             ),
                           ),
                       ),
@@ -105,7 +136,7 @@ class _HistoryState extends State<History> {
                         child: ListTile(
                           title: Text("April 8, 2002", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
-                            "The central segment of the station truss, SO, is installed on top of Destiny"
+                            "The central segment of the station truss, S0, is installed on top of Destiny"
                             ),
                         ),
                       ),
