@@ -22,12 +22,12 @@ class _HistoryState extends State<History> {
         child: ListView(
           padding: EdgeInsets.all(8.0),
           children: <Widget>[
-            Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+            Padding(padding: EdgeInsets.symmetric(vertical: 2.0),),
             Card(
               color: Colors.transparent,
               child: ListTile(
-                leading: Text('1998', style: TextStyle(fontWeight: FontWeight.bold),),
-                title: Text('Fully Energized'),
+                leading: Text('1998', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
+                title: Text('Fully Energized', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
                   "The Russian-built Functional Cargo Block, known as Zarya (Sunrise), is launched into orbit to"
                   +" become the first module of the station. This component gives the outpost its initial power,"
@@ -67,8 +67,8 @@ class _HistoryState extends State<History> {
             Card(
               color: Colors.transparent,
               child: ListTile(
-                leading: Text('2000', style: TextStyle(fontWeight: FontWeight.bold),),
-                title: Text('All Aboard!'),
+                leading: Text('2000', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
+                title: Text('All Aboard!', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
                   "Astronaut Bill Shepherd and cosmonauts Yuri Gidzenko and Sergei Krikalev become the"
                   +" first crew members aboard the station. They stayed in obrit for several months."
@@ -118,8 +118,8 @@ class _HistoryState extends State<History> {
             Card(
               color: Colors.transparent,
               child: ListTile(
-                leading: Text('2002', style: TextStyle(fontWeight: FontWeight.bold),),
-                title: Text('Rapid Growth'),
+                leading: Text('2002', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
+                title: Text('Rapid Growth', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
                   "Four years after its first component was put into orbit, the station is capable of"
                   +" sustaining a permanent crew of three. The first research module, Destiny, an American"
@@ -170,8 +170,8 @@ class _HistoryState extends State<History> {
             Card(
               color: Colors.transparent,
               child: ListTile(
-                leading: Text('2008', style: TextStyle(fontWeight: FontWeight.bold),),
-                title: Text('The Last Pieces'),
+                leading: Text('2008', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
+                title: Text('The Last Pieces', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
                   "The construction of the station halted following the Columbia disaster in 2003."
                   +" In 2006 the assembly of the station resumes, and by 2008, the majority of the"
@@ -222,8 +222,8 @@ class _HistoryState extends State<History> {
             Card(
               color: Colors.transparent,
               child: ListTile(
-                leading: Text('2011', style: TextStyle(fontWeight: FontWeight.bold),),
-                title: Text('Final Touches'),
+                leading: Text('2011', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
+                title: Text('Final Touches', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
                   "By 2011, the station's habitable components had been completely installed;"
                   +" as well as the full array of power cells. The ISS relies mainly on Russian Soyuz capsules"
@@ -257,15 +257,15 @@ class _HistoryState extends State<History> {
                             ),
                           ),
                       ),
+                      Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
                     ],
                   );
                 });
                 }
               )
             ),
-            
-            
-            
+            Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+        
           ],
           
         ),
