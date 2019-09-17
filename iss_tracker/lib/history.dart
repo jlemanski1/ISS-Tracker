@@ -16,7 +16,7 @@ class _HistoryState extends State<History> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("History of the Space Station"),
+        title: Text("History of the Space Station", style: TextStyle(color: Colors.orangeAccent)),
       ),
       body: Center(
         child: ListView(

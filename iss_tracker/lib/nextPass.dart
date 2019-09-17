@@ -127,7 +127,7 @@ class _NextPassState extends State<NextPass> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Next Pass Date & Time"),
+        title: Text("Next Pass Date & Time", style: TextStyle(color: Colors.lightBlueAccent),),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 8.0),
@@ -140,7 +140,7 @@ class _NextPassState extends State<NextPass> {
                   children: <Widget>[
                     const ListTile(
                       leading: Icon(Icons.info),
-                      title: Text('Spot the ISS'),
+                      title: Text('Spot the ISS', style: TextStyle(color: Colors.lightBlueAccent)),
                       subtitle: Text(
                         "The ISS is moving ~28000km/h so its location changes really fast !Refer to the date & times below, and if you look above 10deg over the horizon,"
                         +"you'll be able to spot a small shooting star looking object zipping across the sky."/*
@@ -159,7 +159,7 @@ class _NextPassState extends State<NextPass> {
                   children: <Widget>[
                     const ListTile(
                       leading: Icon(Icons.info),
-                      title: Text('Caution'),
+                      title: Text('Caution', style: TextStyle(color: Colors.lightBlueAccent),),
                       subtitle: Text(
                         "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
                         +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
@@ -171,7 +171,7 @@ class _NextPassState extends State<NextPass> {
               ),
               Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
-              style: TextStyle(fontWeight: FontWeight.bold)
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightBlueAccent)
               ),
               Expanded(
                 child: ListView.builder(
