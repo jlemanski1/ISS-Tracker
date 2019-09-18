@@ -169,11 +169,6 @@ class MapLocationState extends State<MapLocation> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Scaffold(
-          appBar: AppBar(
-            title: Text("Current ISS Location"),
-          ),
-        ),
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(

@@ -96,7 +96,7 @@ class _ISSInfoState extends State<ISSInfo> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text("ISS Info"),
+        title: Text("ISS Info", style: TextStyle(color: Colors.lightGreenAccent),),
       ),
       body: Container(
         padding: new EdgeInsets.symmetric(vertical: 16.0),
@@ -108,7 +108,7 @@ class _ISSInfoState extends State<ISSInfo> {
                   
                   Text(
                     "Information about the International Space Station",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightGreenAccent),
                   ),
                   /*
                   Center(
@@ -140,7 +140,7 @@ class _ISSInfoState extends State<ISSInfo> {
               // Info from API below
               Text (
                 "There are currently ${_astroList.length} astronauts in space. They are:",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightGreenAccent),
               ),
               Expanded (
                 child: ListView.builder(

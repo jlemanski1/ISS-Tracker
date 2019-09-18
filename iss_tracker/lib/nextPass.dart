@@ -169,7 +169,7 @@ class _NextPassState extends State<NextPass> {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+              Padding(padding: EdgeInsets.symmetric(vertical: 4.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightBlueAccent)
               ),
