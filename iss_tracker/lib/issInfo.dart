@@ -71,10 +71,8 @@ class ISSInfo extends StatefulWidget {
 class _ISSInfoState extends State<ISSInfo> {
   List<Astronaut> _astroList;  // List of astronauts
 
-
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
-
     return astroList.astros;
   }
   
@@ -82,12 +80,12 @@ class _ISSInfoState extends State<ISSInfo> {
   void initState() {
     super.initState();
 
-  astroListBuilder().then((value) {
-    setState(() {
-     _astroList = value; 
+    astroListBuilder().then((value) {
+      setState(() {
+      _astroList = value; 
+      });
     });
-  });
-    
+
   }
 
 
@@ -143,25 +141,26 @@ class _ISSInfoState extends State<ISSInfo> {
                 style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightGreenAccent),
               ),
               Expanded (
-                child: ListView.builder(
-                  padding: EdgeInsets.all(8.0),
-                  itemCount: _astroList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ListTile(
-                            leading: Icon(Icons.nature),
-                            title: Text('Name: ${_astroList.elementAt(index).name}'),
-                            subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
+                child: 
+                    ListView.builder(
+                      padding: EdgeInsets.all(8.0),
+                      itemCount: _astroList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          color: Colors.transparent,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              ListTile(
+                                leading: Icon(Icons.nature),
+                                title: Text('Name: ${_astroList.elementAt(index).name}'),
+                                subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    ),
               ),
             ],
           )

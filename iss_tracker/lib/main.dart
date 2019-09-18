@@ -45,6 +45,7 @@ class _PageNavState extends State<PageNav> {
                 TabData(
                   iconData: Icons.satellite,
                   title: "Location",
+                  
                   onclick: () {
                     final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
                     fState.setPage(0);
