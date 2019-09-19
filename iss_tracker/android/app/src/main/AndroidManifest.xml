@@ -13,7 +13,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="iss_tracker"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/ic_launcher">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
