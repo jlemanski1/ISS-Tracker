@@ -72,9 +72,9 @@ class MapLocationState extends State<MapLocation> {
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
-  Position iss_pos;
+  var iss_pos;
   var location = new Location();
-  Map<String, double> userLocation;
+  Map<String, double> userLocation = {};
   final Map<String, Marker> _markers = {};
   
   // Get ISS position, and place a marker on the map
@@ -169,11 +169,13 @@ class MapLocationState extends State<MapLocation> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
+        Center(child: CircularProgressIndicator(),),  //Render CircularProgIndicator until map loads
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: //LatLng(double.parse(iss_pos.position.lat), double.parse(iss_pos.position.long)),
-                LatLng(userLocation['latitude'], userLocation['longitude']),
+            target: (userLocation['latitude'] == null)//LatLng(double.parse(iss_pos.position.lat), double.parse(iss_pos.position.long)),
+                ? LatLng(0, 0)
+                : LatLng(userLocation['latitude'], userLocation['longitude']),
             zoom: 1.0,
           ),
           zoomGesturesEnabled: true,
