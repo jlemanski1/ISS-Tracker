@@ -33,54 +33,53 @@ class _PageNavState extends State<PageNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            body: Container(
-              child: Center(
-                child: _getPage(currentPage),
-                
-              ),
-            ),
-            bottomNavigationBar: FancyBottomNavigation(
-              initialSelection: 0,
-              tabs: [
-                TabData(
-                  iconData: Icons.satellite,
-                  title: "Location",
-                  
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(0);
-                  }),
-                TabData(
-                  iconData: Icons.scatter_plot,
-                  title: "Information",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(1);
-                  }),
-                TabData(
-                  iconData: Icons.schedule,
-                  title: "Next Pass",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(2);
-                  }),
-                TabData(
-                  iconData: Icons.calendar_view_day,
-                  title: "History",
-                  onclick: () {
-                    final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
-                    fState.setPage(3);
-                  }
-                )
-              ],
-              onTabChangedListener: (position) {
-                setState(() {
-                  currentPage = position;
-              });
-            },
-          ),
-        );
-  }
+      body: Container(
+        child: Center(
+          child: _getPage(currentPage),
+        ),
+      ),
+      bottomNavigationBar: FancyBottomNavigation(
+        initialSelection: 0,
+        tabs: [
+          TabData(
+            iconData: Icons.satellite,
+            title: "Location",
+            
+            onclick: () {
+              final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+              fState.setPage(0);
+            }),
+          TabData(
+            iconData: Icons.scatter_plot,
+            title: "Information",
+            onclick: () {
+              final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+              fState.setPage(1);
+            }),
+          TabData(
+            iconData: Icons.schedule,
+            title: "Next Pass",
+            onclick: () {
+              final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+              fState.setPage(2);
+            }),
+          TabData(
+            iconData: Icons.calendar_view_day,
+            title: "History",
+            onclick: () {
+              final FancyBottomNavigationState fState = bottomNavigationKey.currentState;
+              fState.setPage(3);
+            }
+          )
+        ],
+        onTabChangedListener: (position) {
+          setState(() {
+            currentPage = position;
+        });
+      },
+    ),
+  );
+}
 
 
   _getPage(int page) {

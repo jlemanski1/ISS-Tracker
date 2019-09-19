@@ -74,7 +74,7 @@ class NextPass extends StatefulWidget {
 
 
 class _NextPassState extends State<NextPass> {
-  var _nextPasses;
+  List _nextPasses = [];
   var location = new Location();
   Map<String, double> userLocation;
   double userLat, userLong, userAlt;
@@ -142,7 +142,7 @@ class _NextPassState extends State<NextPass> {
                       leading: Icon(Icons.info),
                       title: Text('Spot the ISS', style: TextStyle(color: Colors.lightBlueAccent)),
                       subtitle: Text(
-                        "The ISS is moving ~28000km/h so its location changes really fast !Refer to the date & times below, and if you look above 10deg over the horizon,"
+                        "The ISS is moving ~28000km/h so its location changes really fast! Refer to the date & times below, and if you look above 10deg over the horizon,"
                         +"you'll be able to spot a small shooting star looking object zipping across the sky."/*
                         'The Internation Space Station (ISS) is an orbital outpost circling high above our heads. '
                         +"Sometimes it's overhead, but when? Given your current location, this tool will compute the"

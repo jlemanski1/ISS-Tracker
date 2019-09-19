@@ -72,7 +72,7 @@ class MapLocationState extends State<MapLocation> {
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
-  var iss_pos;
+  Position iss_pos;
   var location = new Location();
   Map<String, double> userLocation;
   final Map<String, Marker> _markers = {};

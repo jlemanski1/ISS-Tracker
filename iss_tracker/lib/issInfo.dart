@@ -69,7 +69,7 @@ class ISSInfo extends StatefulWidget {
 
 
 class _ISSInfoState extends State<ISSInfo> {
-  List<Astronaut> _astroList;  // List of astronauts
+  List<Astronaut> _astroList = [];  // List of astronauts
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
@@ -80,12 +80,13 @@ class _ISSInfoState extends State<ISSInfo> {
   void initState() {
     super.initState();
 
+    
     astroListBuilder().then((value) {
       setState(() {
       _astroList = value; 
       });
     });
-
+    
   }
 
 
