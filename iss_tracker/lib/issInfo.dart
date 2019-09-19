@@ -41,7 +41,6 @@ class AstroData {
     return AstroData(
       count: json['number'],
       astros: astroList
-      //astroList
     );
   }
 }
@@ -95,7 +94,7 @@ class _ISSInfoState extends State<ISSInfo> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text("ISS Info", style: TextStyle(color: Colors.lightGreenAccent),),
+        title: Text("Residents of Space", style: TextStyle(color: Colors.lightGreenAccent),),
       ),
       body: Container(
         padding: new EdgeInsets.symmetric(vertical: 16.0),
