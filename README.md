@@ -7,12 +7,25 @@
 |:---:|:---:|:---:|:---:|
 And more, so download the app now and check it out!
 
-  ## Installation
- [Download from the Google Play store today!](#)
-  
-  ### Required Permissions
-   - location
-	   - Essential to calculate the next pass times of for the user's location
+## Build
+#### Building an APK
+```bash
+cd AppDir
+flutter build apl --split-per-abi
+```
+
+## Installation
+[Download from the Google Play store today!](#)
+#### Installing APK on a device
+1. Connect Android device to your computer with a USB cable
+2. ```bash
+   cd AppDir
+   flutter install
+   ```
+
+### Required Permissions
+- location
+    - Essential to calculate the next pass times of for the user's location
 
 ### Attributions:
 - using [Open Notify](http://open-notify.org/Open-Notify-API/)
