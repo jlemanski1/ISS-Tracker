@@ -109,21 +109,16 @@ class _ISSInfoState extends State<ISSInfo> {
                     "Information about the International Space Station",
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightGreenAccent),
                   ),
-                  /*
-                  Center(
-                    child: 
-                      Image.asset("assets/images/ISS.png", fit: BoxFit.fill)
-                  )
-                  */
                   Card(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         const ListTile(
                           leading: Icon(Icons.info),
-                          title: Text('PlaceHolder Title'),
+                          title: Text('Home away from home', style: TextStyle(color: Colors.lightGreenAccent),),
                           subtitle: Text(
-                            'PlaceHolder Text'
+                            "The living and working space in the station is larger than a six-bedroom house."
+                            +" It has six sleeping quarters, two bathrooms, a gym, and a 360-degree view bay window!"
                           ),
                         ),
                       ],
@@ -134,7 +129,7 @@ class _ISSInfoState extends State<ISSInfo> {
               ),
 
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 32.0),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
               ),
               // Info from API below
               Text (
