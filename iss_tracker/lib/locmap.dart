@@ -120,7 +120,7 @@ class MapLocationState extends State<MapLocation> {
   Future<void> _getISSLocation() async {
     var iss_pos = await fetchPost();
     if (iss_pos.message == 'success') {
-      print('ISS_POS: ${iss_pos.position}');
+      print('ISS_POS: ${iss_pos.position.lat}:${iss_pos.position.long}');
       return iss_pos;
     }
   }
@@ -173,9 +173,10 @@ class MapLocationState extends State<MapLocation> {
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: (userLocation['latitude'] == null)//LatLng(double.parse(iss_pos.position.lat), double.parse(iss_pos.position.long)),
+            target: (userLocation['latitude'] == null)
                 ? LatLng(0, 0)
                 : LatLng(userLocation['latitude'], userLocation['longitude']),
+                //LatLng(double.parse(iss_pos.position.lat), double.parse(iss_pos.position.long)),
             zoom: 1.0,
           ),
           zoomGesturesEnabled: true,
