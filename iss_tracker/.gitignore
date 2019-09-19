@@ -1,5 +1,6 @@
 # Android GPlay Key properties
 **/android/key.properties
+*.jks
 
 # Miscellaneous
 *.class
