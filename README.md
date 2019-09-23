@@ -12,7 +12,7 @@ And more, so download the app now and check it out!
 #### Building an APK
 ```bash
 cd AppDir
-flutter build apl --split-per-abi
+flutter build apk --split-per-abi
 ```
 
 ## Installation
