@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'spaceFacts.dart';
 
-/*
+/* More info
 International Space Station Size & Mass
 
     Pressurized Module Length: 167.3 feet (73 meters)
