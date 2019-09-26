@@ -21,10 +21,6 @@ International Space Station Size & Mass
     Power Generation: 8 solar arrays provide 75 to 90 kilowatts of power
     Lines of Computer Code: approximately 2.3 million
 */
-// Fetch ISS facts from Json file 
-Facts factsFromJson() {
-  
-}
 
 
 
@@ -77,17 +73,6 @@ class Astronaut {
       craft: json['craft']
     );
   }
-}
-
-class Facts {
-  List<String> facts;
-
-  Facts({this.facts});
-
-  factory Facts.fromJson(Map<String,dynamic> json) => Facts(
-    facts: List<String>.from(json["Facts"].map((x) => x))
-  );
-
 }
 
 
