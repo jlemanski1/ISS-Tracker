@@ -106,7 +106,6 @@ class _ISSInfoState extends State<ISSInfo> {
       setState(() {
         facts = value;
       });
-
     });
 
     
@@ -121,7 +120,7 @@ class _ISSInfoState extends State<ISSInfo> {
 
   @override
   Widget build(BuildContext context) {
-    print('Facts:\n${facts.facts[0]}'); //Test print a fact
+    print('Facts:\n1.${facts.facts[0]}\nR.${facts.randomFact()}'); //Test print a fact
     
     return Scaffold(
       appBar: AppBar(
@@ -143,13 +142,10 @@ class _ISSInfoState extends State<ISSInfo> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        const ListTile(
+                        ListTile(
                           leading: Icon(Icons.info),
-                          title: Text('Home away from home', style: TextStyle(color: Colors.lightGreenAccent),),
-                          subtitle: Text(
-                            "The living and working space in the station is larger than a six-bedroom house."
-                            +" It has six sleeping quarters, two bathrooms, a gym, and a 360-degree view bay window!"
-                          ),
+                          title: Text('Random ISS Fact!', style: TextStyle(color: Colors.lightGreenAccent),),
+                          subtitle: Text(facts.randomFact()),
                         ),
                       ],
                     ),

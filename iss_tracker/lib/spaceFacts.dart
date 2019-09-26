@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/services.dart';
 /*
@@ -31,6 +31,10 @@ class Facts {
 
   // TODO: FUNCTIONS below
   // Get random fact from list
+  // Pull a random fact from the list
+  String randomFact() {
+    return facts[new Random().nextInt(facts.length)].toString();
+  }
 }
 
 // Load Json file
@@ -44,3 +48,4 @@ Future<Facts> fetchFacts() async {
   final jsonResponse = json.decode(jsonString);
   return new Facts.fromJson(jsonResponse);
 }
+
