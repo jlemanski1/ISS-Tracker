@@ -9,7 +9,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:iss_tracker/issInfo.dart';
+
 import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
