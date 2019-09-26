@@ -170,7 +170,7 @@ class MapLocationState extends State<MapLocation> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Center(child: SpinKitDualRing(color: Colors.amberAccent,)),  //Render CircularProgIndicator until map loads
+        Center(child: SpinKitWave(color: Colors.amberAccent, type: SpinKitWaveType.start,)),  //Render CircularProgIndicator until map loads
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
