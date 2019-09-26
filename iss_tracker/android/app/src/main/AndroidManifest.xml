@@ -12,7 +12,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="ISS Tracker - Free"
+        android:label="ISS Tracker"
         android:icon="@drawable/ic_launcher">
 
         <meta-data
