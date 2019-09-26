@@ -29,8 +29,6 @@ class Facts {
     facts: List<String>.from(json["Facts"].map((x) => x))
   );
 
-  // TODO: FUNCTIONS below
-  // Get random fact from list
   // Pull a random fact from the list
   String randomFact() {
     return facts[new Random().nextInt(facts.length)].toString();

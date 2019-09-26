@@ -86,10 +86,13 @@ class ISSInfo extends StatefulWidget {
 class _ISSInfoState extends State<ISSInfo> {
   
   List<Astronaut> _astroList = [];  // List of astronauts
-  Facts facts;
+  Facts facts = new Facts();        // Facts Object pulled from json file
+  List<String> factList;  // List of String facts
+  String randomFact;      // Random Fact from the file
 
   Future<Facts> factFetcher() async {
     var _facts = fetchFacts();
+    print('test:\n');
     return _facts;
   }
 
@@ -102,12 +105,13 @@ class _ISSInfoState extends State<ISSInfo> {
   void initState() {
     super.initState();
 
+    facts.facts = ['']; // Initilizae to empty string, prevent fetching when null
+
     factFetcher().then((value) {
       setState(() {
         facts = value;
       });
     });
-
     
     astroListBuilder().then((value) {
       setState(() {
@@ -120,7 +124,8 @@ class _ISSInfoState extends State<ISSInfo> {
 
   @override
   Widget build(BuildContext context) {
-    print('Facts:\n1.${facts.facts[0]}\nR.${facts.randomFact()}'); //Test print a fact
+    factList = facts.facts;
+    randomFact = facts.randomFact();
     
     return Scaffold(
       appBar: AppBar(
@@ -145,7 +150,7 @@ class _ISSInfoState extends State<ISSInfo> {
                         ListTile(
                           leading: Icon(Icons.info),
                           title: Text('Random ISS Fact!', style: TextStyle(color: Colors.lightGreenAccent),),
-                          subtitle: Text(facts.randomFact()),
+                          subtitle: Text(randomFact),
                         ),
                       ],
                     ),
