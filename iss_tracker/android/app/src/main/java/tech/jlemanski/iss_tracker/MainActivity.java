@@ -1,4 +1,4 @@
-package com.example.iss_tracker;
+package tech.jlemanski.iss_tracker;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
