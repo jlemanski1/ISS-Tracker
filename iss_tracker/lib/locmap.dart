@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:location/location.dart';
@@ -169,7 +170,7 @@ class MapLocationState extends State<MapLocation> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Center(child: CircularProgressIndicator(),),  //Render CircularProgIndicator until map loads
+        Center(child: SpinKitDualRing(color: Colors.amberAccent,)),  //Render CircularProgIndicator until map loads
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
