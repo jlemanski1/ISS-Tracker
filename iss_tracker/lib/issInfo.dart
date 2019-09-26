@@ -7,6 +7,22 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'spaceFacts.dart';
+
+/*
+International Space Station Size & Mass
+
+    Pressurized Module Length: 167.3 feet (73 meters)
+    Truss Length: 357.5 feet (109 meters)
+    Solar Array Length: 239.4 feet (73 meters)
+    Mass: 925,335 pounds (419,725 kilograms)
+    Habitable Volume: 13,696 cubic feet (388 cubic meters) not including visiting vehicles
+    Pressurized Volume: 32,333 cubic feet (916 cubic meters)
+    With BEAM expanded: 32,898 cubic feet (932 cubic meters)
+    Power Generation: 8 solar arrays provide 75 to 90 kilowatts of power
+    Lines of Computer Code: approximately 2.3 million
+*/
+
 
 
 // Fetch json from OpenNotify
@@ -68,7 +84,17 @@ class ISSInfo extends StatefulWidget {
 
 
 class _ISSInfoState extends State<ISSInfo> {
+  
   List<Astronaut> _astroList = [];  // List of astronauts
+  Facts facts = new Facts();        // Facts Object pulled from json file
+  List<String> factList;  // List of String facts
+  String randomFact;      // Random Fact from the file
+
+  Future<Facts> factFetcher() async {
+    var _facts = fetchFacts();
+    print('test:\n');
+    return _facts;
+  }
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
@@ -79,6 +105,13 @@ class _ISSInfoState extends State<ISSInfo> {
   void initState() {
     super.initState();
 
+    facts.facts = ['']; // Initilizae to empty string, prevent fetching when null
+
+    factFetcher().then((value) {
+      setState(() {
+        facts = value;
+      });
+    });
     
     astroListBuilder().then((value) {
       setState(() {
@@ -91,6 +124,8 @@ class _ISSInfoState extends State<ISSInfo> {
 
   @override
   Widget build(BuildContext context) {
+    factList = facts.facts;
+    randomFact = facts.randomFact();
     
     return Scaffold(
       appBar: AppBar(
@@ -112,13 +147,10 @@ class _ISSInfoState extends State<ISSInfo> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        const ListTile(
+                        ListTile(
                           leading: Icon(Icons.info),
-                          title: Text('Home away from home', style: TextStyle(color: Colors.lightGreenAccent),),
-                          subtitle: Text(
-                            "The living and working space in the station is larger than a six-bedroom house."
-                            +" It has six sleeping quarters, two bathrooms, a gym, and a 360-degree view bay window!"
-                          ),
+                          title: Text('Random ISS Fact!', style: TextStyle(color: Colors.lightGreenAccent),),
+                          subtitle: Text(randomFact),
                         ),
                       ],
                     ),
