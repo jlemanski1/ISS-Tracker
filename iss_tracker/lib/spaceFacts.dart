@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+
+import 'package:flutter/services.dart';
 /*
 International Space Station Size & Mass
 
@@ -14,6 +16,10 @@ International Space Station Size & Mass
     Lines of Computer Code: approximately 2.3 million
 */
 
+//Facts factsFromJson(String str) => Facts.fromJson(json.decode(str));
+
+
+// Object containing a list of all the facts about the ISS from NASA's site
 class Facts {
   List<String> facts;
 
@@ -24,9 +30,17 @@ class Facts {
   );
 
   // TODO: FUNCTIONS below
-  // Parse into list from file
   // Get random fact from list
-  // 
-
 }
 
+// Load Json file
+Future<String> _loadSpaceFacts() async {
+  return await rootBundle.loadString('assets/spaceFacts.json');
+}
+
+// Fetch data from json
+Future<Facts> fetchFacts() async {
+  String jsonString = await _loadSpaceFacts();
+  final jsonResponse = json.decode(jsonString);
+  return new Facts.fromJson(jsonResponse);
+}

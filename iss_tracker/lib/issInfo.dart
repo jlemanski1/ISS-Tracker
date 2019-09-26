@@ -7,6 +7,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'spaceFacts.dart';
 
 /*
 International Space Station Size & Mass
@@ -83,8 +84,15 @@ class ISSInfo extends StatefulWidget {
 
 
 class _ISSInfoState extends State<ISSInfo> {
-  List<Astronaut> _astroList = [];  // List of astronauts
   
+  List<Astronaut> _astroList = [];  // List of astronauts
+  Facts facts;
+
+  Future<Facts> factFetcher() async {
+    var _facts = fetchFacts();
+    return _facts;
+  }
+
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
     return astroList.astros;
@@ -93,6 +101,13 @@ class _ISSInfoState extends State<ISSInfo> {
   @override
   void initState() {
     super.initState();
+
+    factFetcher().then((value) {
+      setState(() {
+        facts = value;
+      });
+
+    });
 
     
     astroListBuilder().then((value) {
@@ -106,6 +121,7 @@ class _ISSInfoState extends State<ISSInfo> {
 
   @override
   Widget build(BuildContext context) {
+    print('Facts:\n${facts.facts[0]}'); //Test print a fact
     
     return Scaffold(
       appBar: AppBar(
