@@ -177,7 +177,24 @@ class _NextPassState extends State<NextPass> {
                 children: <Widget>[
                   IconButton(
                     icon: Icon(Icons.info),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(context: context, builder: (builder) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)
+                          ),
+                          //elevation: 0.0,
+                          backgroundColor: Colors.white,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('test'),
+                              Text('test')
+                            ],
+                          ),
+                        );
+                      });
+                    }
                   ),
                   // Random icons since I might add more stuff here (Splits the page nicely)
                   IconButton(
