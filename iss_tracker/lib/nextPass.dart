@@ -143,27 +143,39 @@ class _NextPassState extends State<NextPass> {
                       showDialog(context: context, builder: (builder) {
                         return Dialog(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0)
+                            borderRadius: BorderRadius.circular(1.0)
                           ),
                           elevation: 0.0,
-                          backgroundColor: Colors.white70,
+                          backgroundColor: Colors.white54,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Card(
                                 child: ListTile(
-                                  leading: Icon(Icons.info),
+                                  leading: Icon(Icons.info_outline),
                                   title: Text('Spot the ISS!', style: TextStyle(color: Colors.lightBlueAccent),),
                                   subtitle: Text("The ISS is moving ~28000km/h so its location changes really fast! In 24 hours, the station makes"
-                                    +" 16 orbits of Earth, traveling through 16 sunrises and sunsets."),
+                                    +" 16 orbits of Earth, traveling through 16 sunrises and sunsets. This page will compute the next n number of times"
+                                    +" that the ISS is overhead."),
                                 ),
                               ),
+                              Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
+                              Card(
+                                child: ListTile(
+                                  leading: Icon(Icons.info_outline),
+                                  title: Text('Where do I look?', style: TextStyle(color: Colors.lightBlueAccent),),
+                                  subtitle: Text("Overhead is defined as 10 degrees in elevation for the observer. If you look up at the given time"
+                                    +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star. Be quick"
+                                    +" though! You'll only have the given time to spot it before it will disappear beyond the horizon."),
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
                               Card(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     const ListTile(
-                                      leading: Icon(Icons.info),
+                                      leading: Icon(Icons.info_outline),
                                       title: Text('Caution', style: TextStyle(color: Colors.lightBlueAccent),),
                                       subtitle: Text(
                                         "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
