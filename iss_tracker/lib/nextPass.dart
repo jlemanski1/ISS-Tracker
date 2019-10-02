@@ -183,13 +183,18 @@ class _NextPassState extends State<NextPass> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)
                           ),
-                          //elevation: 0.0,
-                          backgroundColor: Colors.white,
+                          elevation: 0.0,
+                          backgroundColor: Colors.white70,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text('test'),
-                              Text('test')
+                              Card(
+                                child: ListTile(
+                                  leading: Icon(Icons.info),
+                                  title: Text(''),
+                                  subtitle: Text(''),
+                                ),
+                              ),
                             ],
                           ),
                         );
