@@ -134,44 +134,6 @@ class _NextPassState extends State<NextPass> {
         child: Center(
           child: Column(
             children: <Widget>[
-              /*
-              Card(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const ListTile(
-                      leading: Icon(Icons.info),
-                      title: Text('Spot the ISS', style: TextStyle(color: Colors.lightBlueAccent)),
-                      subtitle: Text(
-                        "The ISS is moving ~28000km/h so its location changes really fast! In 24 hours, the station makes"
-                        +" 16 orbits of Earth, traveling through 16 sunrises and sunsets."
-                        /*
-                        'The Internation Space Station (ISS) is an orbital outpost circling high above our heads. '
-                        +"Sometimes it's overhead, but when? Given your current location, this tool will compute the"
-                        +"pass times for up to several weeks."
-                        */
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const ListTile(
-                      leading: Icon(Icons.info),
-                      title: Text('Caution', style: TextStyle(color: Colors.lightBlueAccent),),
-                      subtitle: Text(
-                        "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
-                        +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
-                        +"re-boost, and debris avoidance"
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              */
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -181,7 +143,7 @@ class _NextPassState extends State<NextPass> {
                       showDialog(context: context, builder: (builder) {
                         return Dialog(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)
+                            borderRadius: BorderRadius.circular(4.0)
                           ),
                           elevation: 0.0,
                           backgroundColor: Colors.white70,
@@ -191,8 +153,25 @@ class _NextPassState extends State<NextPass> {
                               Card(
                                 child: ListTile(
                                   leading: Icon(Icons.info),
-                                  title: Text(''),
-                                  subtitle: Text(''),
+                                  title: Text('Spot the ISS!', style: TextStyle(color: Colors.lightBlueAccent),),
+                                  subtitle: Text("The ISS is moving ~28000km/h so its location changes really fast! In 24 hours, the station makes"
+                                    +" 16 orbits of Earth, traveling through 16 sunrises and sunsets."),
+                                ),
+                              ),
+                              Card(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    const ListTile(
+                                      leading: Icon(Icons.info),
+                                      title: Text('Caution', style: TextStyle(color: Colors.lightBlueAccent),),
+                                      subtitle: Text(
+                                        "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
+                                        +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
+                                        +"re-boost, and debris avoidance"
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
