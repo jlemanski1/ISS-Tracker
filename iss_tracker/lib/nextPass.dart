@@ -134,6 +134,7 @@ class _NextPassState extends State<NextPass> {
         child: Center(
           child: Column(
             children: <Widget>[
+              /*
               Card(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -170,7 +171,26 @@ class _NextPassState extends State<NextPass> {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.symmetric(vertical: 4.0),),
+              */
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.info),
+                    onPressed: () {},
+                  ),
+                  // Random icons since I might add more stuff here (Splits the page nicely)
+                  IconButton(
+                    icon: Icon(Icons.insert_chart),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.local_airport),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightBlueAccent)
               ),
