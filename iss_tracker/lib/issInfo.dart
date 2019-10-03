@@ -148,7 +148,7 @@ class _ISSInfoState extends State<ISSInfo> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         ListTile(
-                          leading: Icon(Icons.info),
+                          leading: Icon(Icons.info_outline),
                           title: Text('Random ISS Fact!', style: TextStyle(color: Colors.lightGreenAccent),),
                           subtitle: Text(randomFact),
                         ),
@@ -179,7 +179,12 @@ class _ISSInfoState extends State<ISSInfo> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               ListTile(
-                                leading: Icon(Icons.nature),
+                                leading: Text(
+                                  '${_astroList.elementAt(index).name.substring(0, 1)}',
+                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightGreenAccent),
+                                  textAlign: TextAlign.center,
+                                  textScaleFactor: 1.5,
+                                ),
                                 title: Text('Name: ${_astroList.elementAt(index).name}'),
                                 subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
                               ),
