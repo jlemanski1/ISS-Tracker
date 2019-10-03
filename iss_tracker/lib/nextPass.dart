@@ -180,7 +180,7 @@ class _NextPassState extends State<NextPass> {
                                       subtitle: Text(
                                         "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
                                         +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
-                                        +"re-boost, and debris avoidance"
+                                        +"re-boost, and debris avoidance. The green hour indicator let's you know that this time will be more accutrate."
                                       ),
                                     ),
                                   ],
@@ -218,7 +218,11 @@ class _NextPassState extends State<NextPass> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           ListTile(
-                            leading: Icon(Icons.satellite),
+                            leading: Text(
+                              '${(new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).hour)}',
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.accents[index + 10]), // Closest appear green (green = good)
+                              textAlign: TextAlign.center,
+                              ),
                             title: Text(
                               'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'
                               +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'
