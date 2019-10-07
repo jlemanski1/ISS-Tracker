@@ -9,14 +9,20 @@
 And more, so download the app now and check it out!
 
 ## Build
+#### Building an AppBundle
+~~~bash
+cd APPDIR
+flutter build appbundle --release/debug
+~~~
+
 #### Building an APK
 ```bash
-cd AppDir
-flutter build apk --split-per-abi
+cd APPDIR
+flutter build apk --split-per-abi --release/debug
 ```
 
 ## Installation
-[Download from the Google Play store today!](#)
+[Download the early access version from the Google Play store today!](https://play.google.com/store/apps/details?id=tech.jlemanski.iss_tracker)
 #### Installing APK on a device
 1. Connect Android device to your computer with a USB cable
 2. ```bash
