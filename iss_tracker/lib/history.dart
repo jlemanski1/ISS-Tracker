@@ -44,7 +44,7 @@ class _HistoryState extends State<History> {
                         child: ListTile(
                           title: Text("Oct. 20, 1998", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
-                            "A Russian Proton rocket launches the first module of the station: Zarya (Sunrise)."
+                            "A Russian Proton rocket launches the first module of the station, Zarya (Sunrise)."
                             ),
                         ),
                       ),
@@ -70,7 +70,7 @@ class _HistoryState extends State<History> {
                 leading: Text('2000', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 title: Text('All Aboard!', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
-                  "Astronaut Bill Shepherd and cosmonauts Yuri Gidzenko and Sergei Krikalev become the"
+                  "Astronaut Bill Shepherd, and cosmonauts Yuri Gidzenko and Sergei Krikalev become the"
                   +" first crew members aboard the station. They stayed in obrit for several months."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
@@ -85,7 +85,7 @@ class _HistoryState extends State<History> {
                           title: Text("Nov. 30, 2000", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
                             "The P6 truss is installed. This component includes the first piece of the main"
-                            +" solar-cel array that powers the station."
+                            +" solar-cell array that powers the station."
                             ),
                           ),
                       ),
@@ -123,7 +123,7 @@ class _HistoryState extends State<History> {
                 subtitle: Text(
                   "Four years after its first component was put into orbit, the station is capable of"
                   +" sustaining a permanent crew of three. The first research module, Destiny, an American"
-                  +" laboratory, becomes operational"
+                  +" laboratory, becomes operational."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 selected: false,
@@ -145,7 +145,7 @@ class _HistoryState extends State<History> {
                         child: ListTile(
                           title: Text("Feb. 1, 2003", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
-                            "The space shuttle Columbia disintegrates during atmospheric reentry. The construction"
+                            "The space shuttle Columbia disintegrates during atmospheric re-entry. The construction"
                             +" is halted."
                             ),
                         ),
@@ -208,8 +208,8 @@ class _HistoryState extends State<History> {
                         child: ListTile(
                           title: Text("March 15, 2009", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
-                            "The space shuttle Discovery delivers the station's final major U.S. truss segment"
-                            +", S6, and its final pair of power-generating solar array wings."
+                            "The space shuttle Discovery delivers the station's final major U.S. truss segment,"
+                            +" S6, and its final pair of power-generating solar array wings."
                             ),
                           ),
                       ),
@@ -225,9 +225,9 @@ class _HistoryState extends State<History> {
                 leading: Text('2011', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 title: Text('Final Touches', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orangeAccent)),
                 subtitle: Text(
-                  "By 2011, the station's habitable components had been completely installed;"
-                  +" as well as the full array of power cells. The ISS relies mainly on Russian Soyuz capsules"
-                  +" to receive new supplies and exchange crew."
+                  "By 2011, the station's habitable components had been completely installed."
+                  +" Besides the full array of power cells powering all the life supporting systems oboard,"
+                  +" the ISS relies mainly on Russian Soyuz capsules to receive new supplies and exchange crew."
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 selected: false,
@@ -241,7 +241,7 @@ class _HistoryState extends State<History> {
                           title: Text("Nov. 2, 2010", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
                             "The station celebrates the 10-year anniversary of its continuous human occupation."
-                            +" Since Expedition 1 in the fall of 2000, 202 people have visited the station at that point."
+                            +" Since Expedition 1 in the fall of 2000, 202 people have visited the station."
                             ),
                           ),
                       ),
@@ -251,8 +251,8 @@ class _HistoryState extends State<History> {
                           title: Text("Feb. 24, 2011", style: TextStyle(color: Colors.orangeAccent),),
                           subtitle: Text(
                             "The space shuttle Discovery launches on its final planned mission to deliver the"
-                            +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS"
-                            +", as well as equipment and supplies. Among the cargo aboard the Leonardo was Robonaut 2,"
+                            +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS,"
+                            +" as well as equipment and supplies. Among the cargo aboard the Leonardo was Robonaut 2,"
                             +" a robot that could be a precursor of new humanoid remote devices to help during spacewalks."
                             ),
                           ),
