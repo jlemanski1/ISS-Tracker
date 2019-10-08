@@ -69,7 +69,7 @@ class MapLocation extends StatefulWidget {
 
 
 class MapLocationState extends State<MapLocation> {
-  Completer<GoogleMapController> _controller = Completer();
+  Completer<GoogleMapController> _controller = Completer(); // for _goTiISS function
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
@@ -77,17 +77,40 @@ class MapLocationState extends State<MapLocation> {
   var location = new Location();
   Map<String, double> userLocation = {};
   final Map<String, Marker> _markers = {};
+  BitmapDescriptor markerIcon;
   
+
+  // Get's the user and ISS' coords, and the custom marker Icon
+  @override
+  void initState() {
+    super.initState();
+    
+    // Get user location
+    _getLocation().then((value) {
+      setState(() {
+        userLocation = value;
+      });
+    });
+
+    // Retrieve Icon for ISS marker
+    BitmapDescriptor.fromAssetImage( ImageConfiguration(
+      size: Size(64, 64)), 'assets/satelliteIcon.png').then((onValue) {
+        markerIcon = onValue;
+      });
+
+    iss_pos = _getISSLocation();
+  }
+
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final iss_loc = await fetchPost();
-    
-    //TODO: Make lil ISS icon to replace the std marker icon
-    
+
     setState(() {
+      // Place marker on ISS position
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId(iss_loc.time.toString()),
+        icon: markerIcon,
         position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
@@ -102,11 +125,11 @@ class MapLocationState extends State<MapLocation> {
   Future<void> _placeMarkerISSLocation() async {
     final iss_loc = await fetchPost();
 
-    //TODO: Make lil ISS icon to replace the std marker icon
     setState(() {
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId(iss_loc.time.toString()),
+        icon: markerIcon,
         position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
@@ -152,19 +175,7 @@ class MapLocationState extends State<MapLocation> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    
-    // Get user location
-    _getLocation().then((value) {
-      setState(() {
-        userLocation = value;
-      });
-    });
-
-    iss_pos = _getISSLocation();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
