@@ -132,9 +132,9 @@ class _ISSInfoState extends State<ISSInfo> {
         title: Text("Residents of Space", style: TextStyle(color: Colors.lightGreenAccent),),
       ),
       body: Container(
-        padding: new EdgeInsets.symmetric(vertical: 16.0),
-        child: new Center(
-          child: new Column(
+        padding: EdgeInsets.symmetric(vertical: 16.0),
+        child: Center(
+          child: Column(
             children: <Widget>[
               Column (
                 children: <Widget>[
