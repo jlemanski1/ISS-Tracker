@@ -12,9 +12,10 @@ import 'package:http/http.dart' as http;
 
 
 // Fetch Next Pass Time data from OpenNotify
-Future<Pass> fetchNextPasses() async {
-  final response = await http.get('http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635');
-  //('http://api.open-notify.org/iss-pass.json?lat=${USERLAT}&lon=${USERLONG}')
+Future<Pass> fetchNextPasses(double lat, double long) async {
+  final response = await http.get(
+    //'http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635');
+      'http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long');
 
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
@@ -27,7 +28,6 @@ Future<Pass> fetchNextPasses() async {
     );
   }
 }
-
 
 
 // Pass data containing error message and next 5 passes
@@ -49,6 +49,7 @@ class Pass {
     );
   }
 }
+
 
 // Duration and Time of the next pass
 class PassTime {
@@ -81,7 +82,7 @@ class _NextPassState extends State<NextPass> {
 
   // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
-    var passList = await fetchNextPasses();
+    var passList = await fetchNextPasses(53.546, 113.49);
     if (passList.message == 'success') {
       return passList.passes;
     }
