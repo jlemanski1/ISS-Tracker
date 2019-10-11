@@ -13,15 +13,15 @@ import 'package:http/http.dart' as http;
 
 // Fetch Next Pass Time data from OpenNotify
 Future<Pass> fetchNextPasses(double lat, double long, double alt) async {
+  // Get data for user location
   final response = await http.get('http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long&alt=$alt');
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
-    //print(Pass.fromJson(json.decode(response.body)));
     return Pass.fromJson(json.decode(response.body));
   } else {
     throw HttpException(
       'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
-      uri: Uri.parse('http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long&alt=$alt') //Yeg coords
+      uri: Uri.parse('http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long&alt=$alt')
     );
   }
 }
