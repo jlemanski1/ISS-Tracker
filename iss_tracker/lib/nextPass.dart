@@ -111,11 +111,6 @@ class _NextPassState extends State<NextPass> {
         userLocation = value;
       });
     });
-    /*
-    userLat = userLocation['latitude'];
-    userLong = userLocation['longitude'];
-    userAlt = userLocation['altitude'];
-    */
     
     // Get Next 5 Passtimes
     _getNextPasses().then((val) {
