@@ -73,12 +73,12 @@ class MapLocationState extends State<MapLocation> {
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
-  var iss_pos;
   var location = new Location();
   Map<String, double> userLocation = {};
   final Map<String, Marker> _markers = {};
   BitmapDescriptor markerIcon;
   
+  LatLng issMapPos;
 
   // Get's the user and ISS' coords, and the custom marker Icon
   @override
@@ -98,6 +98,7 @@ class MapLocationState extends State<MapLocation> {
         markerIcon = onValue;
       });
 
+    // Get ISS location
     iss_pos = _getISSLocation();
   }
 
