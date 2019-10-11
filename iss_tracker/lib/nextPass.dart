@@ -12,11 +12,8 @@ import 'package:http/http.dart' as http;
 
 
 // Fetch Next Pass Time data from OpenNotify
-Future<Pass> fetchNextPasses(double lat, double long) async {
-  final response = await http.get(
-    //'http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635');
-      'http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long');
-
+Future<Pass> fetchNextPasses(double lat, double long, double alt) async {
+  final response = await http.get('http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long&alt=$alt');
   if (response.statusCode == 200) {
     // Server returns OK response, parse data
     //print(Pass.fromJson(json.decode(response.body)));
@@ -24,7 +21,7 @@ Future<Pass> fetchNextPasses(double lat, double long) async {
   } else {
     throw HttpException(
       'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
-      uri: Uri.parse('http://api.open-notify.org/iss-pass.json?lat=53.5461&lon=113.4938&alt=635') //Yeg coords
+      uri: Uri.parse('http://api.open-notify.org/iss-pass.json?lat=$lat&lon=$long&alt=$alt') //Yeg coords
     );
   }
 }
@@ -82,7 +79,8 @@ class _NextPassState extends State<NextPass> {
 
   // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
-    var passList = await fetchNextPasses(53.546, 113.49);
+    _getLocation(); // userLocation required for pass time calc
+    var passList = await fetchNextPasses(userLat, userLong, userAlt);
     if (passList.message == 'success') {
       return passList.passes;
     }
@@ -111,11 +109,14 @@ class _NextPassState extends State<NextPass> {
     _getLocation().then((value) {
       setState(() {
         userLocation = value;
+        userLat = userLocation['latitude'];
+        userLong = userLocation['longitude'];
+        userAlt = userLocation['altitude'];
       });
+      
     });
 
     // Get Next 5 Passtimes
-    //_nextPasses = _getNextPasses();
     _getNextPasses().then((val) {
       setState(() {
         _nextPasses = val;
@@ -128,7 +129,7 @@ class _NextPassState extends State<NextPass> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Next Pass Date & Time", style: TextStyle(color: Colors.lightBlueAccent),),
+        title: Text("Overhead Pass Times", style: TextStyle(color: Colors.lightBlueAccent),),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 8.0),
