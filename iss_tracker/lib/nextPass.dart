@@ -79,8 +79,8 @@ class _NextPassState extends State<NextPass> {
 
   // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
-    _getLocation(); // userLocation required for pass time calc
-    var passList = await fetchNextPasses(userLat, userLong, userAlt);
+    var userLoc = await location.getLocation(); // userLocation required for pass time calc
+    var passList = await fetchNextPasses(userLoc['latitude'], userLoc['longitude'], userLoc['altitude']);
     if (passList.message == 'success') {
       return passList.passes;
     }
@@ -109,13 +109,14 @@ class _NextPassState extends State<NextPass> {
     _getLocation().then((value) {
       setState(() {
         userLocation = value;
-        userLat = userLocation['latitude'];
-        userLong = userLocation['longitude'];
-        userAlt = userLocation['altitude'];
       });
-      
     });
-
+    /*
+    userLat = userLocation['latitude'];
+    userLong = userLocation['longitude'];
+    userAlt = userLocation['altitude'];
+    */
+    
     // Get Next 5 Passtimes
     _getNextPasses().then((val) {
       setState(() {
