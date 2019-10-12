@@ -98,8 +98,6 @@ class MapLocationState extends State<MapLocation> {
         markerIcon = onValue;
       });
 
-    // Get ISS location
-    iss_pos = _getISSLocation();
   }
 
   // Get ISS position, and place a marker on the map
@@ -141,14 +139,6 @@ class MapLocationState extends State<MapLocation> {
     });
   }
 
-  // Fetch iss data and return the position obj
-  Future<void> _getISSLocation() async {
-    var iss_pos = await fetchPost();
-    if (iss_pos.message == 'success') {
-      print('ISS_POS: ${iss_pos.position.lat}:${iss_pos.position.long}');
-      return iss_pos;
-    }
-  }
 
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
