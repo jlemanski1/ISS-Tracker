@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -100,41 +99,41 @@ class MapLocationState extends State<MapLocation> {
   
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
-    final iss_loc = await fetchPost();
+    final issLoc = await fetchPost();
 
     setState(() {
       // Place marker on ISS position
       _markers.clear();
       final marker = Marker(
-        markerId: MarkerId(iss_loc.time.toString()),
+        markerId: MarkerId(issLoc.time.toString()),
         icon: markerIcon,
-        position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
+        position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
-          snippet: "Lat:${iss_loc.position.lat} Long:${iss_loc.position.long}"
+          snippet: "Lat:${issLoc.position.lat} Long:${issLoc.position.long}"
         ),
       );
-      _markers[iss_loc.time.toString()] = marker;
+      _markers[issLoc.time.toString()] = marker;
     });
   }
   
 
   // Updates the marker with the ISS' current location
   Future<void> _placeMarkerISSLocation() async {
-    final iss_loc = await fetchPost();
+    final issLoc = await fetchPost();
 
     setState(() {
       _markers.clear();
       final marker = Marker(
-        markerId: MarkerId(iss_loc.time.toString()),
+        markerId: MarkerId(issLoc.time.toString()),
         icon: markerIcon,
-        position: LatLng(double.parse(iss_loc.position.lat), double.parse(iss_loc.position.long)),
+        position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
-          snippet: "Lat:${iss_loc.position.lat} Long:${iss_loc.position.long}"
+          snippet: "Lat:${issLoc.position.lat} Long:${issLoc.position.long}"
         ),
       );
-      _markers[iss_loc.time.toString()] = marker;
+      _markers[issLoc.time.toString()] = marker;
     });
   }
 
