@@ -75,8 +75,6 @@ class MapLocationState extends State<MapLocation> {
   Future<Post> post;  // ISS Json data
   BitmapDescriptor markerIcon;
 
-  var location = new Location();
-  Map<String, double> userLocation = {};
   LatLng issMapPos;
   LatLng issPos;
 
@@ -92,13 +90,6 @@ class MapLocationState extends State<MapLocation> {
       });
     });
     
-    // Get user location
-    _getLocation().then((value) {
-      setState(() {
-        userLocation = value;
-      });
-    });
-
     // Retrieve Icon for ISS marker
     BitmapDescriptor.fromAssetImage( ImageConfiguration(
       size: Size(64, 64)), 'assets/satelliteIcon.png').then((onValue) {
@@ -107,7 +98,6 @@ class MapLocationState extends State<MapLocation> {
   }
 
   
-
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final iss_loc = await fetchPost();
@@ -152,21 +142,8 @@ class MapLocationState extends State<MapLocation> {
   // Fetches and assigns the ISS' location to issPos
   Future<LatLng> _getISSLocation() async {
     var iPos = await fetchPost();
-    issPos = LatLng(double.parse(iPos.position.lat), double.parse(iPos.position.long));
-    return issPos;
-  }
-
-  // Get user location from gps
-  Future<Map<String, double>> _getLocation() async {
-    var currentLocation = <String, double>{};
-    try {
-      location.hasPermission();
-      currentLocation = await location.getLocation();
-      
-    } catch (e) {
-      currentLocation = null;
-    }
-    return currentLocation;
+    var pos = LatLng(double.parse(iPos.position.lat), double.parse(iPos.position.long));
+    return pos;
   }
 
 
