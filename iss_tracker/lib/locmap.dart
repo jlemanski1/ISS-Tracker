@@ -69,7 +69,6 @@ class MapLocation extends StatefulWidget {
 
 
 class MapLocationState extends State<MapLocation> {
-  Completer<GoogleMapController> _controller = Completer(); // for _goTiISS function
   GoogleMapController mapController;
   Future<Post> post;  // ISS Json data
 
@@ -97,8 +96,8 @@ class MapLocationState extends State<MapLocation> {
       size: Size(64, 64)), 'assets/satelliteIcon.png').then((onValue) {
         markerIcon = onValue;
       });
-
   }
+
 
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
@@ -119,6 +118,7 @@ class MapLocationState extends State<MapLocation> {
       _markers[iss_loc.time.toString()] = marker;
     });
   }
+  
 
   // Updates the marker with the ISS' current location
   Future<void> _placeMarkerISSLocation() async {
@@ -153,20 +153,6 @@ class MapLocationState extends State<MapLocation> {
     return currentLocation;
   }
 
-  // Animates the camera to the marker(the ISS' latest received position)
-  Future<void> _goToISS() async {
-    var _iss_pos = await fetchPost();
-    
-    if (_iss_pos.message == 'success') {
-      double lat = double.parse(_iss_pos.position.lat);
-      double long = double.parse(_iss_pos.position.long);
-      
-      GoogleMapController controller = await _controller.future;
-      controller.animateCamera(CameraUpdate.newLatLng(LatLng(lat, long)));
-    }
-  }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +171,6 @@ class MapLocationState extends State<MapLocation> {
           zoomGesturesEnabled: true,
           rotateGesturesEnabled: true,
           markers: _markers.values.toSet(),
-          //myLocationEnabled: true,  // Replace with floating action button
           mapType: MapType.normal, 
           ),
           Padding(
