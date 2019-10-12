@@ -78,12 +78,19 @@ class MapLocationState extends State<MapLocation> {
   var location = new Location();
   Map<String, double> userLocation = {};
   LatLng issMapPos;
-  var issPos;
+  LatLng issPos;
 
   // Get's the user and ISS' coords, and the custom marker Icon
   @override
   void initState() {
     super.initState();
+    
+    // Get ISS position for map camera target
+    _getISSLocation().then((value) {
+      setState(() {
+        issPos = value;
+      });
+    });
     
     // Get user location
     _getLocation().then((value) {
@@ -99,11 +106,7 @@ class MapLocationState extends State<MapLocation> {
       });
   }
 
-  // Fetches and assigns the ISS' location to issPos
-  void _getISSLocation() async {
-    final iPos = await fetchPost();
-    issPos = LatLng(double.parse(iPos.position.lat), double.parse(iPos.position.long));
-  }
+  
 
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
@@ -146,6 +149,13 @@ class MapLocationState extends State<MapLocation> {
   }
 
 
+  // Fetches and assigns the ISS' location to issPos
+  Future<LatLng> _getISSLocation() async {
+    var iPos = await fetchPost();
+    issPos = LatLng(double.parse(iPos.position.lat), double.parse(iPos.position.long));
+    return issPos;
+  }
+
   // Get user location from gps
   Future<Map<String, double>> _getLocation() async {
     var currentLocation = <String, double>{};
@@ -162,18 +172,13 @@ class MapLocationState extends State<MapLocation> {
 
   @override
   Widget build(BuildContext context) {
-    _getISSLocation();
-    print('\n\nissPos: $issPos');
-
     return Stack(
       children: <Widget>[
         Center(child: SpinKitWave(color: Colors.amberAccent, type: SpinKitWaveType.start,)),
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: (issPos == null)
-                ? LatLng(0, 0)
-                : issPos,
+            target: issPos,
             zoom: 1.0,
           ),
           zoomGesturesEnabled: true,
