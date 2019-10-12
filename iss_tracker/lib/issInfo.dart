@@ -92,7 +92,6 @@ class _ISSInfoState extends State<ISSInfo> {
 
   Future<Facts> factFetcher() async {
     var _facts = fetchFacts();
-    print('test:\n');
     return _facts;
   }
 

@@ -69,15 +69,16 @@ class MapLocation extends StatefulWidget {
 
 
 class MapLocationState extends State<MapLocation> {
+  
   GoogleMapController mapController;
+  final Map<String, Marker> _markers = {};
   Future<Post> post;  // ISS Json data
+  BitmapDescriptor markerIcon;
 
   var location = new Location();
   Map<String, double> userLocation = {};
-  final Map<String, Marker> _markers = {};
-  BitmapDescriptor markerIcon;
-  
   LatLng issMapPos;
+  var issPos;
 
   // Get's the user and ISS' coords, and the custom marker Icon
   @override
@@ -98,6 +99,11 @@ class MapLocationState extends State<MapLocation> {
       });
   }
 
+  // Fetches and assigns the ISS' location to issPos
+  void _getISSLocation() async {
+    final iPos = await fetchPost();
+    issPos = LatLng(double.parse(iPos.position.lat), double.parse(iPos.position.long));
+  }
 
   // Get ISS position, and place a marker on the map
   Future<void> _onMapCreated(GoogleMapController controller) async {
@@ -156,16 +162,18 @@ class MapLocationState extends State<MapLocation> {
 
   @override
   Widget build(BuildContext context) {
+    _getISSLocation();
+    print('\n\nissPos: $issPos');
+
     return Stack(
       children: <Widget>[
-        Center(child: SpinKitWave(color: Colors.amberAccent, type: SpinKitWaveType.start,)),  //Render CircularProgIndicator until map loads
+        Center(child: SpinKitWave(color: Colors.amberAccent, type: SpinKitWaveType.start,)),
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: (userLocation['latitude'] == null)
+            target: (issPos == null)
                 ? LatLng(0, 0)
-                : LatLng(userLocation['latitude'], userLocation['longitude']),
-                //LatLng(double.parse(iss_pos.position.lat), double.parse(iss_pos.position.long)),
+                : issPos,
             zoom: 1.0,
           ),
           zoomGesturesEnabled: true,
@@ -188,7 +196,9 @@ class MapLocationState extends State<MapLocation> {
                   ),
                   Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
                   FloatingActionButton(
-                    onPressed: (){},  // Replace (){} with function
+                    onPressed: () {
+          
+                    },
                     materialTapTargetSize: MaterialTapTargetSize.padded,
                     backgroundColor: Colors.black26,
                     child: const Icon(Icons.map, size: 36.0),
