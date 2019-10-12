@@ -178,7 +178,7 @@ class MapLocationState extends State<MapLocation> {
                   Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
                   FloatingActionButton(
                     onPressed: () {
-          
+                      
                     },
                     materialTapTargetSize: MaterialTapTargetSize.padded,
                     backgroundColor: Colors.black26,

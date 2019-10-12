@@ -83,6 +83,8 @@ class _NextPassState extends State<NextPass> {
     var passList = await fetchNextPasses(userLoc['latitude'], userLoc['longitude'], userLoc['altitude']);
     if (passList.message == 'success') {
       return passList.passes;
+    } else {
+      return [];
     }
   }
 
