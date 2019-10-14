@@ -94,6 +94,11 @@ class MapLocationState extends State<MapLocation> {
       size: Size(64, 64)), 'assets/satelliteIcon.png').then((onValue) {
         markerIcon = onValue;
       });
+
+    // Update map marker for ISS position every 10 seconds
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      _placeMarkerISSLocation();
+    });
   }
 
   
