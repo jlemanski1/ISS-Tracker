@@ -61,6 +61,8 @@ class Post {
 }
 
 
+
+
 class MapLocation extends StatefulWidget {
   @override
   MapLocationState createState() => MapLocationState();
@@ -68,7 +70,6 @@ class MapLocation extends StatefulWidget {
 
 
 class MapLocationState extends State<MapLocation> {
-  
   GoogleMapController mapController;
   final Map<String, Marker> _markers = {};
   Future<Post> post;  // ISS Json data
@@ -153,9 +154,13 @@ class MapLocationState extends State<MapLocation> {
 
   @override
   Widget build(BuildContext context) {
+    // Draw loading bar until issPos is fetched
+    while (issPos == null) {
+      return Center(child: SpinKitWave(color: Colors.amberAccent, type: SpinKitWaveType.start,));
+    }
+    // Draw Map once issPos has been fetched for the marker Icon
     return Stack(
       children: <Widget>[
-        Center(child: SpinKitWave(color: Colors.amberAccent, type: SpinKitWaveType.start,)),
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
