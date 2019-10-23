@@ -5,7 +5,7 @@ import 'package:iss_tracker/history.dart';
 // Pages / Routes
 import 'issInfo.dart';
 import 'nextPass.dart';
-import 'locmap.dart';
+import 'locmap.dart'; 
 import 'history.dart';
 
 void main() => runApp(MyApp());
