@@ -30,8 +30,6 @@ iss_tracker_v2/.pub-cache/
 iss_tracker_v2/.pub/
 iss_tracker_v2/build/
 
-#Ignore manifest with keys
-iss_tracker_v2/android/app/src/main/AndroidManifest.xml
 
 # Web related
 iss_tracker_v2/lib/generated_plugin_registrant.dart

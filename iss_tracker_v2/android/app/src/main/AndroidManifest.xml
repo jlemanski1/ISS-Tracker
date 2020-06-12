@@ -38,6 +38,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+          android:value="AIzaSyC30Bd7UH2FpU_9F7EY6TOHxNZWqfeCubg"/>
+
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
@@ -45,3 +50,4 @@
             android:value="2" />
     </application>
 </manifest>
+
