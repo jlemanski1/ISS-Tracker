@@ -37,6 +37,7 @@ class Position {
   }
 }
 
+
 // Object containing the data fetched from the API
 class Post {
   final int time;
@@ -54,6 +55,8 @@ class Post {
   }
 }
 
+
+
 class LocationMap extends StatefulWidget {
   @override
   _LocationMapState createState() => _LocationMapState();
@@ -61,34 +64,109 @@ class LocationMap extends StatefulWidget {
 
 class _LocationMapState extends State<LocationMap> {
   GoogleMapController mapController;
+  final Map<String, Marker> _markers = {};
+  BitmapDescriptor markerIcon;
   Future<Post> post;
 
   LatLng issMapPos;
   LatLng issPos;
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  // Get's the user and ISS' coords, and the custom marker Icon
+  @override
+  void initState() {
+    super.initState();
+    
+    // Get ISS position for map camera target
+    _getISSLocation().then((value) {
+      setState(() {
+        issPos = value;
+      });
+    });
+    
+    // Retrieve Icon for ISS marker
+    BitmapDescriptor.fromAssetImage( ImageConfiguration(
+      size: Size(128, 128)), 'assets/images/satelliteIcon.png').then((onValue) {
+        markerIcon = onValue;
+      });
+
+    // Update map marker for ISS position every 10 seconds
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      _placeMarkerISSLocation();
+    });
   }
+
+
+  void _onMapCreated(GoogleMapController controller) async {
+    mapController = controller;
+
+    final issLoc = await fetchPost();
+
+    setState(() {
+      // Place marker on ISS position
+      _markers.clear();
+      final marker = Marker(
+        markerId: MarkerId(issLoc.time.toString()),
+        icon: markerIcon,
+        position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
+        infoWindow: InfoWindow(
+          title: 'Current ISS Location',
+          snippet: "Lat:${issLoc.position.lat} Long:${issLoc.position.long}"
+        ),
+      );
+      _markers[issLoc.time.toString()] = marker;
+    });
+  }
+
+
+  // Updates the marker with the ISS' current location
+  Future<void> _placeMarkerISSLocation() async {
+    final issLoc = await fetchPost();
+
+    setState(() {
+      _markers.clear();
+      final marker = Marker(
+        markerId: MarkerId(issLoc.time.toString()),
+        icon: markerIcon,
+        position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
+        infoWindow: InfoWindow(
+          title: 'Current ISS Location',
+          snippet: "Lat:${issLoc.position.lat} Long:${issLoc.position.long}"
+        ),
+      );
+      _markers[issLoc.time.toString()] = marker;
+    });
+  }
+
+
+  // Fetches and assigns the ISS' location to issPos
+  Future<LatLng> _getISSLocation() async {
+    var iPos = await fetchPost();
+    var pos = LatLng(double.parse(iPos.position.lat), double.parse(iPos.position.long));
+    return pos;
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    // Hide System Status Bar & Icons
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-    ));
+    // Draw loading bar until issPos is fetched
+    while (issPos == null) {
+      return Center(
+        child: CircularProgressIndicator(backgroundColor: Colors.black,),
+      );
+    }
 
+    // Draw Map once issPos has been fetched for the marker Icon
     return Stack(
       children: <Widget>[
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: LatLng(100, 100),
+            target: issPos,
             zoom: 1.0
           ),
           zoomControlsEnabled: true,
           rotateGesturesEnabled: false,
-          //markers: _markers.values.toSet(),
+          markers: _markers.values.toSet(),
           mapType: MapType.normal,
         ),
       ],

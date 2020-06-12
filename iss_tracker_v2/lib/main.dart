@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     // Hide System Status Bar & Icons
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
     ));
     
     return MaterialApp(
