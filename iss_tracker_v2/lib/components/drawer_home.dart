@@ -28,28 +28,23 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: Icon(Icons.home),
       ),
       DrawerList(
-        index: DrawerIndex.Help,
+        index: DrawerIndex.Crew,
         labelName: 'People in Space',
         isAssetsImage: true,
         imageName: 'assets/images/supportIcon.png',
       ),
       DrawerList(
-        index: DrawerIndex.FeedBack,
+        index: DrawerIndex.PassTimes,
         labelName: 'Next Pass Times',
         icon: Icon(Icons.help),
       ),
       DrawerList(
-        index: DrawerIndex.Invite,
-        labelName: 'Invite Friend',
-        icon: Icon(Icons.group),
-      ),
-      DrawerList(
-        index: DrawerIndex.Share,
+        index: DrawerIndex.NewsFeed,
         labelName: 'Space Exploration News',
         icon: Icon(Icons.share),
       ),
       DrawerList(
-        index: DrawerIndex.About,
+        index: DrawerIndex.History,
         labelName: 'History of the ISS',
         icon: Icon(Icons.info),
       ),
@@ -261,11 +256,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
 enum DrawerIndex {
   HOME,
-  FeedBack,
-  Help,
-  Share,
-  About,
-  Invite,
+  Crew,
+  PassTimes,
+  NewsFeed,
+  History,
   Testing,
 }
 
