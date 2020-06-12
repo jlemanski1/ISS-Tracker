@@ -255,7 +255,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
 }
 
 enum DrawerIndex {
-  HOME,
+  HOME, // Home screen is the location map
   Crew,
   PassTimes,
   NewsFeed,
