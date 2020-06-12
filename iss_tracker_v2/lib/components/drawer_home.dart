@@ -24,18 +24,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
     drawerList = <DrawerList>[
       DrawerList(
         index: DrawerIndex.HOME,
-        labelName: 'Home',
+        labelName: 'ISS Location',
         icon: Icon(Icons.home),
       ),
       DrawerList(
         index: DrawerIndex.Help,
-        labelName: 'Help',
+        labelName: 'People in Space',
         isAssetsImage: true,
         imageName: 'assets/images/supportIcon.png',
       ),
       DrawerList(
         index: DrawerIndex.FeedBack,
-        labelName: 'FeedBack',
+        labelName: 'Next Pass Times',
         icon: Icon(Icons.help),
       ),
       DrawerList(
@@ -45,12 +45,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.Share,
-        labelName: 'Rate the app',
+        labelName: 'Space Exploration News',
         icon: Icon(Icons.share),
       ),
       DrawerList(
         index: DrawerIndex.About,
-        labelName: 'About Us',
+        labelName: 'History of the ISS',
         icon: Icon(Icons.info),
       ),
     ];
@@ -104,7 +104,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      'Chris Hemsworth',
+                      'Internation Space Station Tracker',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppTheme.grey,
@@ -141,7 +141,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             children: <Widget>[
               ListTile(
                 title: Text(
-                  'Sign Out',
+                  'Settings',
                   style: TextStyle(
                     fontFamily: AppTheme.fontName,
                     fontWeight: FontWeight.w600,
@@ -184,17 +184,17 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Container(
                     width: 6.0,
                     height: 46.0,
-                    // decoration: BoxDecoration(
-                    //   color: widget.screenIndex == listData.index
-                    //       ? Colors.blue
-                    //       : Colors.transparent,
-                    //   borderRadius: new BorderRadius.only(
-                    //     topLeft: Radius.circular(0),
-                    //     topRight: Radius.circular(16),
-                    //     bottomLeft: Radius.circular(0),
-                    //     bottomRight: Radius.circular(16),
-                    //   ),
-                    // ),
+                    decoration: BoxDecoration(
+                      color: widget.screenIndex == listData.index
+                          ? Colors.blue
+                          : Colors.transparent,
+                      borderRadius: new BorderRadius.only(
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(16),
+                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(16),
+                      ),
+                    ),
                   ),
                   const Padding(
                     padding: EdgeInsets.all(4.0),
