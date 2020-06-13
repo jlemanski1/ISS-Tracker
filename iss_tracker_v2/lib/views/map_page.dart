@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
@@ -67,6 +66,7 @@ class _LocationMapState extends State<LocationMap> {
   final Map<String, Marker> _markers = {};
   BitmapDescriptor markerIcon;
   Future<Post> post;
+  Timer _iconTimer;
 
   LatLng issMapPos;
   LatLng issPos;
@@ -90,9 +90,15 @@ class _LocationMapState extends State<LocationMap> {
       });
 
     // Update map marker for ISS position every 10 seconds
-    Timer.periodic(Duration(seconds: 10), (timer) {
+    _iconTimer = new Timer.periodic(Duration(seconds: 10), (timer) {
       _placeMarkerISSLocation();
     });
+  }
+
+  @override
+  void dispose() {
+    _iconTimer.cancel();
+    super.dispose();
   }
 
 
