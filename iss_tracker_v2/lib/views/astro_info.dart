@@ -108,13 +108,25 @@ class _AstroInfoState extends State<AstroInfo> {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 58.0),
+            padding: EdgeInsets.only(top: 8,),
           ),
-          // Info from API below
-          Text (
-            "There are currently ${_astroList.length} astronauts in space. They are:",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, bottom: 24),
+            child: Text(
+              "The ${_astroList.length} people currently in space, are:",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'WorkSans',
+                color: Colors.black,
+                fontSize: 34.0
+              ),
+              textAlign: TextAlign.right,
+              softWrap: true,
+            ),
           ),
+          
+        
           Expanded (
             flex: 1,
             child: 
@@ -141,8 +153,12 @@ class _AstroInfoState extends State<AstroInfo> {
                         */
                         GFListTile(
                           titleText: '${_astroList.elementAt(index).name}',
-                          subtitleText: '${_astroList.elementAt(index).craft}',
-                          icon: Icon(Icons.face),
+                          subtitleText: 'onboard: ${_astroList.elementAt(index).craft}',
+                          icon: Icon(Icons.security),
+                          avatar: GFAvatar(
+                            backgroundColor: Color(0x000000),
+                            
+                          ),
                         )
                       ],
                     ),
