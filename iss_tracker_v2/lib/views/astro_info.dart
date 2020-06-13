@@ -7,6 +7,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:getflutter/getflutter.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -81,10 +82,7 @@ class AstroInfo extends StatefulWidget {
 }
 
 class _AstroInfoState extends State<AstroInfo> {
-  
-List<Astronaut> _astroList = [];  // List of astronauts
-  List<String> factList;  // List of String facts
-  String randomFact;      // Random Fact from the file
+  List<Astronaut> _astroList = [];  // List of astronauts
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
@@ -107,48 +105,52 @@ List<Astronaut> _astroList = [];  // List of astronauts
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-              ),
-              // Info from API below
-              Text (
-                "There are currently ${_astroList.length} astronauts in space. They are:",
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-              Expanded (
-                child: 
-                    ListView.builder(
-                      padding: EdgeInsets.all(8.0),
-                      itemCount: _astroList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                          color: Colors.transparent,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              ListTile(
-                                leading: Text(
-                                  '${_astroList.elementAt(index).name.substring(0, 1)}',
-                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightGreenAccent),
-                                  textAlign: TextAlign.center,
-                                  textScaleFactor: 1.5,
-                                ),
-                                title: Text('Name: ${_astroList.elementAt(index).name}'),
-                                subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
-                              ),
-                            ],
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 58.0),
+          ),
+          // Info from API below
+          Text (
+            "There are currently ${_astroList.length} astronauts in space. They are:",
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          Expanded (
+            flex: 1,
+            child: 
+              ListView.builder(
+                padding: EdgeInsets.all(8.0),
+                itemCount: _astroList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    color: Colors.black38,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        /*
+                        ListTile(
+                          leading: Text(
+                            '${_astroList.elementAt(index).name.substring(0, 1)}',
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+                            textAlign: TextAlign.center,
+                            textScaleFactor: 1.5,
                           ),
-                        );
-                      },
+                          title: Text('Name: ${_astroList.elementAt(index).name}'),
+                          subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
+                        ),
+                        */
+                        GFListTile(
+                          titleText: '${_astroList.elementAt(index).name}',
+                          subtitleText: '${_astroList.elementAt(index).craft}',
+                          icon: Icon(Icons.face),
+                        )
+                      ],
                     ),
+                  );
+                },
               ),
-            ],
-          )
-        ),
+          ),
+        ],
       )
     );
   }
