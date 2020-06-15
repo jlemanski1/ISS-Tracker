@@ -76,13 +76,35 @@ class _NextPassTimesState extends State<NextPassTimes> {
   List _nextPasses = [];
   Map<String, double> userLocation;
   double userLat, userLong, userAlt;
-  var location = new Location();
+  Location location = new Location();
+  PermissionStatus _permissionGranted;
+  LocationData _locationData;
+  bool _serviceEnabled;
 
+  // Enables location services and requests user permission
+  void getLocationPermissions() async {
+    // Enable location services
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled)
+        return;
+    }
+
+    // Request Permissions
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted)
+        return;
+    }
+  }
 
   // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
     var userLoc = await location.getLocation(); // userLocation required for pass time calc
-    var passList = await fetchNextPasses(userLoc['latitude'], userLoc['longitude'], userLoc['altitude']);
+    var passList = await fetchNextPasses(userLoc.latitude, userLoc.longitude, userLoc.altitude);
+    print('Lat: ${userLoc.latitude}\nLong: ${userLoc.longitude}');
     if (passList.message == 'success') {
       return passList.passes;
     } else {
@@ -90,38 +112,20 @@ class _NextPassTimesState extends State<NextPassTimes> {
     }
   }
 
-  // Get user location from gps
-  Future<Map<String, double>> _getLocation() async {
-    var currentLocation = <String, double>{};
-    try {
-      location.hasPermission();
-      currentLocation = await location.getLocation();
-      
-    } catch (e) {
-      currentLocation = null;
-    }
-    return currentLocation;
-  }
-
-
 
   @override
   void initState() {
     super.initState();
 
-    // Get User Coords
-    _getLocation().then((value) {
-      setState(() {
-        userLocation = value;
-      });
-    });
-    
+    getLocationPermissions();
+
     // Get Next 5 Passtimes
     _getNextPasses().then((val) {
       setState(() {
         _nextPasses = val;
       });
     });
+
   }
 
   @override
