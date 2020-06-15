@@ -13,7 +13,6 @@ import 'package:http/http.dart' as http;
 */
 
 
-
 // Fetch Next Pass Time data from OpenNotify
 Future<Pass> fetchNextPasses(double lat, double long, double alt) async {
   // Get data for user location
@@ -42,7 +41,6 @@ class Pass {
 
     List<PassTime> passList = list.map((i) => PassTime.fromJson(i)).toList();
 
-    
     return Pass(
       message: json['message'],
       passes: passList
@@ -74,11 +72,8 @@ class NextPassTimes extends StatefulWidget {
 
 class _NextPassTimesState extends State<NextPassTimes> {
   List _nextPasses = [];
-  Map<String, double> userLocation;
-  double userLat, userLong, userAlt;
   Location location = new Location();
   PermissionStatus _permissionGranted;
-  LocationData _locationData;
   bool _serviceEnabled;
 
   // Enables location services and requests user permission
@@ -102,9 +97,9 @@ class _NextPassTimesState extends State<NextPassTimes> {
 
   // Fetches the data from the api and returns only the list of next passes
   Future<List> _getNextPasses() async {
-    var userLoc = await location.getLocation(); // userLocation required for pass time calc
+    var userLoc = await location.getLocation();
     var passList = await fetchNextPasses(userLoc.latitude, userLoc.longitude, userLoc.altitude);
-    print('Lat: ${userLoc.latitude}\nLong: ${userLoc.longitude}');
+    
     if (passList.message == 'success') {
       return passList.passes;
     } else {
@@ -132,7 +127,12 @@ class _NextPassTimesState extends State<NextPassTimes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Overhead Pass Times", style: TextStyle(color: Colors.lightBlueAccent),),
+        title: Text("Overhead Pass Times",
+        textAlign: TextAlign.end,
+        style: TextStyle(
+          color: Colors.black
+          ),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 8.0),
