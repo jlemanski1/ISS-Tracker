@@ -7,7 +7,6 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:getflutter/getflutter.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -105,6 +104,15 @@ class _AstroInfoState extends State<AstroInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey[300],
+        title: Text(
+          'Astronauts',
+          style: TextStyle(
+
+          ),
+        ),
+      ),
       body: Column(
         children: <Widget>[
           Padding(
@@ -139,7 +147,7 @@ class _AstroInfoState extends State<AstroInfo> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        /*
+                        
                         ListTile(
                           leading: Text(
                             '${_astroList.elementAt(index).name.substring(0, 1)}',
@@ -150,16 +158,7 @@ class _AstroInfoState extends State<AstroInfo> {
                           title: Text('Name: ${_astroList.elementAt(index).name}'),
                           subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
                         ),
-                        */
-                        GFListTile(
-                          titleText: '${_astroList.elementAt(index).name}',
-                          subtitleText: 'onboard: ${_astroList.elementAt(index).craft}',
-                          icon: Icon(Icons.security),
-                          avatar: GFAvatar(
-                            backgroundColor: Color(0x000000),
-                            
-                          ),
-                        )
+                        
                       ],
                     ),
                   );
