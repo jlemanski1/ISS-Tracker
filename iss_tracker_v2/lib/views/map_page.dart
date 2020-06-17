@@ -172,6 +172,7 @@ class _LocationMapState extends State<LocationMap> {
           ),
           zoomControlsEnabled: true,
           rotateGesturesEnabled: false,
+          scrollGesturesEnabled: false,
           markers: _markers.values.toSet(),
           mapType: MapType.normal,
         ),
