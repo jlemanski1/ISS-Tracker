@@ -116,59 +116,68 @@ class _AstroInfoState extends State<AstroInfo> {
           ),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 8,),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blueGrey[400], Colors.blue[300]]
           ),
-          
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, bottom: 24),
-            child: Text(
-              "The ${_astroList.length} people currently in space, are:",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'WorkSans',
-                color: Colors.black,
-                fontSize: 34.0
-              ),
-              textAlign: TextAlign.right,
-              softWrap: true,
+        ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 8,),
             ),
-          ),
-          
-        
-          Expanded (
-            flex: 1,
-            child: 
-              ListView.builder(
-                padding: EdgeInsets.all(8.0),
-                itemCount: _astroList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    color: Colors.black38,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        
-                        ListTile(
-                          leading: Text(
-                            '${_astroList.elementAt(index).name.substring(0, 1)}',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
-                            textAlign: TextAlign.center,
-                            textScaleFactor: 1.5,
-                          ),
-                          title: Text('Name: ${_astroList.elementAt(index).name}'),
-                          subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
-                        ),
-                        
-                      ],
-                    ),
-                  );
-                },
+            
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, bottom: 24),
+              child: Text(
+                "The ${_astroList.length} people currently in space, are:",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'WorkSans',
+                  color: Colors.black,
+                  fontSize: 34.0
+                ),
+                textAlign: TextAlign.right,
+                softWrap: true,
               ),
-          ),
-        ],
+            ),
+            
+          
+            Expanded (
+              flex: 1,
+              child: 
+                ListView.builder(
+                  padding: EdgeInsets.all(8.0),
+                  itemCount: _astroList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      color: Colors.black38,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          
+                          ListTile(
+                            leading: Text(
+                              '${_astroList.elementAt(index).name.substring(0, 1)}',
+                              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+                              textAlign: TextAlign.center,
+                              textScaleFactor: 1.5,
+                            ),
+                            title: Text('Name: ${_astroList.elementAt(index).name}'),
+                            subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
+                          ),
+                          
+                        ],
+                      ),
+                    );
+                  },
+                ),
+            ),
+          ],
+        ),
       )
     );
   }

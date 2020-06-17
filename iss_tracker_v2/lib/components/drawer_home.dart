@@ -99,7 +99,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      'Internation Space Station Tracker',
+                      'International Space Station Tracker',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppTheme.grey,
@@ -136,7 +136,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             children: <Widget>[
               ListTile(
                 title: Text(
-                  'Information',
+                  'Settings',
                   style: TextStyle(
                     fontFamily: AppTheme.fontName,
                     fontWeight: FontWeight.w600,
@@ -146,8 +146,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   textAlign: TextAlign.left,
                 ),
                 trailing: Icon(
-                  Icons.info_outline,
-                  color: Colors.blueAccent
+                  Icons.power_settings_new,
+                  color: Colors.red
                 ),
                 onTap: () {
                   print('tapped');
