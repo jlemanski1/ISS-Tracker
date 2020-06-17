@@ -137,6 +137,13 @@ class _NextPassTimesState extends State<NextPassTimes> {
         ),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blueGrey[400], Colors.cyan[400]]
+          ),
+        ),
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Center(
           child: Column(

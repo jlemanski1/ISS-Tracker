@@ -127,20 +127,16 @@ class _AstroInfoState extends State<AstroInfo> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 8,),
-            ),
-            
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, bottom: 24),
+              padding: const EdgeInsets.only(top: 32.0, left: 8.0, bottom: 24.0),
               child: Text(
                 "The ${_astroList.length} people currently in space, are:",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'WorkSans',
                   color: Colors.black,
-                  fontSize: 34.0
+                  fontSize: 24.0
                 ),
-                textAlign: TextAlign.right,
+                textAlign: TextAlign.center,
                 softWrap: true,
               ),
             ),
@@ -166,8 +162,18 @@ class _AstroInfoState extends State<AstroInfo> {
                               textAlign: TextAlign.center,
                               textScaleFactor: 1.5,
                             ),
-                            title: Text('Name: ${_astroList.elementAt(index).name}'),
-                            subtitle: Text('Craft: ${_astroList.elementAt(index).craft}'),
+                            title: Text(
+                              'Name: ${_astroList.elementAt(index).name}',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            subtitle: Text(
+                              'Craft: ${_astroList.elementAt(index).craft}',
+                              style: TextStyle(
+                                color: Colors.blueGrey[200],
+                              ),
+                            ),
                           ),
                           
                         ],
