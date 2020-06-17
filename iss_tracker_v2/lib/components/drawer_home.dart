@@ -25,7 +25,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       DrawerList(
         index: DrawerIndex.HOME,
         labelName: 'ISS Location',
-        icon: Icon(Icons.home),
+        icon: Icon(Icons.map),
       ),
       DrawerList(
         index: DrawerIndex.Crew,
@@ -36,7 +36,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       DrawerList(
         index: DrawerIndex.PassTimes,
         labelName: 'Next Pass Times',
-        icon: Icon(Icons.help),
+        icon: Icon(Icons.calendar_today),
       ),
       DrawerList(
         index: DrawerIndex.NewsFeed,
@@ -136,7 +136,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             children: <Widget>[
               ListTile(
                 title: Text(
-                  'Settings',
+                  'Information',
                   style: TextStyle(
                     fontFamily: AppTheme.fontName,
                     fontWeight: FontWeight.w600,
@@ -146,10 +146,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   textAlign: TextAlign.left,
                 ),
                 trailing: Icon(
-                  Icons.power_settings_new,
-                  color: Colors.red,
+                  Icons.info_outline,
+                  color: Colors.blueAccent
                 ),
-                onTap: () {},
+                onTap: () {
+                  print('tapped');
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).padding.bottom,

@@ -105,11 +105,14 @@ class _AstroInfoState extends State<AstroInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[300],
+        backgroundColor: Colors.blueGrey[400],
+        centerTitle: true,
         title: Text(
-          'Astronauts',
+          'Space Farers',
           style: TextStyle(
-
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            fontFamily: 'WorkSans',
           ),
         ),
       ),
