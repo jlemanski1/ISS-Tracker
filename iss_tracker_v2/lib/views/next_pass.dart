@@ -222,7 +222,13 @@ class _NextPassTimesState extends State<NextPassTimes> {
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightBlueAccent)
               ),
               Expanded(
-                child: ListView.builder(
+                // Show loading circle until list loads then build tiles
+                child: _nextPasses.length == 0 ? Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.black,
+                  )
+                ) :
+                ListView.builder(
                   padding: EdgeInsets.all(8.0),
                   itemCount: _nextPasses.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -251,6 +257,8 @@ class _NextPassTimesState extends State<NextPassTimes> {
                   },
                 ),
               )
+
+
             ],
           ),
         ),
