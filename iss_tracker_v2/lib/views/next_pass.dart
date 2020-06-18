@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -76,6 +77,9 @@ class _NextPassTimesState extends State<NextPassTimes> {
   PermissionStatus _permissionGranted;
   bool _serviceEnabled;
 
+  BeautifulPopup popup1, popup2, popup3;
+
+
   // Enables location services and requests user permission
   void getLocationPermissions() async {
     // Enable location services
@@ -121,6 +125,18 @@ class _NextPassTimesState extends State<NextPassTimes> {
       });
     });
 
+    popup1 = BeautifulPopup(
+      context: context,
+      template: TemplateBlueRocket
+    );
+    popup2 = BeautifulPopup(
+      context: context,
+      template: TemplateGreenRocket
+    );
+    popup2 = BeautifulPopup(
+      context: context,
+      template: TemplateOrangeRocket
+    );
   }
 
   @override
@@ -154,72 +170,63 @@ class _NextPassTimesState extends State<NextPassTimes> {
                   IconButton(
                     icon: Icon(Icons.info),
                     onPressed: () {
-                      showDialog(context: context, builder: (builder) {
-                        return Dialog(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(1.0)
+                      popup1.show(
+                        title: 'Spot the ISS!',
+                        content: "The space station looks like an airplane or a very bright star moving across the sky, except it "
+                          +"doesn’t have flashing lights or change direction. It will also be moving considerably faster than a typical "
+                          +"airplane (airplanes generally fly at about 965 Km/h); the space station flies at 28,000 Km/h.",
+                        actions: [
+                          popup1.button(
+                            label: 'Close',
+                            onPressed: Navigator.of(context).pop,
                           ),
-                          elevation: 0.0,
-                          backgroundColor: Colors.white54,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Card(
-                                child: ListTile(
-                                  leading: Icon(Icons.info_outline),
-                                  title: Text('Spot the ISS!', style: TextStyle(color: Colors.lightBlueAccent),),
-                                  subtitle: Text("The space station looks like an airplane or a very bright star moving across the sky, except it "
-                                  +"doesn’t have flashing lights or change direction. It will also be moving considerably faster than a typical "
-                                  +"airplane (airplanes generally fly at about 965 Km/h); the space station flies at 28,000 Km/h."),
-                                ),
-                              ),
-                              Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-                              Card(
-                                child: ListTile(
-                                  leading: Icon(Icons.info_outline),
-                                  title: Text('Where do I look?', style: TextStyle(color: Colors.lightBlueAccent),),
-                                  subtitle: Text("Overhead is defined as 10 degrees in elevation for the observer. If you look up at the given time"
-                                    +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star. Be quick"
-                                    +" though! You'll only have the given time to spot it before it will disappear beyond the horizon."),
-                                ),
-                              ),
-                              Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-                              Card(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    const ListTile(
-                                      leading: Icon(Icons.info_outline),
-                                      title: Text('Caution', style: TextStyle(color: Colors.lightBlueAccent),),
-                                      subtitle: Text(
-                                        "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
-                                        +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
-                                        +"re-boost, and debris avoidance. The green hour indicator let's you know that this time will be more accutrate."
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
+                        ],
+                      );
                     }
                   ),
-                  // Random icons since I might add more stuff here (Splits the page nicely)
                   IconButton(
                     icon: Icon(Icons.insert_chart),
-                    onPressed: () {},
+                    onPressed: () {
+                      popup2.show(
+                        title: 'Where do I look?',
+                        content: "Overhead is defined as 10 degrees in elevation for the observer. If you look up at the given time"
+                          +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star. Be quick"
+                          +" though! You'll only have the given time to spot it before it will disappear beyond the horizon.",
+                        actions: [
+                          popup1.button(
+                            label: 'Close',
+                            onPressed: Navigator.of(context).pop,
+                          ),
+                        ],
+                      );
+                    },
                   ),
                   IconButton(
                     icon: Icon(Icons.local_airport),
-                    onPressed: () {},
+                    onPressed: () {
+                      popup3.show(
+                        title: 'Caution',
+                        content: "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
+                          +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
+                          +"re-boost, and debris avoidance. The green hour indicator let's you know that this time will be more accutrate.",
+                        actions: [
+                          popup1.button(
+                            label: 'Close',
+                            onPressed: Navigator.of(context).pop,
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
               Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.lightBlueAccent)
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: Colors.blueGrey[900],
+                ),
               ),
               Expanded(
                 // Show loading circle until list loads then build tiles
