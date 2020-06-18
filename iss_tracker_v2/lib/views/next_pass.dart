@@ -168,9 +168,9 @@ class _NextPassTimesState extends State<NextPassTimes> {
                                 child: ListTile(
                                   leading: Icon(Icons.info_outline),
                                   title: Text('Spot the ISS!', style: TextStyle(color: Colors.lightBlueAccent),),
-                                  subtitle: Text("The ISS is moving ~28000km/h so its location changes really fast! In 24 hours, the station makes"
-                                    +" 16 orbits of Earth, traveling through 16 sunrises and sunsets. This page will compute the next n number of times"
-                                    +" that the ISS is overhead."),
+                                  subtitle: Text("The space station looks like an airplane or a very bright star moving across the sky, except it "
+                                  +"doesn’t have flashing lights or change direction. It will also be moving considerably faster than a typical "
+                                  +"airplane (airplanes generally fly at about 965 Km/h); the space station flies at 28,000 Km/h."),
                                 ),
                               ),
                               Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
