@@ -133,7 +133,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
       context: context,
       template: TemplateGreenRocket
     );
-    popup2 = BeautifulPopup(
+    popup3 = BeautifulPopup(
       context: context,
       template: TemplateOrangeRocket
     );
@@ -193,7 +193,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                           +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star. Be quick"
                           +" though! You'll only have the given time to spot it before it will disappear beyond the horizon.",
                         actions: [
-                          popup1.button(
+                          popup2.button(
                             label: 'Close',
                             onPressed: Navigator.of(context).pop,
                           ),
@@ -210,7 +210,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                           +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
                           +"re-boost, and debris avoidance. The green hour indicator let's you know that this time will be more accutrate.",
                         actions: [
-                          popup1.button(
+                          popup3.button(
                             label: 'Close',
                             onPressed: Navigator.of(context).pop,
                           ),
@@ -264,8 +264,6 @@ class _NextPassTimesState extends State<NextPassTimes> {
                   },
                 ),
               )
-
-
             ],
           ),
         ),
