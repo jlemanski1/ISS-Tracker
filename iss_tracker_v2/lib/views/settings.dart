@@ -35,6 +35,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                 ),
                 SettingsTile(
+                  title: 'Units',
+                  subtitle: 'Metric',
+                  leading: Icon(Icons.import_export),
+                  onTap: () {
+                    
+                  },
+                ),
+                SettingsTile(
                   title: 'Toggle Theme',
                   subtitle: 'Light Mode',
                   leading: Icon(Icons.calendar_today),
@@ -57,6 +65,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 SettingsTile(
                   title: 'Privacy Policy',
                   leading: Icon(Icons.polymer),
+                  onTap: () {
+
+                  },
+                ),
+                SettingsTile(
+                  title: 'Rate App!',
+                  leading: Icon(Icons.star),
                   onTap: () {
                     
                   },
