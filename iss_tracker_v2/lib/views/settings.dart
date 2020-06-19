@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
-class SpaceNews extends StatefulWidget {
+
+class SettingsPage extends StatefulWidget {
   @override
-  _SpaceNewsState createState() => _SpaceNewsState();
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _SpaceNewsState extends State<SpaceNews> {
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[400],
         centerTitle: true,
-        title: Text("Space News",
+        title: Text("Settings",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontFamily: 'WorkSans',
@@ -24,7 +25,7 @@ class _SpaceNewsState extends State<SpaceNews> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blueGrey[400], Colors.pink[200]],
+            colors: [Colors.blueGrey[400], Colors.purple],
           )
         ),
       

@@ -1,4 +1,7 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:iss_tracker_v2/views/settings.dart';
 import 'theme.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -150,7 +153,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   color: Colors.red
                 ),
                 onTap: () {
-                  print('tapped');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage())
+                  );
                 },
               ),
               SizedBox(
