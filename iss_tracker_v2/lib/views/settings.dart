@@ -34,21 +34,23 @@ class _SettingsPageState extends State<SettingsPage> {
 
                   },
                 ),
-                SettingsTile(
+                SettingsTile.switchTile(
                   title: 'Units',
                   subtitle: 'Metric',
                   leading: Icon(Icons.import_export),
-                  onTap: () {
+                  onToggle: (bool value) {
                     
                   },
+                  switchValue: false,
                 ),
-                SettingsTile(
+                SettingsTile.switchTile(
                   title: 'Toggle Theme',
                   subtitle: 'Light Mode',
-                  leading: Icon(Icons.calendar_today),
-                  onTap: () {
+                  leading: Icon(Icons.threesixty),
+                  onToggle: (bool value) {
 
                   },
+                  switchValue: false,
                 )
               ],
             ),
@@ -64,7 +66,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 SettingsTile(
                   title: 'Privacy Policy',
-                  leading: Icon(Icons.polymer),
+                  leading: Icon(Icons.spellcheck),
                   onTap: () {
 
                   },
