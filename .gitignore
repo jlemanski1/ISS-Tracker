@@ -1,0 +1,44 @@
+# Miscellaneous
+iss_tracker_v2/*.class
+iss_tracker_v2/*.log
+iss_tracker_v2/*.pyc
+iss_tracker_v2/*.swp
+iss_tracker_v2/.DS_Store
+iss_tracker_v2/.atom/
+iss_tracker_v2/.buildlog/
+iss_tracker_v2/.history
+iss_tracker_v2/.svn/
+
+# IntelliJ related
+iss_tracker_v2/*.iml
+iss_tracker_v2/*.ipr
+iss_tracker_v2/*.iws
+iss_tracker_v2/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+iss_tracker_v2/**/doc/api/
+iss_tracker_v2/.dart_tool/
+iss_tracker_v2/.flutter-plugins
+iss_tracker_v2/.flutter-plugins-dependencies
+iss_tracker_v2/.packages
+iss_tracker_v2/.pub-cache/
+iss_tracker_v2/.pub/
+iss_tracker_v2/build/
+
+
+# Web related
+iss_tracker_v2/lib/generated_plugin_registrant.dart
+
+# Symbolication related
+iss_tracker_v2/app.*.symbols
+
+# Obfuscation related
+iss_tracker_v2/app.*.map.json
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
