@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
         child: SettingsList(
           sections: [
             SettingsSection(
-              title: 'Section',
+              title: 'General',
               tiles: [
                 SettingsTile(
                   title: 'Language',
