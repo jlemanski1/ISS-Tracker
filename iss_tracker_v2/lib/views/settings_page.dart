@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:store_redirect/store_redirect.dart';
 
 class SettingsPage extends StatefulWidget {
 
@@ -100,7 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: 'Rate App!',
                   leading: Icon(Icons.star),
                   onTap: () {
-                    
+                    StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker');
                   },
                 ),
               ],
