@@ -1,7 +1,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:iss_tracker_v2/views/settings.dart';
+import 'package:iss_tracker_v2/views/settings_page.dart';
 import 'theme.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -149,8 +149,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   textAlign: TextAlign.left,
                 ),
                 trailing: Icon(
-                  Icons.power_settings_new,
-                  color: Colors.red
+                  Icons.settings,
+                  color: Colors.blueGrey
                 ),
                 onTap: () {
                   Navigator.push(

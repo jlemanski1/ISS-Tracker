@@ -1,14 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class SettingsPage extends StatefulWidget {
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isMetric = true;
-  bool isLightTheme = true;
+  final Completer<WebViewController> _webController = Completer<WebViewController>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,26 +46,22 @@ class _SettingsPageState extends State<SettingsPage> {
                   subtitle: 'Metric',
                   leading: Icon(Icons.import_export),
                   onToggle: (bool value) {
-                    
-                    //Set toggle
                     setState(() {
-                      isMetric = value;
+                      Settings.isMetric = value;            
                     });
                   },
-                  switchValue: isMetric,
+                  switchValue: Settings.isMetric,
                 ),
                 SettingsTile.switchTile(
                   title: 'Toggle Theme',
                   subtitle: 'Light Mode',
                   leading: Icon(Icons.threesixty),
                   onToggle: (bool value) {
-
-                    //Set toggle
                     setState(() {
-                      isLightTheme = value;
+                      Settings.isLightTheme = value;
                     });
                   },
-                  switchValue: isLightTheme,
+                  switchValue: Settings.isLightTheme,
                 )
               ],
             ),
@@ -72,7 +72,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: 'Terms of Service',
                   leading: Icon(Icons.description),
                   onTap: () {
-
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => WebView(
+                        initialUrl: 'https://iss-tracker.flycricket.io/terms.html',
+                        onWebViewCreated: (WebViewController webViewController) {
+                          _webController.complete(webViewController);
+                        },
+                      )
+                    ));
                   },
                 ),
                 SettingsTile(

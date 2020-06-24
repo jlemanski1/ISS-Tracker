@@ -189,9 +189,9 @@ class _NextPassTimesState extends State<NextPassTimes> {
                     onPressed: () {
                       popup2.show(
                         title: 'Where do I look?',
-                        content: "Overhead is defined as 10 degrees in elevation for the observer. If you look up at the given time"
-                          +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star. Be quick"
-                          +" though! You'll only have the given time to spot it before it will disappear beyond the horizon.",
+                        content: "Overhead is 10 degrees in elevation for the observer. If you look up at the given time"
+                          +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star."
+                          +" You'll only have the given time to spot it before it will disappear beyond the horizon.",
                         actions: [
                           popup2.button(
                             label: 'Close',
