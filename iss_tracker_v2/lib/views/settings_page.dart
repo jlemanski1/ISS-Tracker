@@ -86,7 +86,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: 'Privacy Policy',
                   leading: Icon(Icons.spellcheck),
                   onTap: () {
-
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => WebView(
+                        initialUrl: 'https://iss-tracker.flycricket.io/privacy.html',
+                        onWebViewCreated: (WebViewController webViewController) {
+                          _webController.complete(webViewController);
+                        },
+                      )
+                    ));
                   },
                 ),
                 SettingsTile(
