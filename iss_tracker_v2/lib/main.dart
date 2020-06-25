@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:iss_tracker_v2/views/nav_home_screen.dart';
 
 void main() {
@@ -20,10 +19,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ISS Tracker',
       debugShowCheckedModeBanner: false,
-      theme: Settings.isLightTheme ? ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-      ) : ThemeData.dark(),
+      ),
       home: NavigationHomeScreen(),
     );
   }

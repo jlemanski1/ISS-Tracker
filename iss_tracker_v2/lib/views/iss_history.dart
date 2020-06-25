@@ -11,7 +11,7 @@ class _ISSHistoryState extends State<ISSHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black26,
+        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text(
           'History of the ISS',
@@ -27,7 +27,7 @@ class _ISSHistoryState extends State<ISSHistory> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.indigo]
-              : [Colors.black38, Colors.black],
+              : [Colors.black87, Colors.black],
           )
         ),
       ),

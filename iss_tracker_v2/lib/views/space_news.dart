@@ -11,7 +11,7 @@ class _SpaceNewsState extends State<SpaceNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black26,
+        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text("Space News",
         style: TextStyle(
@@ -26,7 +26,7 @@ class _SpaceNewsState extends State<SpaceNews> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
-              : [Colors.black38, Colors.black],
+              : [Colors.black87, Colors.black],
           )
         ),
       
