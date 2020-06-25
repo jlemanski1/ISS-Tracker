@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:flutter_beautiful_popup/main.dart';
-import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -144,7 +143,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
+        backgroundColor: Colors.blueGrey[400],
         centerTitle: true,
         title: Text("Overhead Pass Times",
         style: TextStyle(
@@ -158,8 +157,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.cyan[400]]
-              : [Colors.black87, Colors.black],
+            colors: [Colors.blueGrey[400], Colors.cyan[400]]
           ),
         ),
         padding: EdgeInsets.symmetric(vertical: 8.0),
@@ -170,9 +168,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.info,
-                    color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
-                  ),
+                    icon: Icon(Icons.info),
                     onPressed: () {
                       popup1.show(
                         title: 'Spot the ISS!',
@@ -189,16 +185,13 @@ class _NextPassTimesState extends State<NextPassTimes> {
                     }
                   ),
                   IconButton(
-                    icon: Icon(
-                      Icons.insert_chart,
-                      color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
-                    ),
+                    icon: Icon(Icons.insert_chart),
                     onPressed: () {
                       popup2.show(
                         title: 'Where do I look?',
-                        content: "Overhead is 10 degrees in elevation for the observer. If you look up at the given time"
-                          +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star."
-                          +" You'll only have the given time to spot it before it will disappear beyond the horizon.",
+                        content: "Overhead is defined as 10 degrees in elevation for the observer. If you look up at the given time"
+                          +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star. Be quick"
+                          +" though! You'll only have the given time to spot it before it will disappear beyond the horizon.",
                         actions: [
                           popup2.button(
                             label: 'Close',
@@ -209,10 +202,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                     },
                   ),
                   IconButton(
-                    icon: Icon(
-                      Icons.local_airport,
-                      color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],  
-                    ),
+                    icon: Icon(Icons.local_airport),
                     onPressed: () {
                       popup3.show(
                         title: 'Caution',
@@ -235,7 +225,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
-                color: Settings.isLightTheme ? Colors.blueGrey[900] : Colors.blueGrey[100],
+                color: Colors.blueGrey[900],
                 ),
               ),
               Expanded(
@@ -257,24 +247,15 @@ class _NextPassTimesState extends State<NextPassTimes> {
                           ListTile(
                             leading: Text(
                               '${(new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).hour)}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Colors.accents[index + 10]), // Closest appear green (green = good)
-                                textAlign: TextAlign.center,
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.accents[index + 10]), // Closest appear green (green = good)
+                              textAlign: TextAlign.center,
                               ),
                             title: Text(
                               'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'
-                              +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}',
-                              style: TextStyle(
-                                color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[200],
-                              ),
+                              +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}'
                               ),
                             subtitle: Text(
-                              'Visible for ${_nextPasses.elementAt(index).duration} seconds',
-                              style: TextStyle(
-                                color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[400],
-                              ),
+                              'Visible for ${_nextPasses.elementAt(index).duration} seconds'
                             ),
                           ),
                         ],

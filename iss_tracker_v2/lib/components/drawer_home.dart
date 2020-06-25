@@ -1,7 +1,11 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:iss_tracker_v2/views/settings_page.dart';
+=======
+import 'package:iss_tracker_v2/views/settings.dart';
+>>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
 import 'theme.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -43,7 +47,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.NewsFeed,
+<<<<<<< HEAD
         labelName: 'Space Flight News',
+=======
+        labelName: 'Space Exploration News',
+>>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
         icon: Icon(Icons.share),
       ),
       DrawerList(
@@ -149,8 +157,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   textAlign: TextAlign.left,
                 ),
                 trailing: Icon(
+<<<<<<< HEAD
                   Icons.settings,
                   color: Colors.blueGrey
+=======
+                  Icons.power_settings_new,
+                  color: Colors.red
+>>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
                 ),
                 onTap: () {
                   Navigator.push(

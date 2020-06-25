@@ -174,7 +174,7 @@ class _LocationMapState extends State<LocationMap> {
           rotateGesturesEnabled: false,
           scrollGesturesEnabled: false,
           markers: _markers.values.toSet(),
-          mapType: MapType.hybrid,
+          mapType: MapType.normal,
         ),
       ],
     );
