@@ -31,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
         child: SettingsList(
           sections: [
             SettingsSection(
-              title: 'General',
+              title: 'Language & Unit',
               tiles: [
                 SettingsTile(
                   title: 'Language',
@@ -52,6 +52,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                   switchValue: Settings.isMetric,
                 ),
+              ],
+            ),
+            SettingsSection(
+              title: 'Theme',
+              tiles: [
                 SettingsTile.switchTile(
                   title: 'Toggle Theme',
                   subtitle: Settings.isLightTheme ? 'Light Mode' : 'Dark Mode',
