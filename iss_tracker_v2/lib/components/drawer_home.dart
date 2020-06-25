@@ -43,7 +43,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.NewsFeed,
-        labelName: 'Space Exploration News',
+        labelName: 'Space Flight News',
         icon: Icon(Icons.share),
       ),
       DrawerList(
