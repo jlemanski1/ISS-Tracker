@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:iss_tracker_v2/components/settings.dart';
 
 
 // Fetch JSON data from OpenNotify ISS position API
@@ -174,7 +175,7 @@ class _LocationMapState extends State<LocationMap> {
           rotateGesturesEnabled: false,
           scrollGesturesEnabled: false,
           markers: _markers.values.toSet(),
-          mapType: MapType.normal,
+          mapType: MapType.hybrid,
         ),
       ],
     );

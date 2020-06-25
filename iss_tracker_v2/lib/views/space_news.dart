@@ -26,7 +26,7 @@ class _SpaceNewsState extends State<SpaceNews> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
-              : [Colors.black38, Colors.black] ,
+              : [Colors.black38, Colors.black],
           )
         ),
       

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iss_tracker_v2/components/settings.dart';
 
 class ISSHistory extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _ISSHistoryState extends State<ISSHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[400],
+        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black26,
         centerTitle: true,
         title: Text(
           'History of the ISS',
@@ -25,7 +26,8 @@ class _ISSHistoryState extends State<ISSHistory> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blueGrey[400], Colors.indigo]
+            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.indigo]
+              : [Colors.black38, Colors.black],
           )
         ),
       ),
