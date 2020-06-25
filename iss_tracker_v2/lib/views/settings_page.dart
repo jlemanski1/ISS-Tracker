@@ -54,7 +54,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 SettingsTile.switchTile(
                   title: 'Toggle Theme',
-                  subtitle: 'Light Mode',
+                  subtitle: Settings.isLightTheme ? 'Light Mode' : 'Dark Mode',
                   leading: Icon(Icons.threesixty),
                   onToggle: (bool value) {
                     setState(() {

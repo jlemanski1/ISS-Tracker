@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iss_tracker_v2/components/settings.dart';
 
 class SpaceNews extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _SpaceNewsState extends State<SpaceNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[400],
+        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black26,
         centerTitle: true,
         title: Text("Space News",
         style: TextStyle(
@@ -24,7 +25,8 @@ class _SpaceNewsState extends State<SpaceNews> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blueGrey[400], Colors.pink[200]],
+            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
+              : [Colors.black38, Colors.black] ,
           )
         ),
       
