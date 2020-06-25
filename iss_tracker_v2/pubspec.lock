@@ -231,7 +231,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
-<<<<<<< HEAD
   store_redirect:
     dependency: "direct main"
     description:
@@ -239,8 +238,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-=======
->>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
   stream_channel:
     dependency: transitive
     description:
@@ -290,7 +287,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
-<<<<<<< HEAD
   webview_flutter:
     dependency: "direct main"
     description:
@@ -298,8 +294,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.22+1"
-=======
->>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
   xml:
     dependency: transitive
     description:

@@ -38,11 +38,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-<<<<<<< HEAD
         applicationId "tech.jlemanski.iss_tracker"
-=======
-        applicationId "tech.jlemanski.iss_tracker_v2"
->>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
