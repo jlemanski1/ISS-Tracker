@@ -7,6 +7,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:iss_tracker_v2/components/settings.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -105,7 +106,7 @@ class _AstroInfoState extends State<AstroInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[400],
+        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text(
           'Space Farers',
@@ -121,7 +122,8 @@ class _AstroInfoState extends State<AstroInfo> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blueGrey[400], Colors.blue[300]]
+            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.blue[300]]
+              : [Colors.black87, Colors.black],
           ),
         ),
         child: Column(
@@ -133,15 +135,13 @@ class _AstroInfoState extends State<AstroInfo> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'WorkSans',
-                  color: Colors.black,
+                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
                   fontSize: 24.0
                 ),
                 textAlign: TextAlign.center,
                 softWrap: true,
               ),
             ),
-            
-          
             Expanded (
               flex: 1,
               child: _astroList.length == 0 ? Center(
@@ -154,7 +154,7 @@ class _AstroInfoState extends State<AstroInfo> {
                   itemCount: _astroList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
-                      color: Colors.black38,
+                      color: Colors.transparent,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
@@ -162,7 +162,10 @@ class _AstroInfoState extends State<AstroInfo> {
                           ListTile(
                             leading: Text(
                               '${_astroList.elementAt(index).name.substring(0, 1)}',
-                              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green
+                                ),
                               textAlign: TextAlign.center,
                               textScaleFactor: 1.5,
                             ),
