@@ -30,6 +30,14 @@ class _ISSHistoryState extends State<ISSHistory> {
               : [Colors.black87, Colors.black],
           )
         ),
+      child: Center(
+        child: Text(
+          'Page under construction',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Settings.isLightTheme ? Colors.black : Colors.white
+          )
+        )),
       ),
     );
   }

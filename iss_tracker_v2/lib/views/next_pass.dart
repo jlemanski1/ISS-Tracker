@@ -196,9 +196,9 @@ class _NextPassTimesState extends State<NextPassTimes> {
                     onPressed: () {
                       popup2.show(
                         title: 'Where do I look?',
-                        content: "Overhead is 10 degrees in elevation for the observer. If you look up at the given time"
-                          +", you'll be able to see the craft soar across the sky. It will looking similar to a shooting star."
-                          +" You'll only have the given time to spot it before it will disappear beyond the horizon.",
+                        content: "The space station is visible because it reflects the light of the Sun, just as the moon does. It's "
+                          +"not bright enough to see during the day; It can only be spotted at dawn or dusk. You can spot it with your "
+                          +"bare eyes, no special equipment required!",
                         actions: [
                           popup2.button(
                             label: 'Close',
@@ -216,9 +216,9 @@ class _NextPassTimesState extends State<NextPassTimes> {
                     onPressed: () {
                       popup3.show(
                         title: 'Caution',
-                        content: "The time are less accurate for later times as the orbit of the ISS decays unpredictably over time."
+                        content: "The times are less accurate for later times as the orbit of the ISS decays unpredictably over time. "
                           +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
-                          +"re-boost, and debris avoidance. The green hour indicator let's you know that this time will be more accutrate.",
+                          +"re-boost, and debris avoidance. The soonest times will be most accurate.",
                         actions: [
                           popup3.button(
                             label: 'Close',
