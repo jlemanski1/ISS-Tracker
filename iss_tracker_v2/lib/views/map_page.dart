@@ -85,7 +85,7 @@ class _LocationMapState extends State<LocationMap> {
     
     // Retrieve Icon for ISS marker
     BitmapDescriptor.fromAssetImage(ImageConfiguration(
-      size: Size(128, 128)), 'assets/images/satelliteIcon.png').then((onValue) {
+      size: Size(128, 128)), 'assets/images/satelliteIconBlue.png').then((onValue) {
         markerIcon = onValue;
       });
 
