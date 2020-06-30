@@ -1,8 +1,10 @@
-<<<<<<< HEAD
 
 # Created by https://www.toptal.com/developers/gitignore/api/flutter,dart,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=flutter,dart,visualstudiocode
 
+# App SIgning Keys
+iss_tracker_v2/key.jks
+iss_tracker_v2/android/key.properties
 
 ### Dart ###
 # See https://www.dartlang.org/guides/libraries/private-files
@@ -134,4 +136,4 @@ iss_tracker_v2/app.*.map.json
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
->>>>>>> 96ba89f0e69b6c06c2a72d5f5b0caaae4d157ca9
+
