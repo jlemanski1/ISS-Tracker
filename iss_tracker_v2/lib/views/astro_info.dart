@@ -171,7 +171,7 @@ class _AstroInfoState extends State<AstroInfo> {
                             title: Text(
                               'Name: ${_astroList.elementAt(index).name}',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Settings.isLightTheme ? Colors.black : Colors.white,
                               ),
                             ),
                             subtitle: Text(
