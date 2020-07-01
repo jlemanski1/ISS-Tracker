@@ -105,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: 'Rate App!',
                   leading: Icon(Icons.star),
                   onTap: () {
-                    StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker');
+                    StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker_v2');
                   },
                 ),
               ],
