@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -30,6 +31,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
       isLive: true,
       forceHD: false,
       enableCaption: false,
+      hideControls: true,
       ),
     )..addListener(listener);
     _videoMetaData = const YoutubeMetaData();
@@ -63,6 +65,9 @@ class _LivestreamPageState extends State<LivestreamPage> {
   @override
   Widget build(BuildContext context) {
     return YoutubePlayerBuilder(
+      onExitFullScreen: () {
+        SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+      },
       player: YoutubePlayer(
         controller: _youtubeController,
         showVideoProgressIndicator: true,
@@ -109,7 +114,13 @@ class _LivestreamPageState extends State<LivestreamPage> {
                 : [Colors.black87, Colors.black],
             )
           ),
-        )
+          child: Column(
+            children: <Widget>[
+              player,
+
+            ]
+          ),
+        ),
       ),
     );
   }
