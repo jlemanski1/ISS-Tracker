@@ -22,6 +22,7 @@ dependencies:
   settings_ui: ^0.1.1
   webview_flutter: ^0.3.22+1
   store_redirect: ^1.0.2
+  video_player: ^0.10.11+1
 
 dev_dependencies:
   flutter_test:
