@@ -31,6 +31,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: Icon(Icons.map),
       ),
       DrawerList(
+        index: DrawerIndex.LiveStream,
+        labelName: 'Earth Live View',
+        icon: Icon(Icons.enhanced_encryption),
+      ),
+      DrawerList(
         index: DrawerIndex.Crew,
         labelName: 'People in Space',
         isAssetsImage: true,
@@ -268,6 +273,7 @@ enum DrawerIndex {
   PassTimes,
   NewsFeed,
   History,
+  LiveStream,
   Testing,
 }
 
