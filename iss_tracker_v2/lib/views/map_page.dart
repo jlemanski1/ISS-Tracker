@@ -90,7 +90,7 @@ class _LocationMapState extends State<LocationMap> {
       });
 
     // Update map marker for ISS position every 10 seconds
-    _iconTimer = new Timer.periodic(Duration(seconds: 10), (timer) {
+    _iconTimer = new Timer.periodic(Duration(seconds: 5), (timer) {
       _placeMarkerISSLocation();
     });
   }
