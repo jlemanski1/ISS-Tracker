@@ -2,11 +2,12 @@
 # ISS Tracker
 > Track the International Space Station's current location, find out next pass times for your area, who's onboard, and more!
 
-## Screenshots (Not current to new design)
-| ![loc-map](https://user-images.githubusercontent.com/12676218/65212935-630d2700-da61-11e9-998f-fc2ca00eca33.png)Location Map  |![residents-space](https://user-images.githubusercontent.com/12676218/65212937-630d2700-da61-11e9-8693-5b36bc64d44a.png)Residents of Space | ![next-pass](https://user-images.githubusercontent.com/12676218/65212936-630d2700-da61-11e9-9908-1ac27a6fd870.png)Next Pass Date & Times |
-|:---:|:---:|:---:|
+![Feature-Graphic](https://user-images.githubusercontent.com/12676218/86264253-7f58fb00-bb7f-11ea-8668-6d3a47cf71ec.png)
 
-*Screenshots do not reflect the current state of the app.*
+## Screenshots
+| ![loc-map](https://user-images.githubusercontent.com/12676218/86264235-7a944700-bb7f-11ea-923a-cacc8bbc7f80.jpg)Location Map  |![TransitTimes](https://user-images.githubusercontent.com/12676218/86264241-7bc57400-bb7f-11ea-9030-0f1b6111a3cf.jpg)Transit Times | ![next-pass](https://user-images.githubusercontent.com/12676218/86264245-7c5e0a80-bb7f-11ea-82c3-2c7037809ee3.jpg)Crew members |  ![Themes](https://user-images.githubusercontent.com/12676218/86264246-7cf6a100-bb7f-11ea-959c-396e4756cfee.png)Light & Dark Modes  |
+|:---:|:---:|:---:|:---:|
+
 
 ## Build
 #### Building an AppBundle
@@ -37,4 +38,4 @@ flutter build apk --split-per-abi --release/debug
 ### Attributions:
 - using [Open Notify](http://open-notify.org/Open-Notify-API/)
 	- Instrumental in fetching up to date and accurate, location information from NASA 
-
+- Readme styled with one of my other projects [MKD-editor](https://mkd-editor.herokuapp.com/)
