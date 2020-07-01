@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       title: 'ISS Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: NavigationHomeScreen(),
