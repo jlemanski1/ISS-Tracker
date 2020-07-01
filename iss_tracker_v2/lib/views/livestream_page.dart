@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:video_player/video_player.dart';
 
 class LivestreamPage extends StatefulWidget {
   @override
@@ -7,6 +8,24 @@ class LivestreamPage extends StatefulWidget {
 }
 
 class _LivestreamPageState extends State<LivestreamPage> {
+  VideoPlayerController _videoController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _videoController = VideoPlayerController.network('https://www.youtube.com/watch?v=06-Xm3_Ze1o')..initialize().then((_) {
+      // Ensure the first frame is shown after the video is initialized (before played button is pressed)
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +49,21 @@ class _LivestreamPageState extends State<LivestreamPage> {
           )
         ),
       child: Center(
-        child: Text(
-          'Page under construction',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Settings.isLightTheme ? Colors.black : Colors.white
-          )
-        )),
+        child: _videoController.value.initialized ? AspectRatio(
+          aspectRatio: _videoController.value.aspectRatio,
+          child: VideoPlayer(_videoController),
+        ) : CircularProgressIndicator(),
+      ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _videoController.value.isPlaying ? _videoController.pause() : _videoController.play();
+          });
+        },
+        child: Icon(
+          _videoController.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        ),
       ),
     );
   }
