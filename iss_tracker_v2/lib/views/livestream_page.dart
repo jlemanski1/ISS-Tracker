@@ -25,7 +25,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
     initialVideoId: _videoId,
     flags: const YoutubePlayerFlags(
       mute: true,
-      autoPlay: true,
+      autoPlay: false,
       disableDragSeek: true,
       loop: false,
       isLive: true,
@@ -117,7 +117,32 @@ class _LivestreamPageState extends State<LivestreamPage> {
           child: Column(
             children: <Widget>[
               player,
-
+              Padding(padding: EdgeInsets.symmetric(vertical: 4.0),),
+              Card(
+                color: Colors.transparent,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.info,
+                    color: Colors.amberAccent[400],
+                  ),
+                  title: Text(
+                    'HDEV payload reached end-of-life Aug. 22, 2019',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                  subtitle: Text(
+                    'A continuous feed of past recordings will be shown.',
+                    style: TextStyle(
+                      color: Colors.blueGrey[300],
+                      fontSize: 12.0,
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              )
             ]
           ),
         ),
