@@ -25,7 +25,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
     initialVideoId: _videoId,
     flags: const YoutubePlayerFlags(
       mute: true,
-      autoPlay: false,
+      autoPlay: true,
       disableDragSeek: true,
       loop: false,
       isLive: true,
