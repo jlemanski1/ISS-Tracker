@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LivestreamPage extends StatefulWidget {
@@ -184,8 +185,17 @@ class _LivestreamPageState extends State<LivestreamPage> {
               ),
               Card(
                 child: ListTile(
-                  onTap: (){
-                    // Navigate to NASA mission page https://www.nasa.gov/mission_pages/station/research/experiments/explorer/Investigation.html?#id=892
+                  leading: Icon(Icons.web),
+                  title: Text('View NASA mission page for more information.'),
+                  subtitle: Text(''),
+                  onTap: () async {
+                    // Navigate to NASA mission page
+                    const url = 'https://www.nasa.gov/mission_pages/station/research/experiments/explorer/Investigation.html?#id=892';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   }
                 )
               )
