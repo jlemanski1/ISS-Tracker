@@ -25,7 +25,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
     initialVideoId: _videoId,
     flags: const YoutubePlayerFlags(
       mute: true,
-      autoPlay: true,
+      autoPlay: false,
       disableDragSeek: true,
       loop: false,
       isLive: true,
@@ -136,12 +136,58 @@ class _LivestreamPageState extends State<LivestreamPage> {
                   subtitle: Text(
                     'A continuous feed of past recordings will be shown.',
                     style: TextStyle(
-                      color: Colors.blueGrey[300],
+                      color: Colors.blueGrey[200],
                       fontSize: 12.0,
                     ),
                     textAlign: TextAlign.start,
                   ),
                 ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 8.0, bottom: 4.0),),
+              Text(
+                'Mission Information',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                  fontFamily: 'WorkSans'
+                )
+              ),
+              Card(
+                color: Colors.transparent,
+                child: Column(
+                  children: <Widget> [
+                    ListTile(
+                      title: Text(
+                        'The High Definition Earth Viewing (HDEV) investigation places four different commercial'
+                        +' high definition cameras external to the ISS on the Columbus External Facility',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
+                    ListTile(
+                      title: Text(
+                        "Validate space-based performance of the cameras in a variety of modes.",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "Assessing the hardware's ability to survive and function in the extreme radioactive"
+                        +" of Low Earth Orbit (LEO) while taking Earth imagery."
+                      ),
+                    ),
+                  ]
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  onTap: (){
+                    // Navigate to NASA mission page https://www.nasa.gov/mission_pages/station/research/experiments/explorer/Investigation.html?#id=892
+                  }
+                )
               )
             ]
           ),
