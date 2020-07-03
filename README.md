@@ -23,7 +23,7 @@ flutter build apk --split-per-abi --release/debug
 ```
 
 ## Installation
-[Download the early access version from the Google Play store today!](https://play.google.com/store/apps/details?id=tech.jlemanski.iss_tracker)
+[Download the early access version from the Google Play store today!](https://play.google.com/store/apps/details?id=tech.jlemanski.iss_tracker_v2)
 #### Installing APK on a device
 1. Connect Android device to your computer with a USB cable
 2. ```bash
