@@ -111,7 +111,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
+              colors: Settings.isLightTheme ? [Colors.black, Colors.grey]
                 : [Colors.black87, Colors.black],
             )
           ),
@@ -154,7 +154,8 @@ class _LivestreamPageState extends State<LivestreamPage> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,
-                        fontFamily: 'WorkSans'
+                        fontFamily: 'WorkSans',
+                        color: Colors.white,
                       )
                     ),
                     ListTile(
@@ -162,7 +163,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                         'The High Definition Earth Viewing (HDEV) investigation places four different commercial'
                         +' high definition cameras external to the ISS on the Columbus External Facility',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.blueGrey[200],
                         ),
                       ),
                     ),
@@ -173,11 +174,15 @@ class _LivestreamPageState extends State<LivestreamPage> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0,
+                          color: Colors.white,
                         ),
                       ),
                       subtitle: Text(
                         "Assessing the hardware's ability to survive and function in the extreme radioactive"
-                        +" of Low Earth Orbit (LEO) while taking Earth imagery."
+                        +" of Low Earth Orbit (LEO) while taking Earth imagery.",
+                        style: TextStyle(
+                          color: Colors.blueGrey[200],
+                        ),
                       ),
                     ),
                     ListTile(
@@ -186,11 +191,15 @@ class _LivestreamPageState extends State<LivestreamPage> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0,
+                          color: Colors.white,
                         ),
                       ),
                       subtitle: Text(
                         'NASA HUNCH program students fabricated some of the HDEV flight components'
                         +' and most of the HDEV operation is performed by student teams.',
+                        style: TextStyle(
+                          color: Colors.blueGrey[200],
+                        ),
                       ),
                     )
                   ]
@@ -199,9 +208,16 @@ class _LivestreamPageState extends State<LivestreamPage> {
               Card(
                 color: Colors.transparent,
                 child: ListTile(
-                  leading: Icon(Icons.web),
-                  title: Text('View NASA mission page for more information.'),
-                  subtitle: Text(''),
+                  leading: Icon(
+                    Icons.web,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    'View NASA mission page for more information.',
+                    style: TextStyle(
+                      color: Colors.blueGrey[200],
+                    ),
+                  ),
                   onTap: () async {
                     // Navigate to NASA mission page
                     const url = 'https://www.nasa.gov/mission_pages/station/research/experiments/explorer/Investigation.html?#id=892';
