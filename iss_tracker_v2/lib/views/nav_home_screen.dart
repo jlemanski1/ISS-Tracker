@@ -5,6 +5,7 @@ import 'package:iss_tracker_v2/components/drawer_home.dart';
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/views/astro_info.dart';
 import 'package:iss_tracker_v2/views/iss_history.dart';
+import 'package:iss_tracker_v2/views/livestream_page.dart';
 import 'package:iss_tracker_v2/views/map_page.dart';
 import 'package:iss_tracker_v2/views/next_pass.dart';
 import 'package:iss_tracker_v2/views/space_news.dart';
@@ -54,6 +55,10 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       if (drawerIndex == DrawerIndex.HOME) {
         setState(() {
           screenView = LocationMap();
+        });
+      } else if (drawerIndex == DrawerIndex.LiveStream) {
+        setState(() {
+          screenView = LivestreamPage();
         });
       } else if (drawerIndex == DrawerIndex.Crew) {
         setState(() {
