@@ -14,8 +14,8 @@ class _LivestreamPageState extends State<LivestreamPage> {
   PlayerState _playerState;
   YoutubeMetaData _videoMetaData;
 
-  double _volume = 100;
-  bool _muted = true;
+  //double _volume = 100;
+  //bool _muted = true;
   bool _isPlayerReady = false;
   final String _videoId = 'XBPjVzSoepo';
 
@@ -26,7 +26,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
     initialVideoId: _videoId,
     flags: const YoutubePlayerFlags(
       mute: true,
-      autoPlay: false,
+      autoPlay: true,
       disableDragSeek: true,
       loop: false,
       isLive: true,
@@ -215,7 +215,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                   title: Text(
                     'View NASA mission page for more information.',
                     style: TextStyle(
-                      color: Colors.blueGrey[200],
+                      color: Colors.blueGrey[100],
                     ),
                   ),
                   onTap: () async {
