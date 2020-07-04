@@ -145,18 +145,18 @@ class _LivestreamPageState extends State<LivestreamPage> {
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 8.0, bottom: 4.0),),
-              Text(
-                'Mission Information',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                  fontFamily: 'WorkSans'
-                )
-              ),
               Card(
                 color: Colors.transparent,
                 child: Column(
                   children: <Widget> [
+                    Text(
+                      'Mission Information',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        fontFamily: 'WorkSans'
+                      )
+                    ),
                     ListTile(
                       title: Text(
                         'The High Definition Earth Viewing (HDEV) investigation places four different commercial'
@@ -166,7 +166,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                         ),
                       ),
                     ),
-                    Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
+                    Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
                     ListTile(
                       title: Text(
                         "Validate space-based performance of the cameras in a variety of modes.",
@@ -180,10 +180,24 @@ class _LivestreamPageState extends State<LivestreamPage> {
                         +" of Low Earth Orbit (LEO) while taking Earth imagery."
                       ),
                     ),
+                    ListTile(
+                      title: Text(
+                        'Educational Outreach',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                      subtitle: Text(
+                        'NASA HUNCH program students fabricated some of the HDEV flight components'
+                        +' and most of the HDEV operation is performed by student teams.',
+                      ),
+                    )
                   ]
                 ),
               ),
               Card(
+                color: Colors.transparent,
                 child: ListTile(
                   leading: Icon(Icons.web),
                   title: Text('View NASA mission page for more information.'),
