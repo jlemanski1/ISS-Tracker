@@ -14,7 +14,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   final Completer<WebViewController> _webController = Completer<WebViewController>();
 
-  
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +111,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 SettingsTile(
                   title: 'Version Number',
-                  subtitle: 'x.x.x',
+                  subtitle: Settings.getAppVersion(),
                 )
               ],
             ),
