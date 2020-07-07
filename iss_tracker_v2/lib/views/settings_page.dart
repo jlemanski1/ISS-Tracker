@@ -4,6 +4,7 @@ import 'package:settings_ui/settings_ui.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:store_redirect/store_redirect.dart';
+import 'package:package_info/package_info.dart';
 
 class SettingsPage extends StatefulWidget {
 
@@ -13,6 +14,12 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   final Completer<WebViewController> _webController = Completer<WebViewController>();
+
+
+   dynamic getAppVersion() async {
+    PackageInfo pkgInfo = await PackageInfo.fromPlatform();
+    return pkgInfo.version;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +115,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker_v2');
                   },
                 ),
+                SettingsTile(
+                  title: 'Version Number',
+                  subtitle: getAppVersion(),
+                )
               ],
             ),
           ],
