@@ -4,6 +4,8 @@ import 'package:settings_ui/settings_ui.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:store_redirect/store_redirect.dart';
+import 'package:package_info/package_info.dart';
+
 
 class SettingsPage extends StatefulWidget {
 
@@ -13,6 +15,22 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   final Completer<WebViewController> _webController = Completer<WebViewController>();
+  String appVersion, buildNum;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Get app version & build number to display on settings tile
+    PackageInfo.fromPlatform().then((PackageInfo pkgInfo) {
+      setState(() {
+        appVersion = pkgInfo.version;
+        buildNum = pkgInfo.buildNumber;
+        
+      });
+    });
+  }  
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   subtitle: 'English',
                   leading: Icon(Icons.language),
                   onTap: () {
-
+                    // Nav to language selection screen after adding localization features
                   },
                 ),
                 SettingsTile.switchTile(
@@ -108,6 +126,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker_v2');
                   },
                 ),
+                SettingsTile(
+                  title: 'Version Number',
+                  subtitle: '$appVersion+$buildNum',
+                )
               ],
             ),
           ],
