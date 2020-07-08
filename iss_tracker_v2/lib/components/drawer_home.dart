@@ -37,7 +37,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.Crew,
-        labelName: 'People in Space',
+        labelName: 'Astronauts',
         isAssetsImage: true,
         imageName: 'assets/images/supportIcon.png',
       ),
