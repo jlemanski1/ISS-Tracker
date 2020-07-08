@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -159,6 +160,15 @@ class _AstroInfoState extends State<AstroInfo> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           ListTile(
+                            onTap: () async {
+                              // Navigate to astronaut's wiki page
+                              String url = 'https://en.wikipedia.org/wiki/Special:Search/${_astroList.elementAt(index).name}';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
                             leading: Text(
                               '${_astroList.elementAt(index).name.substring(0, 1)}',
                               style: TextStyle(
