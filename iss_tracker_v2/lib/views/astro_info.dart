@@ -110,7 +110,7 @@ class _AstroInfoState extends State<AstroInfo> {
         backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text(
-          'Space Farers',
+          'Astronauts',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -132,12 +132,26 @@ class _AstroInfoState extends State<AstroInfo> {
             Padding(
               padding: const EdgeInsets.only(top: 32.0, left: 8.0, bottom: 24.0),
               child: Text(
-                "The ${_astroList.length} people currently in space, are:",
+                "There are ${_astroList.length} people currently in space, they are:",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'WorkSans',
                   color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
                   fontSize: 24.0
+                ),
+                textAlign: TextAlign.center,
+                softWrap: true,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0.0),
+              child: Text(
+                'Tap on the tiles to learn more about each crew member',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'WorkSans',
+                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
+                  fontSize: 12.0
                 ),
                 textAlign: TextAlign.center,
                 softWrap: true,
@@ -169,14 +183,9 @@ class _AstroInfoState extends State<AstroInfo> {
                                 throw 'Could not launch $url';
                               }
                             },
-                            leading: Text(
-                              '${_astroList.elementAt(index).name.substring(0, 1)}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green
-                                ),
-                              textAlign: TextAlign.center,
-                              textScaleFactor: 1.5,
+                            // TODO: wiki api fetch image url from page
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(''),
                             ),
                             title: Text(
                               'Name: ${_astroList.elementAt(index).name}',
