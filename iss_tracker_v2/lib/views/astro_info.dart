@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:iss_tracker_v2/components/wiki_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /* More info
@@ -84,16 +85,27 @@ class AstroInfo extends StatefulWidget {
 
 class _AstroInfoState extends State<AstroInfo> {
   List<Astronaut> _astroList = [];  // List of astronauts
+  WikiPage _wikiQuery;
+  String _astroImgUrl;
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
     return astroList.astros;
   }
+
   
   @override
   void initState() {
     super.initState();
     
+    WikiPhoto.fetchWikiPage().then((value) {
+      setState(() {
+        _wikiQuery = value;
+        _astroImgUrl = _wikiQuery.query.pages[0].thumbnail.source;
+      });
+    });
+
+
     astroListBuilder().then((value) {
       setState(() {
       _astroList = value; 
@@ -185,7 +197,7 @@ class _AstroInfoState extends State<AstroInfo> {
                             },
                             // TODO: wiki api fetch image url from page
                             leading: CircleAvatar(
-                              backgroundImage: NetworkImage(''),
+                              backgroundImage: NetworkImage(_astroImgUrl),
                             ),
                             title: Text(
                               'Name: ${_astroList.elementAt(index).name}',
