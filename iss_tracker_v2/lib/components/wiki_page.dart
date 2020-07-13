@@ -10,15 +10,33 @@ import 'dart:convert';
 
 
 class WikiPhoto {
-  static final String url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=ChrisCassidy&gpslimit=20';
 
-  static Future<WikiPage> fetchWikiPage() async {
+  // Returns the WikiPage for the given url
+  static Future<WikiPage> fetchWikiPage(url) async {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
       // Server returns OK response, parse data
-      //print(AstroData.fromJson(json.decode(response.body)));
       return WikiPage.fromJson(json.decode(response.body));
+    } else {
+      throw HttpException(
+        'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
+        uri: Uri.parse(url)
+      );
+    }
+  }
+
+
+  // Returns the article image of a given wikipedia url
+  static Future<String> fetchWikiPhoto(url) async {
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      //Server returns OK response, parse data
+      WikiPage _page = await fetchWikiPage(url);
+      String _imgUrl = _page.query.pages[0].thumbnail.source;
+
+      return _imgUrl;
     } else {
       throw HttpException(
         'Unexpected status code ${response.statusCode}: ${response.reasonPhrase}',
