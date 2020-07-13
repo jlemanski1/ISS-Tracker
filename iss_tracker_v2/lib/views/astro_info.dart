@@ -77,6 +77,7 @@ class Astronaut {
 }
 
 
+//  static final String url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=ChrisCassidy&gpslimit=20';
 
 class AstroInfo extends StatefulWidget {
   @override
@@ -85,8 +86,7 @@ class AstroInfo extends StatefulWidget {
 
 class _AstroInfoState extends State<AstroInfo> {
   List<Astronaut> _astroList = [];  // List of astronauts
-  WikiPage _wikiQuery;
-  String _astroImgUrl;
+  List<dynamic> _astroImgUrls = [];
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
@@ -97,21 +97,44 @@ class _AstroInfoState extends State<AstroInfo> {
   @override
   void initState() {
     super.initState();
-    
-    WikiPhoto.fetchWikiPage().then((value) {
-      setState(() {
-        _wikiQuery = value;
-        _astroImgUrl = _wikiQuery.query.pages[0].thumbnail.source;
-      });
-    });
 
-
+    // Build list of astronauts and set to state list
     astroListBuilder().then((value) {
       setState(() {
       _astroList = value; 
       });
+
+      
+      /*
+      for (Astronaut astro in _astroList) {
+        WikiPhoto.fetchWikiPage('https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${astro.name.replaceAll(" ", "")}&gpslimit=20').then((value) {
+          var _page = value;
+          setState(() {
+            _astroImgUrls.add(_page.query.pages[0].thumbnail.source);
+          });
+        });
+      }
+      */
+
+      //buildAstroImgs();
+      //addToList();
     });
+  }
+
+
+
+  Future<String> buildAstroImgs(name) async{
+    print('\nName: $name \n');
+    String url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=$name&gpslimit=20';
     
+    String _imgUrl;
+    WikiPhoto.fetchWikiPhoto(url).then((value) {
+      _imgUrl = value;
+      
+      print('\nImgURL: $_imgUrl');
+    });
+
+      return _imgUrl;
   }
 
 
@@ -196,8 +219,24 @@ class _AstroInfoState extends State<AstroInfo> {
                               }
                             },
                             // TODO: wiki api fetch image url from page
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(_astroImgUrl),
+                            leading: FutureBuilder(
+                              future: buildAstroImgs(_astroList.elementAt(index).name.replaceAll(' ', '')),
+                              builder: (BuildContext context, snapshot) {
+                                // Show loading indicator until image is available
+                                if (!snapshot.hasData) {
+                                  return CircularProgressIndicator();
+                                } else {
+                                  print('\n\n\t\tSNAPSHOT.DATA\n${snapshot.data}\n\n\n');
+
+                                  
+                          
+                                  return CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      snapshot.data
+                                    ),
+                                  );
+                                }
+                              }
                             ),
                             title: Text(
                               'Name: ${_astroList.elementAt(index).name}',
