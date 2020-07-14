@@ -33,9 +33,11 @@ class WikiPhoto {
 
     if (response.statusCode == 200) {
       //Server returns OK response, parse data
-      WikiPage _page = await fetchWikiPage(url);
-      String _imgUrl = _page.query.pages[0].thumbnail.source;
-
+      String _imgUrl;
+      await fetchWikiPage(url).then((value) {
+        _imgUrl = value.query.pages[0].thumbnail.source;
+      });
+      
       return _imgUrl;
     } else {
       throw HttpException(
