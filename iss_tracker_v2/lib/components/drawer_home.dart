@@ -1,8 +1,11 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iss_tracker_v2/views/settings_page.dart';
+import 'space_icons.dart';
 import 'theme.dart';
+
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key key, this.screenIndex, this.iconAnimationController, this.callBackIndex}) : super(key: key);
@@ -17,9 +20,20 @@ class HomeDrawer extends StatefulWidget {
 
 class _HomeDrawerState extends State<HomeDrawer> {
   List<DrawerList> drawerList;
+  final String issMap = 'assets/images/iss.svg';
+  Widget issSvg;
+  
   @override
   void initState() {
     setdDrawerListArray();
+
+    setState(() {
+      issSvg = SvgPicture.asset(
+        issMap,
+        semanticsLabel: 'ISS image',
+
+      );
+    });
     super.initState();
   }
 
@@ -28,33 +42,32 @@ class _HomeDrawerState extends State<HomeDrawer> {
       DrawerList(
         index: DrawerIndex.HOME,
         labelName: 'ISS Location',
-        icon: Icon(Icons.map),
+        icon: Icon(SpaceIcons.iss),
       ),
       DrawerList(
         index: DrawerIndex.LiveStream,
         labelName: 'Earth Live View',
-        icon: Icon(Icons.enhanced_encryption),
+        icon: Icon(SpaceIcons.satellite),
       ),
       DrawerList(
         index: DrawerIndex.Crew,
-        labelName: 'People in Space',
-        isAssetsImage: true,
-        imageName: 'assets/images/supportIcon.png',
+        labelName: 'Crew members',
+        icon: Icon(SpaceIcons.astronaut),
       ),
       DrawerList(
         index: DrawerIndex.PassTimes,
         labelName: 'Next Pass Times',
-        icon: Icon(Icons.calendar_today),
+        icon: Icon(SpaceIcons.telescope),
       ),
       DrawerList(
         index: DrawerIndex.NewsFeed,
         labelName: 'Space Flight News',
-        icon: Icon(Icons.share),
+        icon: Icon(SpaceIcons.space_module),
       ),
       DrawerList(
         index: DrawerIndex.History,
         labelName: 'History of the ISS',
-        icon: Icon(Icons.info),
+        icon: Icon(Icons.info_outline, color: Colors.black,),
       ),
     ];
   }
@@ -92,13 +105,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               boxShadow: <BoxShadow>[
-                                BoxShadow(color: AppTheme.grey.withOpacity(0.6), offset: const Offset(2.0, 4.0), blurRadius: 8),
+                                BoxShadow(color: AppTheme.white.withOpacity(0.6), offset: const Offset(2.0, 4.0), blurRadius: 8),
                               ],
                             ),
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(Radius.circular(60.0)),
-                              child: Image.asset('assets/images/userImage.jpg'),
-                            ),
+                            child: issSvg,
                           ),
                         ),
                       );
