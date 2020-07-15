@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;
 
 
@@ -65,6 +68,7 @@ class _LocationMapState extends State<LocationMap> {
   GoogleMapController mapController;
   final Map<String, Marker> _markers = {};
   BitmapDescriptor markerIcon;
+  BitmapDescriptor issIcon;
   Future<Post> post;
   Timer _iconTimer;
 
@@ -82,6 +86,12 @@ class _LocationMapState extends State<LocationMap> {
         issPos = value;
       });
     });
+
+
+    _svgToBitmapDescriptor(context, 'assets/images/iss.svg').then((value) {
+      issIcon = value;
+    });
+    
     
     // Retrieve Icon for ISS marker
     BitmapDescriptor.fromAssetImage(ImageConfiguration(
@@ -101,6 +111,23 @@ class _LocationMapState extends State<LocationMap> {
     super.dispose();
   }
 
+  Future<BitmapDescriptor> _svgToBitmapDescriptor(BuildContext context, String assetName) async {
+    String svgName = await DefaultAssetBundle.of(context).loadString(assetName);
+    DrawableRoot svgDrawableRoot = await svg.fromSvgString(svgName, null);
+
+    // Calculate Size
+    MediaQueryData queryData = MediaQuery.of(context);
+    double devicePixelRatio = queryData.devicePixelRatio;
+    double width = 32 * devicePixelRatio;
+    double height = 32 * devicePixelRatio;
+
+    ui.Picture picture = svgDrawableRoot.toPicture(size: Size(width, height));
+    ui.Image image = await picture.toImage(width.toInt(), height.toInt());
+    ByteData bytes = await image.toByteData(format: ui.ImageByteFormat.png);
+    
+    return BitmapDescriptor.fromBytes(bytes.buffer.asUint8List());
+  }
+
 
   void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
@@ -112,7 +139,7 @@ class _LocationMapState extends State<LocationMap> {
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId(issLoc.time.toString()),
-        icon: markerIcon,
+        icon: issIcon,
         position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
@@ -132,7 +159,7 @@ class _LocationMapState extends State<LocationMap> {
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId(issLoc.time.toString()),
-        icon: markerIcon,
+        icon: issIcon,
         position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
