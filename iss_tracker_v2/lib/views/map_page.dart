@@ -67,7 +67,8 @@ class LocationMap extends StatefulWidget {
 class _LocationMapState extends State<LocationMap> {
   GoogleMapController mapController;
   final Map<String, Marker> _markers = {};
-  BitmapDescriptor issIcon;
+ // BitmapDescriptor issIcon;
+  BitmapDescriptor markerIcon;
   Future<Post> post;
   Timer _iconTimer;
 
@@ -86,13 +87,16 @@ class _LocationMapState extends State<LocationMap> {
       });
     });
 
-    //TODO: Make colourful png from iss.svg. then reimplement png to BitmapDescriptor
+    // Build BitmapDescriptor from the ISS image for display on the map
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(32, 32)), 'assets/images/iss.png').then((value) {
+      markerIcon = value;
+    });
 
-
+    /*
     _svgToBitmapDescriptor(context, 'assets/images/iss.svg').then((value) {
       issIcon = value;
     });
-    
+    */
 
     // Update map marker for ISS position every 5 seconds
     _iconTimer = new Timer.periodic(Duration(seconds: 5), (timer) {
@@ -134,7 +138,7 @@ class _LocationMapState extends State<LocationMap> {
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId(issLoc.time.toString()),
-        icon: issIcon,
+        icon: markerIcon,
         position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
@@ -154,7 +158,7 @@ class _LocationMapState extends State<LocationMap> {
       _markers.clear();
       final marker = Marker(
         markerId: MarkerId(issLoc.time.toString()),
-        icon: issIcon,
+        icon: markerIcon,
         position: LatLng(double.parse(issLoc.position.lat), double.parse(issLoc.position.long)),
         infoWindow: InfoWindow(
           title: 'Current ISS Location',
