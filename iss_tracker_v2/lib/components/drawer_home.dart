@@ -1,8 +1,11 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iss_tracker_v2/views/settings_page.dart';
+import 'space_icons.dart';
 import 'theme.dart';
+
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key key, this.screenIndex, this.iconAnimationController, this.callBackIndex}) : super(key: key);
@@ -17,9 +20,26 @@ class HomeDrawer extends StatefulWidget {
 
 class _HomeDrawerState extends State<HomeDrawer> {
   List<DrawerList> drawerList;
+  final String issMap = 'assets/images/iss.svg';
+  Widget issSvg;
+  //final String issMapIcon = 'assets/images/';
+  //final String issMapIcon = 'assets/images/';
+  //final String issMapIcon = 'assets/images/';
+  //final String issMapIcon = 'assets/images/';
+  //final String issMapIcon = 'assets/images/';
+  
+
+
   @override
   void initState() {
     setdDrawerListArray();
+
+    setState(() {
+      issSvg = SvgPicture.asset(
+        issMap,
+        semanticsLabel: 'ISS image'
+      );
+    });
     super.initState();
   }
 
@@ -28,7 +48,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       DrawerList(
         index: DrawerIndex.HOME,
         labelName: 'ISS Location',
-        icon: Icon(Icons.map),
+        icon: Icon(SpaceIcons.iss),
       ),
       DrawerList(
         index: DrawerIndex.LiveStream,
@@ -37,7 +57,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.Crew,
-        labelName: 'People in Space',
+        labelName: 'Crew members',
         isAssetsImage: true,
         imageName: 'assets/images/supportIcon.png',
       ),
