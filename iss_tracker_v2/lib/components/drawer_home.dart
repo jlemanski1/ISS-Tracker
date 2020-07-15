@@ -67,7 +67,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       DrawerList(
         index: DrawerIndex.History,
         labelName: 'History of the ISS',
-        icon: Icon(Icons.info_outline),
+        icon: Icon(Icons.info_outline, color: Colors.black,),
       ),
     ];
   }

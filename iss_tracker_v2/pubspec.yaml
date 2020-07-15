@@ -41,7 +41,6 @@ flutter:
 
   assets:
     - assets/images/userImage.jpg
-    - assets/images/supportIcon.png
     - assets/images/satelliteIconBlue.png
     - assets/images/astronaut.svg
     - assets/images/iss.svg
