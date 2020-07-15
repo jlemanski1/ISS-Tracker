@@ -86,6 +86,8 @@ class _LocationMapState extends State<LocationMap> {
       });
     });
 
+    //TODO: Make colourful png from iss.svg. then reimplement png to BitmapDescriptor
+
 
     _svgToBitmapDescriptor(context, 'assets/images/iss.svg').then((value) {
       issIcon = value;
