@@ -8,6 +8,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:iss_tracker_v2/components/wiki_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -75,6 +77,7 @@ class Astronaut {
 }
 
 
+//  static final String url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=ChrisCassidy&gpslimit=20';
 
 class AstroInfo extends StatefulWidget {
   @override
@@ -83,22 +86,69 @@ class AstroInfo extends StatefulWidget {
 
 class _AstroInfoState extends State<AstroInfo> {
   List<Astronaut> _astroList = [];  // List of astronauts
+  //List<String> _astroImgUrls = [];
+  //String _astroUrl;
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
     return astroList.astros;
   }
+
   
   @override
   void initState() {
     super.initState();
-    
+
+    // Build list of astronauts and set to state list
     astroListBuilder().then((value) {
       setState(() {
       _astroList = value; 
       });
+
+      /*
+      WikiPhoto.fetchWikiPhoto(
+        'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=ChrisCassidy&gpslimit=20'
+      ).then((value) {
+        setState(() {
+          _astroUrl = value;
+        });
+      });
+      */
+
+      /*
+      for (var astro in _astroList) {
+        print ('astro: ${astro.name}');
+        
+        WikiPhoto.fetchWikiPhoto(
+          'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${astro.name.replaceAll(" ", "")}&gpslimit=20'
+        ).then((value) {
+          _astroImgUrls.add(value);
+          print('\nVal: $value');
+        });
+        print('\nAstro IMGs: $_astroImgUrls');
+      }
+      */
+      //buildAstroImgs();
+      //addToList();
     });
+
+  }
+
+
+
+  Future<String> buildAstroImgs(name) async{
+    print('\nName: $name \n');
+    name.replaceAll(' ', ''); // Strip spaces for use in url
+    String url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=$name&gpslimit=20';
     
+    String _imgUrl;
+    WikiPhoto.fetchWikiPhoto(url).then((value) {
+      _imgUrl = value;
+      
+      print('\nImgURL: $_imgUrl');
+    });
+
+      return _imgUrl;
   }
 
 
@@ -109,7 +159,7 @@ class _AstroInfoState extends State<AstroInfo> {
         backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text(
-          'Space Farers',
+          'Astronauts',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -131,12 +181,26 @@ class _AstroInfoState extends State<AstroInfo> {
             Padding(
               padding: const EdgeInsets.only(top: 32.0, left: 8.0, bottom: 24.0),
               child: Text(
-                "The ${_astroList.length} people currently in space, are:",
+                "There are ${_astroList.length} people currently in space, they are:",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'WorkSans',
                   color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
                   fontSize: 24.0
+                ),
+                textAlign: TextAlign.center,
+                softWrap: true,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0.0),
+              child: Text(
+                'Tap on the tiles to learn more about each crew member',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'WorkSans',
+                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
+                  fontSize: 12.0
                 ),
                 textAlign: TextAlign.center,
                 softWrap: true,
@@ -159,14 +223,20 @@ class _AstroInfoState extends State<AstroInfo> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           ListTile(
-                            leading: Text(
-                              '${_astroList.elementAt(index).name.substring(0, 1)}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green
-                                ),
-                              textAlign: TextAlign.center,
-                              textScaleFactor: 1.5,
+                            onTap: () async {
+                              // Navigate to astronaut's wiki page
+                              String url = 'https://en.wikipedia.org/wiki/Special:Search/${_astroList.elementAt(index).name}';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                ''
+                              ),
+                              backgroundColor: Colors.black12,
                             ),
                             title: Text(
                               'Name: ${_astroList.elementAt(index).name}',
