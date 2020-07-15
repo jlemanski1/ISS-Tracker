@@ -86,8 +86,8 @@ class AstroInfo extends StatefulWidget {
 
 class _AstroInfoState extends State<AstroInfo> {
   List<Astronaut> _astroList = [];  // List of astronauts
-  List<String> _astroImgUrls = [];
-  String _astroUrl;
+  //List<String> _astroImgUrls = [];
+  //String _astroUrl;
 
   Future<List> astroListBuilder() async {
     var astroList = await fetchAstros();
@@ -105,6 +105,7 @@ class _AstroInfoState extends State<AstroInfo> {
       _astroList = value; 
       });
 
+      /*
       WikiPhoto.fetchWikiPhoto(
         'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=ChrisCassidy&gpslimit=20'
       ).then((value) {
@@ -112,6 +113,7 @@ class _AstroInfoState extends State<AstroInfo> {
           _astroUrl = value;
         });
       });
+      */
 
       /*
       for (var astro in _astroList) {
@@ -232,8 +234,9 @@ class _AstroInfoState extends State<AstroInfo> {
                             },
                             leading: CircleAvatar(
                               backgroundImage: NetworkImage(
-                                _astroUrl
+                                ''
                               ),
+                              backgroundColor: Colors.black12,
                             ),
                             title: Text(
                               'Name: ${_astroList.elementAt(index).name}',
