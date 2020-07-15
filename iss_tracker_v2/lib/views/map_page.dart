@@ -67,7 +67,6 @@ class LocationMap extends StatefulWidget {
 class _LocationMapState extends State<LocationMap> {
   GoogleMapController mapController;
   final Map<String, Marker> _markers = {};
-  BitmapDescriptor markerIcon;
   BitmapDescriptor issIcon;
   Future<Post> post;
   Timer _iconTimer;
@@ -92,14 +91,8 @@ class _LocationMapState extends State<LocationMap> {
       issIcon = value;
     });
     
-    
-    // Retrieve Icon for ISS marker
-    BitmapDescriptor.fromAssetImage(ImageConfiguration(
-      size: Size(128, 128)), 'assets/images/satelliteIconBlue.png').then((onValue) {
-        markerIcon = onValue;
-      });
 
-    // Update map marker for ISS position every 10 seconds
+    // Update map marker for ISS position every 5 seconds
     _iconTimer = new Timer.periodic(Duration(seconds: 5), (timer) {
       _placeMarkerISSLocation();
     });
@@ -118,8 +111,8 @@ class _LocationMapState extends State<LocationMap> {
     // Calculate Size
     MediaQueryData queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
-    double width = 32 * devicePixelRatio;
-    double height = 32 * devicePixelRatio;
+    double width = 42 * devicePixelRatio;
+    double height = 42 * devicePixelRatio;
 
     ui.Picture picture = svgDrawableRoot.toPicture(size: Size(width, height));
     ui.Image image = await picture.toImage(width.toInt(), height.toInt());
