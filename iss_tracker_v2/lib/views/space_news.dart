@@ -29,14 +29,12 @@ class _SpaceNewsState extends State<SpaceNews> {
               : [Colors.black87, Colors.black],
           )
         ),
-      child: Center(
-        child: Text(
-          'Page under construction',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Settings.isLightTheme ? Colors.black : Colors.white
-          )
-        )),
+        child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index) {
+            return NewsCard();
+          }
+        )
       ),
     );
   }
