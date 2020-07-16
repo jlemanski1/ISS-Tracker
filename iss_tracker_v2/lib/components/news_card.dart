@@ -1,10 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/news_posts.dart';
 import 'package:http/http.dart' as http;
-import 'package:iss_tracker_v2/components/wiki_page.dart';
-
 
 
 class NewsCard extends StatefulWidget {
@@ -40,42 +37,43 @@ class _NewsCardState extends State<NewsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 5/2,
-      child: Card(
-        elevation: 2,
-        child: Container(
-          margin: const EdgeInsets.all(4.0),
-          padding: const EdgeInsets.all(4.0),
-          child: Column(
-            children: <Widget>[
-              Text('Teeest'),
-              _Post(),
-              Divider(color: Colors.grey,),
-              _PostDetails(),
-            ],
+    return newsPosts.docs == null ? CircularProgressIndicator() : 
+    ListView.builder(
+      itemCount: newsPosts.docs.length,
+      itemBuilder: (BuildContext context, int index) {
+        return AspectRatio(
+          aspectRatio: 5/2,
+          child: Card(
+            elevation: 2,
+            child: Container(
+              margin: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(4.0),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: Image.network(newsPosts.docs[index].url),
+                        ),
+                        _PostTitleAndSummary()
+                      ]
+                    ),
+                  ),
+                  Divider(color: Colors.grey,),
+                  _PostDetails(),
+                ],
+              ),
+            )
           ),
-        )
-      ),
+        );
+      },
     );
   }
 }
 
-
-class _Post extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
-      child: Row(
-        children: <Widget>[
-          _PostImage(),
-          _PostTitleAndSummary(),
-        ],
-      ),
-    );
-  }
-}
 
 
 class _PostImage extends StatelessWidget {

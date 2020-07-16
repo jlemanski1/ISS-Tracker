@@ -30,12 +30,7 @@ class _SpaceNewsState extends State<SpaceNews> {
               : [Colors.black87, Colors.black],
           )
         ),
-        child: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return NewsCard();
-          }
-        )
+        child: NewsCard()
       ),
     );
   }
