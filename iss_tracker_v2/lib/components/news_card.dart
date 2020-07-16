@@ -7,11 +7,17 @@ class NewsCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 5/2,
       child: Card(
-        child: Column(
-          children: <Widget>[
-            _Post(),
-            _PostDetails(),
-          ],
+        elevation: 2,
+        child: Container(
+          margin: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4.0),
+          child: Column(
+            children: <Widget>[
+              _Post(),
+              Divider(color: Colors.grey,),
+              _PostDetails(),
+            ],
+          ),
         )
       ),
     );
@@ -57,6 +63,7 @@ class _PostTitleAndSummary extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Text(title),
+          SizedBox(height: 2.0),
           Text(summary),
         ],
       )

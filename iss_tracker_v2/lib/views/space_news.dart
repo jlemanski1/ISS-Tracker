@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iss_tracker_v2/components/news_card.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 
 class SpaceNews extends StatefulWidget {
