@@ -2,11 +2,6 @@ import 'package:meta/meta.dart';
 import 'dart:convert';
 
 
-// To parse this JSON data, do
-//
-//     final newsPosts = newsPostsFromJson(jsonString);
-//
-
 class NewsPosts {
     NewsPosts({
         @required this.docs,
