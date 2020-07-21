@@ -68,7 +68,9 @@ class _NewsCardState extends State<NewsCard> {
                                 '${newsPosts.docs[index].title}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  
                                 ),
+                                textAlign: TextAlign.end,
                               )
                             ],
                           )
@@ -77,7 +79,17 @@ class _NewsCardState extends State<NewsCard> {
                     ),
                   ),
                   Divider(color: Colors.grey,),
-                  _PostDetails(),
+                  Row(
+                    children: <Widget>[
+                      Text('Tags'),
+                      Text(
+                        '${newsPosts.docs[index].publishedDate}',
+                        style: TextStyle(
+                          
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             )
@@ -95,7 +107,6 @@ class _PostDetails extends StatelessWidget {
     return Row(
       children: <Widget>[
         _Author(),
-        _DatePosted(),
       ],
     );
   }
@@ -108,17 +119,6 @@ class _Author extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Text('Author'),
-    );
-  }
-}
-
-
-class _DatePosted extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Text('Date Posted'),
     );
   }
 }
