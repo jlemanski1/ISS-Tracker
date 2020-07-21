@@ -37,9 +37,8 @@ class _NewsCardState extends State<NewsCard> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return !_isLoaded ? Container(
+  Container loadingIndicator() {
+    return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -49,7 +48,12 @@ class _NewsCardState extends State<NewsCard> {
         )
       ),
       child: Center(child: CircularProgressIndicator(),),
-    ) :
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return !_isLoaded ?  loadingIndicator() :
     ListView.builder(
       itemCount: newsPosts.docs.length,
       itemBuilder: (BuildContext context, int index) {
