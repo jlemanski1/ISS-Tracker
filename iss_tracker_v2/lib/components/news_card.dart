@@ -81,7 +81,9 @@ class _NewsCardState extends State<NewsCard> {
                   Divider(color: Colors.grey,),
                   Row(
                     children: <Widget>[
-                      Text('Tags'),
+                      Text(
+                        'Tags'
+                      ),
                       Text(
                         '${newsPosts.docs[index].publishedDate}',
                         style: TextStyle(
@@ -96,29 +98,6 @@ class _NewsCardState extends State<NewsCard> {
           ),
         );
       },
-    );
-  }
-}
-
-
-class _PostDetails extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        _Author(),
-      ],
-    );
-  }
-}
-
-
-class _Author extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Text('Author'),
     );
   }
 }
