@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/news_posts.dart';
 import 'package:http/http.dart' as http;
+import 'package:iss_tracker_v2/components/settings.dart';
 
 
 class NewsCard extends StatefulWidget {
@@ -12,6 +13,7 @@ class NewsCard extends StatefulWidget {
 
 class _NewsCardState extends State<NewsCard> {
   final String newsUrl = 'https://spaceflightnewsapi.net/api/v1/articles';
+  bool _isLoaded = false;
   NewsPosts newsPosts;
 
   @override
@@ -19,9 +21,9 @@ class _NewsCardState extends State<NewsCard> {
     _fetchNewsPosts().then((value) {
       setState(() {
         newsPosts = value;
+        _isLoaded = true;
       });
     });
-    print('News Posts: $newsPosts');
     super.initState();
   }
 
@@ -37,7 +39,17 @@ class _NewsCardState extends State<NewsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return newsPosts.docs == null ? CircularProgressIndicator() : 
+    return !_isLoaded ? Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
+            : [Colors.black87, Colors.black],
+        )
+      ),
+      child: Center(child: CircularProgressIndicator(),),
+    ) :
     ListView.builder(
       itemCount: newsPosts.docs.length,
       itemBuilder: (BuildContext context, int index) {
