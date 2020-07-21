@@ -114,6 +114,7 @@ class _LocationMapState extends State<LocationMap> {
     String svgName = await DefaultAssetBundle.of(context).loadString(assetName);
     DrawableRoot svgDrawableRoot = await svg.fromSvgString(svgName, null);
 
+
     // Calculate Size
     MediaQueryData queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;

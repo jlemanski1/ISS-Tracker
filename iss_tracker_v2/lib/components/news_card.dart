@@ -56,9 +56,23 @@ class _NewsCardState extends State<NewsCard> {
                       children: <Widget>[
                         Expanded(
                           flex: 2,
-                          child: Image.network(newsPosts.docs[index].url),
+                          child: Image.network(newsPosts.docs[index].featuredImage),
                         ),
-                        _PostTitleAndSummary()
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                '${newsPosts.docs[index].title}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                            ],
+                          )
+                        ),
                       ]
                     ),
                   ),
@@ -70,39 +84,6 @@ class _NewsCardState extends State<NewsCard> {
           ),
         );
       },
-    );
-  }
-}
-
-
-
-class _PostImage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: Image.asset(''),
-    );
-  }
-}
-
-class _PostTitleAndSummary extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final String title = 'Title';
-    final String summary = 'Summary...';
-    
-    return Expanded(
-      flex: 3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Text(title),
-          SizedBox(height: 2.0),
-          Text(summary),
-        ],
-      )
     );
   }
 }
