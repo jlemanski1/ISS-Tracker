@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iss_tracker_v2/components/news_card.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 
 class SpaceNews extends StatefulWidget {
@@ -29,14 +30,7 @@ class _SpaceNewsState extends State<SpaceNews> {
               : [Colors.black87, Colors.black],
           )
         ),
-      child: Center(
-        child: Text(
-          'Page under construction',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Settings.isLightTheme ? Colors.black : Colors.white
-          )
-        )),
+        child: NewsCard()
       ),
     );
   }
