@@ -60,10 +60,11 @@ class _NewsCardState extends State<NewsCard> {
         return AspectRatio(
           aspectRatio: 5/2,
           child: Card(
+            color: Colors.transparent,
             elevation: 2,
             child: Container(
-              margin: const EdgeInsets.all(4.0),
-              padding: const EdgeInsets.all(4.0),
+              margin: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(6.0),
               child: Column(
                 children: <Widget>[
                   Expanded(
@@ -71,7 +72,7 @@ class _NewsCardState extends State<NewsCard> {
                     child: Row(
                       children: <Widget>[
                         Expanded(
-                          flex: 2,
+                          flex: 3,
                           child: Image.network(newsPosts.docs[index].featuredImage),
                         ),
                         Expanded(
@@ -84,9 +85,10 @@ class _NewsCardState extends State<NewsCard> {
                                 '${newsPosts.docs[index].title}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  
+                                  fontFamily: 'WorkSans',
+                                  color: Colors.white
                                 ),
-                                textAlign: TextAlign.end,
+                                textAlign: TextAlign.start,
                               )
                             ],
                           )
@@ -98,13 +100,18 @@ class _NewsCardState extends State<NewsCard> {
                   Row(
                     children: <Widget>[
                       Text(
-                        'Tags'
+                        newsPosts.docs[index].tags.length > 0 ?
+                        'Tags: ${newsPosts.docs[index].tags[0]}' : '',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white60
+                        ),
                       ),
                       Spacer(),
                       Text(
                         '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 5)}',
                         style: TextStyle(
-                          
+                          color: Colors.white60
                         ),
                         textAlign: TextAlign.end,
                       ),
