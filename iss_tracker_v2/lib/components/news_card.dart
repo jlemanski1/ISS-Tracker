@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/news_posts.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class NewsCard extends StatefulWidget {
@@ -59,67 +60,77 @@ class _NewsCardState extends State<NewsCard> {
       itemBuilder: (BuildContext context, int index) {
         return AspectRatio(
           aspectRatio: 5/2,
-          child: Card(
-            color: Colors.transparent,
-            elevation: 2,
-            child: Container(
-              margin: const EdgeInsets.all(6.0),
-              padding: const EdgeInsets.all(6.0),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 3,
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 3,
-                          child: Image.network(newsPosts.docs[index].featuredImage),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                '${newsPosts.docs[index].title}',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'WorkSans',
-                                  color: Colors.white
-                                ),
-                                textAlign: TextAlign.start,
-                              )
-                            ],
-                          )
-                        ),
-                      ]
+          child: GestureDetector(
+            onTap: () async {
+              String url = newsPosts.docs[index].url;
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+            child: Card(
+              color: Colors.transparent,
+              elevation: 2,
+              child: Container(
+                margin: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(6.0),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Image.network(newsPosts.docs[index].featuredImage),
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '${newsPosts.docs[index].title}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'WorkSans',
+                                    color: Colors.white
+                                  ),
+                                  textAlign: TextAlign.start,
+                                )
+                              ],
+                            )
+                          ),
+                        ]
+                      ),
                     ),
-                  ),
-                  Divider(color: Colors.grey,),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        newsPosts.docs[index].tags.length > 0 ?
-                        'Tags: ${newsPosts.docs[index].tags[0]}' : '',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.white60
+                    Divider(color: Colors.grey,),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          newsPosts.docs[index].tags.length > 0 ?
+                          'Tag: ${newsPosts.docs[index].tags[0]}' : '',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.white60
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Text(
-                        '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 5)}',
-                        style: TextStyle(
-                          color: Colors.white60
+                        Spacer(),
+                        Text(
+                          '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 5)}',
+                          style: TextStyle(
+                            color: Colors.white60
+                          ),
+                          textAlign: TextAlign.end,
                         ),
-                        textAlign: TextAlign.end,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ),
           ),
         );
       },
