@@ -110,8 +110,7 @@ class _NewsCardState extends State<NewsCard> {
                     Row(
                       children: <Widget>[
                         Text(
-                          newsPosts.docs[index].tags.length > 0 ?
-                          'Tag: ${newsPosts.docs[index].tags[0]}' : '',
+                          'Site: ${newsPosts.docs[index].newsSiteLong}',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.white60
