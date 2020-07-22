@@ -100,11 +100,13 @@ class _NewsCardState extends State<NewsCard> {
                       Text(
                         'Tags'
                       ),
+                      Spacer(),
                       Text(
-                        '${newsPosts.docs[index].publishedDate}',
+                        '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 5)}',
                         style: TextStyle(
                           
                         ),
+                        textAlign: TextAlign.end,
                       ),
                     ],
                   )

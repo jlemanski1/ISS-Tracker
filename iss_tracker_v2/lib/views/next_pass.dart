@@ -264,7 +264,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                                 textAlign: TextAlign.center,
                               ),
                             title: Text(
-                              'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000)}'
+                              'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).toString().substring(0, DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime).toString().length - 4)}'
                               +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}',
                               style: TextStyle(
                                 color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[200],
