@@ -38,7 +38,8 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[400],
         centerTitle: true,
-        title: Text("Settings",
+        title: Text(
+          "Settings",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontFamily: 'WorkSans',
@@ -57,6 +58,23 @@ class _SettingsPageState extends State<SettingsPage> {
                   leading: Icon(Icons.language),
                   onTap: () {
                     // Nav to language selection screen after adding localization features
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: new Text('Language option not curently available.'),
+                          content: new Text('Coming soon'),
+                          actions: <Widget>[
+                            new FlatButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Close'),
+                            )
+                          ],
+                        );
+                      }
+                    );
                   },
                 ),
                 SettingsTile.switchTile(
