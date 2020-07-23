@@ -118,7 +118,7 @@ class _NewsCardState extends State<NewsCard> {
                         ),
                         Spacer(),
                         Text(
-                          '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 5)}',
+                          '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 8)}',
                           style: TextStyle(
                             color: Colors.white60
                           ),
