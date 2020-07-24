@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class ISSHistory extends StatefulWidget {
   @override
@@ -30,14 +31,33 @@ class _ISSHistoryState extends State<ISSHistory> {
               : [Colors.black87, Colors.black],
           )
         ),
-      child: Center(
-        child: Text(
-          'Page under construction',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Settings.isLightTheme ? Colors.black : Colors.white
-          )
-        )),
+        child: ListView(
+          children: <Widget> [
+            TimelineTile(
+              alignment: TimelineAlign.manual,
+              lineX: 0.2,
+              topLineStyle: LineStyle(color: Colors.black),
+              bottomLineStyle: LineStyle(color: Colors.black),
+              indicatorStyle: IndicatorStyle(
+                color: Colors.white,
+                width: 16.0,
+
+              ),
+              leftChild: Container(
+                color: Colors.white24,
+                child: Center(child: Text('Year'))
+              ),
+              rightChild: Container(
+                height: 64,
+                color: Colors.black12,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Desc'),
+                ),
+              ),
+            ),
+          ]
+        )
       ),
     );
   }
