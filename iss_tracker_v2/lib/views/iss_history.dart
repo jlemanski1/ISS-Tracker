@@ -7,6 +7,34 @@ class ISSHistory extends StatefulWidget {
   _ISSHistoryState createState() => _ISSHistoryState();
 }
 
+
+TimelineTile historyTile({double lineX, Text leftText, Text rightText}) {
+  return TimelineTile(
+    alignment: TimelineAlign.manual,
+    lineX: lineX,
+    topLineStyle: LineStyle(color: Colors.black),
+    bottomLineStyle: LineStyle(color: Colors.black),
+    indicatorStyle: IndicatorStyle(
+      color: Colors.white,
+      width: 16.0,
+
+    ),
+    leftChild: Container(
+      color: Colors.white24,
+      child: Center(child: leftText)
+    ),
+    rightChild: Container(
+      height: 64,
+      color: Colors.black12,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: rightText,
+      ),
+    ),
+  );
+}
+
+
 class _ISSHistoryState extends State<ISSHistory> {
   @override
   Widget build(BuildContext context) {
@@ -33,28 +61,10 @@ class _ISSHistoryState extends State<ISSHistory> {
         ),
         child: ListView(
           children: <Widget> [
-            TimelineTile(
-              alignment: TimelineAlign.manual,
+            historyTile(
               lineX: 0.2,
-              topLineStyle: LineStyle(color: Colors.black),
-              bottomLineStyle: LineStyle(color: Colors.black),
-              indicatorStyle: IndicatorStyle(
-                color: Colors.white,
-                width: 16.0,
-
-              ),
-              leftChild: Container(
-                color: Colors.white24,
-                child: Center(child: Text('Year'))
-              ),
-              rightChild: Container(
-                height: 64,
-                color: Colors.black12,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Desc'),
-                ),
-              ),
+              leftText: Text('YEAR'),
+              rightText: Text('Desc')
             ),
           ]
         )
