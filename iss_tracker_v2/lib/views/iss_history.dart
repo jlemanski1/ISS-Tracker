@@ -8,7 +8,7 @@ class ISSHistory extends StatefulWidget {
 }
 
 
-TimelineTile historyTile({double lineX, Text leftText, Text rightText}) {
+TimelineTile historyTile({double lineX, double height, Text leftText, Text rightText}) {
   return TimelineTile(
     alignment: TimelineAlign.manual,
     lineX: lineX,
@@ -24,7 +24,7 @@ TimelineTile historyTile({double lineX, Text leftText, Text rightText}) {
       child: Center(child: leftText)
     ),
     rightChild: Container(
-      height: 64,
+      height: height,
       color: Colors.black12,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -63,6 +63,7 @@ class _ISSHistoryState extends State<ISSHistory> {
           children: <Widget> [
             historyTile(
               lineX: 0.2,
+              height: 64,
               leftText: Text('YEAR'),
               rightText: Text('Desc')
             ),
