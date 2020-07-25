@@ -94,23 +94,24 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
+              height: 48,
               leftText: Text('Oct. 20'),
-              rightText: Text('Desc')
+              rightText: Text("A Russian Proton rocket launches the first module of the station, Zarya (Sunrise)."),
             ),
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white70,
+              color: Colors.white54,
             ),
             historyTile(
               lineX: 0.2,
               height: 64,
               leftText: Text('Dec. 4'),
-              rightText: Text('Desc')
+              rightText: Text("Unity, the first U.S.-built component of the station, launches on the first"
+                +" shuttle mission dedicated to the assembly of the outpost."),
             ),
             headerDivider(
-              header: '2000',
+              header: '2000-01',
               textColour: Colors.white,
               dividerColour: Colors.white,
             ),
@@ -118,29 +119,32 @@ class _ISSHistoryState extends State<ISSHistory> {
               lineX: 0.2,
               height: 64,
               leftText: Text('Nov. 30'),
-              rightText: Text('Desc')
+              rightText: Text("The P6 truss is installed. This component includes the first piece of the main"
+                +" solar-cell array that powers the station.")
             ),
-            headerDivider(
-              header: '2001',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white54,
             ),
             historyTile(
               lineX: 0.2,
               height: 64,
               leftText: Text('Feb. 7'),
-              rightText: Text('Desc')
+              rightText: Text("Destiny, the U.S. laboratory module, becomes part of the station. Destiny is still"
+                +" the primary research facility for U.S. payloads.")
             ),
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white70,
+              color: Colors.white54,
             ),
             historyTile(
               lineX: 0.2,
               height: 64,
               leftText: Text('Apr. 19'),
-              rightText: Text('Desc')
+              rightText: Text("Canadarm2, the station's robotic arm, is added. The key robotic system plays a key role"
+                +" in the assembly of the station.")
             ),
             headerDivider(
               header: '2003',
@@ -156,7 +160,7 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white70,
+              color: Colors.white54,
             ),
             headerDivider(
               header: '2003-2006',
@@ -172,7 +176,7 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white70,
+              color: Colors.white54,
             ),
             headerDivider(
               header: '2008-09',
@@ -188,7 +192,7 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white70,
+              color: Colors.white54,
             ),
             headerDivider(
               header: '2010-11',
@@ -204,7 +208,7 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white70,
+              color: Colors.white54,
             ),
           ]
         )
