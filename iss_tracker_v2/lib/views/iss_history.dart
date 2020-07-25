@@ -103,11 +103,10 @@ class _ISSHistoryState extends State<ISSHistory> {
               thickness: 2.0,
               color: Colors.white70,
             ),
-            
             historyTile(
               lineX: 0.2,
               height: 64,
-              leftText: Text('YEAR'),
+              leftText: Text('Dec. 4'),
               rightText: Text('Desc')
             ),
             headerDivider(
@@ -118,7 +117,56 @@ class _ISSHistoryState extends State<ISSHistory> {
             historyTile(
               lineX: 0.2,
               height: 64,
-              leftText: Text('Dec. 4'),
+              leftText: Text('Nov. 30'),
+              rightText: Text('Desc')
+            ),
+            headerDivider(
+              header: '2001',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Feb. 7'),
+              rightText: Text('Desc')
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white70,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Apr. 19'),
+              rightText: Text('Desc')
+            ),
+            headerDivider(
+              header: '2003',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Feb. 1'),
+              rightText: Text('Desc')
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white70,
+            ),
+            headerDivider(
+              header: '2003-2006',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text(''),
               rightText: Text('Desc')
             ),
             Divider(
