@@ -33,7 +33,7 @@ TimelineTile historyTile({double lineX, double height, Text leftText, Text right
   );
 }
 
-Padding headerDivider({String header}) {
+Padding headerDivider({String header, Color dividerColour, Color textColour}) {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 4.0),
     child: Column(
@@ -46,13 +46,13 @@ Padding headerDivider({String header}) {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
-              color: Colors.white,
+              color: textColour,
 
             ),
           ),
         ),
         Divider(
-          color: Colors.white,
+          color: dividerColour,
           thickness: 2.0,
         )
       ]
@@ -88,7 +88,9 @@ class _ISSHistoryState extends State<ISSHistory> {
         child: ListView(
           children: <Widget> [
             headerDivider(
-              header: '1998'
+              header: '1998',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
             ),
             historyTile(
               lineX: 0.2,
@@ -99,7 +101,19 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white,
+              color: Colors.white70,
+            ),
+            
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('YEAR'),
+              rightText: Text('Desc')
+            ),
+            headerDivider(
+              header: '2000',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
             ),
             historyTile(
               lineX: 0.2,
@@ -110,13 +124,7 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(
               height: 16.0,
               thickness: 2.0,
-              color: Colors.white,
-            ),
-            historyTile(
-              lineX: 0.2,
-              height: 64,
-              leftText: Text('YEAR'),
-              rightText: Text('Desc')
+              color: Colors.white70,
             ),
           ]
         )
