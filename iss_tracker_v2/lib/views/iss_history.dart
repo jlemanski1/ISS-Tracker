@@ -17,7 +17,6 @@ TimelineTile historyTile({double lineX, double height, Text leftText, Text right
     indicatorStyle: IndicatorStyle(
       color: Colors.white,
       width: 16.0,
-
     ),
     leftChild: Container(
       color: Colors.white24,
