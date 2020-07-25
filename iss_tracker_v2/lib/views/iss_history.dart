@@ -174,6 +174,38 @@ class _ISSHistoryState extends State<ISSHistory> {
               thickness: 2.0,
               color: Colors.white70,
             ),
+            headerDivider(
+              header: '2008-09',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text(''),
+              rightText: Text('Desc')
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white70,
+            ),
+            headerDivider(
+              header: '2010-11',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text(''),
+              rightText: Text('Desc')
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white70,
+            ),
           ]
         )
       ),
