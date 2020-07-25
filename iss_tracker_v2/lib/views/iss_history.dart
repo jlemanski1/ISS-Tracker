@@ -33,6 +33,33 @@ TimelineTile historyTile({double lineX, double height, Text leftText, Text right
   );
 }
 
+Padding headerDivider({String header}) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 4.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget> [
+        Padding(
+          padding: EdgeInsets.only(top: 8.0, left: 32.0),
+          child: Text(
+            header,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: Colors.white,
+
+            ),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+          thickness: 2.0,
+        )
+      ]
+    ),
+  );
+}
+
 
 class _ISSHistoryState extends State<ISSHistory> {
   @override
@@ -60,6 +87,31 @@ class _ISSHistoryState extends State<ISSHistory> {
         ),
         child: ListView(
           children: <Widget> [
+            headerDivider(
+              header: '1998'
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Oct. 20'),
+              rightText: Text('Desc')
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Dec. 4'),
+              rightText: Text('Desc')
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white,
+            ),
             historyTile(
               lineX: 0.2,
               height: 64,
