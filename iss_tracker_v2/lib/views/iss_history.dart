@@ -188,7 +188,9 @@ class _ISSHistoryState extends State<ISSHistory> {
               lineX: 0.2,
               height: 64,
               leftText: Text(''),
-              rightText: Text('Desc')
+              rightText: Text("During the space shuttle moratorium (2003-2006) and after the end of the program,"
+                +" the Russian spacecraft Soyuz TMA became the main transport to the station. The"
+                +" capsule has more than 47 years of service with the same basic design.")
             ),
             Divider(
               height: 16.0,
@@ -203,13 +205,33 @@ class _ISSHistoryState extends State<ISSHistory> {
             historyTile(
               lineX: 0.2,
               height: 64,
-              leftText: Text(''),
-              rightText: Text('Desc')
+              leftText: Text('July 26'),
+              rightText: Text("The space shuttle Discovery returns to the station after three years. The"
+                +" mission delivers supplies to the station and tests safety procedures.")
             ),
             Divider(
               height: 16.0,
               thickness: 2.0,
               color: Colors.white54,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Feb 7.'),
+              rightText: Text("The crew of the space shuttle Atlantis delivers and install the European Space"
+                +" Agency's Columbus laboratory.")
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white54,
+            ),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('March 15'),
+              rightText: Text("The space shuttle Discovery delivers the station's final major U.S. truss segment,"
+                +" S6, and its final pair of power-generating solar array wings.")
             ),
             headerDivider(
               header: '2010-11',
@@ -219,14 +241,26 @@ class _ISSHistoryState extends State<ISSHistory> {
             historyTile(
               lineX: 0.2,
               height: 64,
-              leftText: Text(''),
-              rightText: Text('Desc')
+              leftText: Text('Nov 2'),
+              rightText: Text("The station celebrates the 10-year anniversary of its continuous human occupation."
+                +" Since Expedition 1 in the fall of 2000, 202 people have visited the station.")
             ),
             Divider(
               height: 16.0,
               thickness: 2.0,
               color: Colors.white54,
             ),
+            historyTile(
+            lineX: 0.2,
+            height: 64,
+            leftText: Text('Feb 24'),
+            rightText: Text( "The space shuttle Discovery launches on its final planned mission to deliver the"
+              +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS,"
+              +" as well as equipment and supplies. Among the cargo aboard the Leonardo was Robonaut 2,"
+              +" a robot that could be a precursor of new humanoid remote devices to help during space"
+              "walks.")
+            ),
+            
           ]
         )
       ),
