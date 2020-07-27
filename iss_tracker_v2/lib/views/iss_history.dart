@@ -147,15 +147,32 @@ class _ISSHistoryState extends State<ISSHistory> {
                 +" in the assembly of the station.")
             ),
             headerDivider(
-              header: '2003',
+              header: '2002-03',
               textColour: Colors.white,
               dividerColour: Colors.white,
             ),
             historyTile(
               lineX: 0.2,
               height: 64,
-              leftText: Text('Feb. 1'),
-              rightText: Text('Desc')
+              leftText: Text('DATE'),
+              rightText: Text("Four years after its first component was put into orbit, the station is capable of"
+                +" sustaining a permanent crew of three. The first research module, Destiny, an American"
+                +" laboratory, becomes operational.")
+            ),
+            Divider(height: 16.0, thickness: 2.0, color: Colors.white54),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Apr. 8'),
+              rightText: Text("The central segment of the station truss, S0, is installed on top of Destiny"),
+            ),
+            Divider(height: 16.0, thickness: 2.0, color: Colors.white54),
+            historyTile(
+              lineX: 0.2,
+              height: 64,
+              leftText: Text('Apr. 8'),
+              rightText: Text("The space shuttle Columbia disintegrates during atmospheric re-entry. The construction"
+                +" is halted."),
             ),
             Divider(
               height: 16.0,
