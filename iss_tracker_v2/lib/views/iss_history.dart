@@ -1,3 +1,4 @@
+import 'package:animated_dialog_box/animated_dialog_box.dart';
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -91,6 +92,32 @@ class _ISSHistoryState extends State<ISSHistory> {
               header: '1998',
               textColour: Colors.white,
               dividerColour: Colors.white,
+            ),
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40),
+              ),
+              color: Colors.white,
+              child: Text('Events'),
+              onPressed: () async {
+                await animated_dialog_box.showScaleAlertBox(
+                  title: Center(child: Text("Test")),
+                  context: context,
+                  yourWidget: Container(
+                    child: Text('This is my first package'),
+                  ),
+                  firstButton: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    color: Colors.white,
+                    child: Text('Back'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                );
+              }
             ),
             historyTile(
               lineX: 0.2,
