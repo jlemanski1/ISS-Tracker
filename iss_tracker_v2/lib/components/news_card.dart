@@ -98,6 +98,8 @@ class _NewsCardState extends State<NewsCard> {
                                     fontFamily: 'WorkSans',
                                     color: Colors.white
                                   ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
                                   textAlign: TextAlign.start,
                                 )
                               ],
