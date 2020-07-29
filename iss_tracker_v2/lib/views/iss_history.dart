@@ -106,7 +106,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 48,
               leftText: 'Oct. 20',
               rightText: "A Russian Proton rocket launches the first module of the station, Zarya (Sunrise)."
             ),
@@ -117,7 +116,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Dec. 4',
               rightText: "Unity, the first U.S.-built component of the station, launches on the first"
                 +" shuttle mission dedicated to the assembly of the outpost.",
@@ -129,7 +127,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Nov. 30',
               rightText: "The P6 truss is installed. This component includes the first piece of the main"
                 +" solar-cell array that powers the station.",
@@ -141,7 +138,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Feb. 7',
               rightText: "Destiny, the U.S. laboratory module, becomes part of the station. Destiny is still"
                 +" the primary research facility for U.S. payloads.",
@@ -153,7 +149,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Apr. 19',
               rightText: "Canadarm2, the station's robotic arm, is added. The key robotic system plays a key role"
                 +" in the assembly of the station.",
@@ -164,9 +159,8 @@ class _ISSHistoryState extends State<ISSHistory> {
               dividerColour: Colors.white,
             ),
             historyTile(
-              lineX: 0.2,
-              height: 64,
-              leftText: 'DATE',
+              lineX: 0,
+              leftText: '',
               rightText: "Four years after its first component was put into orbit, the station is capable of"
                 +" sustaining a permanent crew of three. The first research module, Destiny, an American"
                 +" laboratory, becomes operational."
@@ -174,14 +168,12 @@ class _ISSHistoryState extends State<ISSHistory> {
             Divider(height: 16.0, thickness: 2.0, color: Colors.white54),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Apr. 8',
               rightText: "The central segment of the station truss, S0, is installed on top of Destiny",
             ),
             Divider(height: 16.0, thickness: 2.0, color: Colors.white54),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Apr. 8',
               rightText: "The space shuttle Columbia disintegrates during atmospheric re-entry. The construction"
                 +" is halted.",
@@ -197,8 +189,7 @@ class _ISSHistoryState extends State<ISSHistory> {
               dividerColour: Colors.white,
             ),
             historyTile(
-              lineX: 0.2,
-              height: 64,
+              lineX: 0,
               leftText: '',
               rightText: "During the space shuttle moratorium (2003-2006) and after the end of the program,"
                 +" the Russian spacecraft Soyuz TMA became the main transport to the station. The"
@@ -216,7 +207,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'July 26',
               rightText: "The space shuttle Discovery returns to the station after three years. The"
                 +" mission delivers supplies to the station and tests safety procedures.",
@@ -228,7 +218,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Feb 7.',
               rightText: "The crew of the space shuttle Atlantis delivers and install the European Space"
                 +" Agency's Columbus laboratory.",
@@ -240,7 +229,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'March 15',
               rightText: "The space shuttle Discovery delivers the station's final major U.S. truss segment,"
                 +" S6, and its final pair of power-generating solar array wings.",
@@ -252,7 +240,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
               lineX: 0.2,
-              height: 64,
               leftText: 'Nov 2',
               rightText: "The station celebrates the 10-year anniversary of its continuous human occupation."
                 +" Since Expedition 1 in the fall of 2000, 202 people have visited the station.",
@@ -264,7 +251,6 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             historyTile(
             lineX: 0.2,
-            height: 64,
             leftText: 'Feb 24',
             rightText: "The space shuttle Discovery launches on its final planned mission to deliver the"
               +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS,"
