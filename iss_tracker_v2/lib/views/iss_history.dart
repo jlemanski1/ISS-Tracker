@@ -25,6 +25,8 @@ TimelineTile historyTile({double lineX, double height, String leftText, String r
           leftText,
           style: TextStyle(
             color: Colors.white,
+            fontFamily: 'WorkSans',
+            fontWeight: FontWeight.bold
           ),
         )
       )
@@ -101,8 +103,8 @@ class _ISSHistoryState extends State<ISSHistory> {
           children: <Widget> [
             headerDivider(
               header: '1998',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0.2,
@@ -122,8 +124,8 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             headerDivider(
               header: '2000-01',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0.2,
@@ -155,8 +157,8 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             headerDivider(
               header: '2002-03',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0,
@@ -185,8 +187,8 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             headerDivider(
               header: '2003-2006',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0,
@@ -202,8 +204,8 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             headerDivider(
               header: '2008-09',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0.2,
@@ -235,8 +237,8 @@ class _ISSHistoryState extends State<ISSHistory> {
             ),
             headerDivider(
               header: '2010-11',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0.2,
@@ -250,19 +252,19 @@ class _ISSHistoryState extends State<ISSHistory> {
               color: Colors.white54,
             ),
             historyTile(
-            lineX: 0.2,
-            leftText: 'Feb 24',
-            rightText: "The space shuttle Discovery launches on its final planned mission to deliver the"
-              +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS,"
-              +" as well as equipment and supplies. Among the cargo aboard the Leonardo was Robonaut 2,"
-              +" a robot that could be a precursor of new humanoid remote devices to help during space"
-              "walks.",
+              lineX: 0.2,
+              leftText: 'Feb 24',
+              rightText: "The space shuttle Discovery launches on its final planned mission to deliver the"
+                +" Permanent Multipurpose Module, Leonardo, and Express Logistics Carrier 4 to the ISS,"
+                +" as well as equipment and supplies. Among the cargo aboard the Leonardo was Robonaut 2,"
+                +" a robot that could be a precursor of new humanoid remote devices to help during space"
+                "walks.",
             ),
             
             headerDivider(
               header: '2016',
-              textColour: Colors.white,
-              dividerColour: Colors.white,
+              textColour: Colors.orange[600],
+              dividerColour: Colors.orangeAccent,
             ),
             historyTile(
               lineX: 0.2,
