@@ -273,6 +273,36 @@ class _ISSHistoryState extends State<ISSHistory> {
               "walks.",
             ),
             
+            headerDivider(
+              header: '2016',
+              textColour: Colors.white,
+              dividerColour: Colors.white,
+            ),
+            historyTile(
+              lineX: 0.2,
+              leftText: 'May 28',
+              rightText: "BEAM, or Bigelow Expandable Activity Module arrived at the ISS on April 10th,"
+                +" and was expanded and pressurized for use on May 28th. BEAM is an experiment to test &"
+                +" validate expandable habitats for future crews traveling deep space.",
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white54,
+            ),
+            historyTile(
+              lineX: 0.2,
+              leftText: 'July 18',
+              rightText: "The 2nd iteration of the International Docking Adapter, IDA-2, was launched on the SpaceX"
+                +" CRS-18 mission in July 2019. It's first docking was achievched with the arrival of Crew Dragon"
+                +" Demo-1, March 3 2019. IDA-3 was launched in July 2019 to provide additional docking to the station",
+            ),
+            Divider(
+              height: 16.0,
+              thickness: 2.0,
+              color: Colors.white54,
+            ),
+  
           ]
         )
       ),
