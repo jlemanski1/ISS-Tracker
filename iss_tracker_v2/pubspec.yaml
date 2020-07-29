@@ -27,7 +27,6 @@ dependencies:
   package_info: ^0.4.1
   flutter_svg: ^0.17.4
   timeline_tile: ^0.1.2
-  animated_dialog_box: ^0.0.2
 
 dev_dependencies:
   flutter_test:
