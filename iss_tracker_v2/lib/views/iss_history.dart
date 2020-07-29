@@ -180,11 +180,6 @@ class _ISSHistoryState extends State<ISSHistory> {
               rightText: "The space shuttle Columbia disintegrates during atmospheric re-entry. The construction"
                 +" is halted.",
             ),
-            Divider(
-              height: 16.0,
-              thickness: 2.0,
-              color: Colors.white54,
-            ),
             headerDivider(
               header: '2003-2006',
               textColour: Colors.orange[600],
@@ -196,11 +191,6 @@ class _ISSHistoryState extends State<ISSHistory> {
               rightText: "During the space shuttle moratorium (2003-2006) and after the end of the program,"
                 +" the Russian spacecraft Soyuz TMA became the main transport to the station. The"
                 +" capsule has more than 47 years of service with the same basic design.",
-            ),
-            Divider(
-              height: 16.0,
-              thickness: 2.0,
-              color: Colors.white54,
             ),
             headerDivider(
               header: '2008-09',
