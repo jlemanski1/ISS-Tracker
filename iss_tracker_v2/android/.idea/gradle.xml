@@ -9,10 +9,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-3.4.0+2/android" />
             <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.8/android" />
             <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.28+1/android" />
             <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2/android" />
+            <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/package_info-0.4.1/android" />
             <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/store_redirect-1.0.2/android" />
+            <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.4.11/android" />
             <option value="$PROJECT_DIR$/../../../flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.22+1/android" />
           </set>
         </option>

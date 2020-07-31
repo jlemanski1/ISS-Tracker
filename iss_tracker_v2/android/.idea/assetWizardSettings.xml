@@ -60,7 +60,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$USER_HOME$/Documents/playstore.png" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
