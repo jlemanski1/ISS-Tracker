@@ -50,33 +50,8 @@ class _SettingsPageState extends State<SettingsPage> {
         child: SettingsList(
           sections: [
             SettingsSection(
-              title: 'Language & Unit',
+              title: 'Units',
               tiles: [
-                SettingsTile(
-                  title: 'Language',
-                  subtitle: 'English',
-                  leading: Icon(Icons.language),
-                  onTap: () {
-                    // Nav to language selection screen after adding localization features
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: new Text('Language option not curently available.'),
-                          content: new Text('Coming soon'),
-                          actions: <Widget>[
-                            new FlatButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Close'),
-                            )
-                          ],
-                        );
-                      }
-                    );
-                  },
-                ),
                 SettingsTile.switchTile(
                   title: 'Units',
                   subtitle: 'Metric',
