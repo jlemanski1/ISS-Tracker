@@ -21,6 +21,8 @@ class _LivestreamPageState extends State<LivestreamPage> {
 
   @override
   void initState() {
+    Settings.getLightMode();
+
     super.initState();
     _youtubeController = YoutubePlayerController(
     initialVideoId: _videoId,

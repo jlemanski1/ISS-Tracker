@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;
+import 'package:iss_tracker_v2/components/settings.dart';
 
 
 // Fetch JSON data from OpenNotify ISS position API
@@ -79,6 +80,8 @@ class _LocationMapState extends State<LocationMap> {
   @override
   void initState() {
     super.initState();
+    
+    Settings.getLightMode();
     
     // Get ISS position for map camera target
     _getISSLocation().then((value) {

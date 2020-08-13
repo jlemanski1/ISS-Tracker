@@ -117,6 +117,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
   void initState() {
     super.initState();
 
+    Settings.getLightMode();
     getLocationPermissions();
 
     // Get Next 5 Passtimes

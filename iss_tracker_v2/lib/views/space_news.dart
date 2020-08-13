@@ -8,6 +8,13 @@ class SpaceNews extends StatefulWidget {
 }
 
 class _SpaceNewsState extends State<SpaceNews> {
+
+  @override
+  void initState() {
+    Settings.getLightMode();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
