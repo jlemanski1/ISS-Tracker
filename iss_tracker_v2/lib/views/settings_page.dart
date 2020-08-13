@@ -19,7 +19,6 @@ class _SettingsPageState extends State<SettingsPage> {
   String appVersion, buildNum;
 
 
-
   @override
   void initState() {
     super.initState();
@@ -32,12 +31,6 @@ class _SettingsPageState extends State<SettingsPage> {
         
       });
     });
-  }
-
-  // Toggles the locally saved darkmode setting
-  void _toggleDarkMode() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isDarkMode', Settings.isLightTheme) ?? false;
   }
 
   @override
@@ -84,7 +77,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     setState(() {
                       Settings.isLightTheme = value;
                     });
-                    _toggleDarkMode();
                   },
                   switchValue: Settings.isLightTheme,
                 )
