@@ -18,9 +18,12 @@ class _SettingsPageState extends State<SettingsPage> {
   String appVersion, buildNum;
 
 
+
   @override
   void initState() {
     super.initState();
+
+    Settings.getLightMode();
 
     // Get app version & build number to display on settings tile
     PackageInfo.fromPlatform().then((PackageInfo pkgInfo) {
@@ -30,7 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
         
       });
     });
-  }  
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +79,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     setState(() {
                       Settings.isLightTheme = value;
                     });
+                    Settings.saveTheme();
                   },
                   switchValue: Settings.isLightTheme,
                 )

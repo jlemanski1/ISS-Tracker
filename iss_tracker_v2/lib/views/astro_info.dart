@@ -99,6 +99,8 @@ class _AstroInfoState extends State<AstroInfo> {
   void initState() {
     super.initState();
 
+    Settings.getLightMode();
+
     // Build list of astronauts and set to state list
     astroListBuilder().then((value) {
       setState(() {

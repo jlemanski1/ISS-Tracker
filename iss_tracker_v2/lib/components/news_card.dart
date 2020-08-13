@@ -18,7 +18,9 @@ class _NewsCardState extends State<NewsCard> {
   NewsPosts newsPosts;
 
   @override
-  void initState() { 
+  void initState() {
+    Settings.getLightMode();
+
     _fetchNewsPosts().then((value) {
       setState(() {
         newsPosts = value;
