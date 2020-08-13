@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:store_redirect/store_redirect.dart';
 import 'package:package_info/package_info.dart';
@@ -18,6 +19,7 @@ class _SettingsPageState extends State<SettingsPage> {
   String appVersion, buildNum;
 
 
+
   @override
   void initState() {
     super.initState();
@@ -30,7 +32,13 @@ class _SettingsPageState extends State<SettingsPage> {
         
       });
     });
-  }  
+  }
+
+  // Toggles the locally saved darkmode setting
+  void _toggleDarkMode() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isDarkMode', Settings.isLightTheme) ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     setState(() {
                       Settings.isLightTheme = value;
                     });
+                    _toggleDarkMode();
                   },
                   switchValue: Settings.isLightTheme,
                 )
