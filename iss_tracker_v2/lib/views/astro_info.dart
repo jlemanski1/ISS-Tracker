@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:iss_tracker_v2/components/wiki_page.dart';
@@ -174,7 +175,7 @@ class _AstroInfoState extends State<AstroInfo> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.blue[300]]
+            colors: Settings.isLightTheme ? [Colors.white, Colors.lightBlue[100]]
               : [Colors.black87, Colors.black],
           ),
         ),
@@ -211,20 +212,29 @@ class _AstroInfoState extends State<AstroInfo> {
             Expanded (
               flex: 1,
               child: _astroList.length == 0 ? Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.black,
-                  )
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.black,
+                )
                 ) :
                 ListView.builder(
                   padding: EdgeInsets.all(8.0),
                   itemCount: _astroList.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ListTile(
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Neumorphic(
+                          style: NeumorphicStyle(
+                          shape: NeumorphicShape.convex,
+                          boxShape: NeumorphicBoxShape.stadium(),
+                          color: Colors.white70,
+                          lightSource: LightSource.topLeft,
+                          shadowDarkColor: Colors.black,
+                          shadowDarkColorEmboss: Colors.black,
+                          oppositeShadowLightSource: true,
+                          depth: -10,
+                          ),
+                          child: ListTile(
                             onTap: () async {
                               // Navigate to astronaut's wiki page
                               String url = 'https://en.wikipedia.org/wiki/Special:Search/${_astroList.elementAt(index).name}';
@@ -253,10 +263,12 @@ class _AstroInfoState extends State<AstroInfo> {
                               ),
                             ),
                           ),
-                          
-                        ],
-                      ),
+                        ),
+                        Padding(padding: EdgeInsets.symmetric(vertical: 8.0),
+                        
+                      )],
                     );
+                    
                   },
                 ),
             ),
