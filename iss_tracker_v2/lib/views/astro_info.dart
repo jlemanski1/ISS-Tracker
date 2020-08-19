@@ -158,8 +158,8 @@ class _AstroInfoState extends State<AstroInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
+      appBar: NeumorphicAppBar(
+        color: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text(
           'Astronauts',

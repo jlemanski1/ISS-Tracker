@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
     return NeumorphicApp(
       title: 'ISS Tracker',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
       theme: NeumorphicThemeData(
         lightSource: LightSource.topLeft,
         baseColor: Colors.white,
