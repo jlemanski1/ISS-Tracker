@@ -6,11 +6,11 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:iss_tracker_v2/components/wiki_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:clay_containers/clay_containers.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -158,8 +158,8 @@ class _AstroInfoState extends State<AstroInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NeumorphicAppBar(
-        color: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
+      appBar: AppBar(
+        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
         title: Text(
           'Astronauts',
@@ -175,7 +175,7 @@ class _AstroInfoState extends State<AstroInfo> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.white, Colors.lightBlue[100]]
+            colors: Settings.isLightTheme ? [Colors.white, Colors.white]
               : [Colors.black87, Colors.black],
           ),
         ),
@@ -223,17 +223,9 @@ class _AstroInfoState extends State<AstroInfo> {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Neumorphic(
-                          style: NeumorphicStyle(
-                          shape: NeumorphicShape.convex,
-                          boxShape: NeumorphicBoxShape.stadium(),
-                          color: Colors.white70,
-                          lightSource: LightSource.topLeft,
-                          shadowDarkColor: Colors.black,
-                          shadowDarkColorEmboss: Colors.black,
-                          oppositeShadowLightSource: true,
-                          depth: -10,
-                          ),
+                        ClayContainer(
+                          color: Colors.white,
+                          emboss: index % 2 == 1 ? true : false,
                           child: ListTile(
                             onTap: () async {
                               // Navigate to astronaut's wiki page
@@ -265,10 +257,8 @@ class _AstroInfoState extends State<AstroInfo> {
                           ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(vertical: 8.0),
-                        
                       )],
                     );
-                    
                   },
                 ),
             ),

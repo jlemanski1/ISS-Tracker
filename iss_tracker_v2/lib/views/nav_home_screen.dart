@@ -7,7 +7,6 @@ import 'package:iss_tracker_v2/views/astro_info.dart';
 import 'package:iss_tracker_v2/views/iss_history.dart';
 import 'package:iss_tracker_v2/views/livestream_page.dart';
 import 'package:iss_tracker_v2/views/map_page.dart';
-import 'package:iss_tracker_v2/views/neumorphic_testview.dart';
 import 'package:iss_tracker_v2/views/next_pass.dart';
 import 'package:iss_tracker_v2/views/space_news.dart';
 
@@ -63,7 +62,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         });
       } else if (drawerIndex == DrawerIndex.Crew) {
         setState(() {
-          screenView = NeumorphicTestView();//AstroInfo();
+          screenView = AstroInfo();
         });
       } else if (drawerIndex == DrawerIndex.PassTimes) {
         setState(() {

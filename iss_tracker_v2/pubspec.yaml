@@ -28,7 +28,7 @@ dependencies:
   flutter_svg: ^0.17.4
   timeline_tile: ^0.1.2
   shared_preferences: ^0.5.8
-  flutter_neumorphic: ^3.0.1
+  clay_containers: ^0.2.2
 
 dev_dependencies:
   flutter_test:
