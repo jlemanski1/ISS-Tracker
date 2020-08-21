@@ -158,18 +158,6 @@ class _AstroInfoState extends State<AstroInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
-        centerTitle: true,
-        title: Text(
-          'Astronauts',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            fontFamily: 'WorkSans',
-          ),
-        ),
-      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -182,9 +170,37 @@ class _AstroInfoState extends State<AstroInfo> {
         child: Column(
           children: <Widget>[
             Padding(
+              padding: EdgeInsets.only(top: 24.0, right: 190),
+              child: ClayContainer(
+                emboss: false,
+                depth: 20,
+                color: Colors.white,
+                height: 150,
+                width: 150,
+                customBorderRadius: BorderRadius.only(
+                  topLeft: Radius.elliptical(150, 150),
+                  bottomRight: Radius.circular(50)
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: ClayText(
+                      '${_astroList.length}',
+                      style: TextStyle(
+                        fontSize: 75,
+                      ),
+                      emboss: true,
+                      depth: 5,
+                      textColor: Colors.lightBlue[100],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(top: 32.0, left: 8.0, bottom: 24.0),
               child: Text(
-                "There are ${_astroList.length} people currently in space, they are:",
+                "The people currently in space are:",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'WorkSans',
