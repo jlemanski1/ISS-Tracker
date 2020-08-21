@@ -169,50 +169,50 @@ class _AstroInfoState extends State<AstroInfo> {
         ),
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 24.0, right: 190),
-              child: ClayContainer(
-                emboss: false,
-                depth: 20,
-                color: Colors.white,
-                height: 150,
-                width: 150,
-                customBorderRadius: BorderRadius.only(
-                  topLeft: Radius.elliptical(150, 150),
-                  bottomRight: Radius.circular(50)
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: ClayText(
-                      '${_astroList.length}',
-                      style: TextStyle(
-                        fontSize: 75,
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 24.0),
+                  child: ClayContainer(
+                    emboss: false,
+                    depth: 20,
+                    color: Settings.isLightTheme ? Colors.white : Colors.black,
+                    height: 150,
+                    width: 150,
+                    customBorderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 18.0),
+                        child: ClayText(
+                          '${_astroList.length}',
+                          style: TextStyle(
+                            fontSize: 75,
+                          ),
+                          emboss: false,
+                          depth: 10,
+                          textColor: Colors.black87,
+                        ),
                       ),
-                      emboss: true,
-                      depth: 5,
-                      textColor: Colors.lightBlue[100],
                     ),
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 32.0, left: 8.0, bottom: 24.0),
-              child: Text(
-                "The people currently in space are:",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'WorkSans',
-                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
-                  fontSize: 24.0
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 0.0),
+                  child: ClayText(
+                    "People in Space",
+                    textColor: Colors.black87,
+                    emboss: true,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'WorkSans',
+                      fontSize: 24.0
+                    ),
+                  ),
                 ),
-                textAlign: TextAlign.center,
-                softWrap: true,
-              ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0.0),
+              padding: const EdgeInsets.only(top: 48, bottom: 12),
               child: Text(
                 'Tap on the tiles to learn more about each crew member',
                 style: TextStyle(
@@ -240,6 +240,7 @@ class _AstroInfoState extends State<AstroInfo> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         ClayContainer(
+                          depth: 20,
                           color: Colors.white,
                           emboss: index % 2 == 1 ? true : false,
                           child: ListTile(
