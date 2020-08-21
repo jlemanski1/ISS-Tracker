@@ -164,7 +164,7 @@ class _AstroInfoState extends State<AstroInfo> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: Settings.isLightTheme ? [Colors.white, Colors.white]
-              : [Colors.black87, Colors.black],
+              : [Color(0xFF121212), Color(0xFF121212)],
           ),
         ),
         child: Column(
@@ -174,9 +174,9 @@ class _AstroInfoState extends State<AstroInfo> {
                 Padding(
                   padding: EdgeInsets.only(top: 24.0),
                   child: ClayContainer(
-                    emboss: false,
+                    emboss: Settings.isLightTheme ? false : true,
                     depth: 20,
-                    color: Settings.isLightTheme ? Colors.white : Colors.black,
+                    color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                     height: 150,
                     width: 150,
                     customBorderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
@@ -190,22 +190,27 @@ class _AstroInfoState extends State<AstroInfo> {
                           ),
                           emboss: false,
                           depth: 10,
-                          textColor: Colors.black87,
+                          spread: Settings.isLightTheme ? 10 : 0,
+                          textColor: Settings.isLightTheme ? Colors.black87 : Colors.white,
                         ),
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 0.0),
-                  child: ClayText(
-                    "People in Space",
-                    textColor: Colors.black87,
-                    emboss: true,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'WorkSans',
-                      fontSize: 24.0
+                  padding: const EdgeInsets.only(top: 20.0, left: 10.0),
+                  child: Center(
+                    child: ClayText(
+                      "People in Space",
+                      textColor: Settings.isLightTheme ? Colors.black87 : Colors.white,
+                      spread: Settings.isLightTheme ? 10: 0,
+                      depth: 10,
+                      emboss: true,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'WorkSans',
+                        fontSize: 24.0
+                      ),
                     ),
                   ),
                 ),
@@ -239,10 +244,11 @@ class _AstroInfoState extends State<AstroInfo> {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
+                        Padding(padding: EdgeInsets.only(top: Settings.isLightTheme ? 0: 8)),
                         ClayContainer(
                           depth: 20,
-                          color: Colors.white,
-                          emboss: index % 2 == 1 ? true : false,
+                          color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                          emboss: index % 2 == 1 ? false : true,
                           child: ListTile(
                             onTap: () async {
                               // Navigate to astronaut's wiki page
@@ -258,6 +264,7 @@ class _AstroInfoState extends State<AstroInfo> {
                               borderRadius: 100,
                               curveType: CurveType.convex,
                               depth: 8,
+                              spread: Settings.isLightTheme ? 10 : 0,
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(
                                   ''
@@ -272,7 +279,8 @@ class _AstroInfoState extends State<AstroInfo> {
                               ),
                               emboss: true,
                               depth: 10,
-                              textColor: Colors.black,
+                              spread: Settings.isLightTheme ? 10 : 0,
+                              textColor: Settings.isLightTheme ? Colors.black : Colors.white,
                             ),
                             subtitle: Text(
                               'Craft: ${_astroList.elementAt(index).craft}',
