@@ -236,17 +236,26 @@ class _AstroInfoState extends State<AstroInfo> {
                                 throw 'Could not launch $url';
                               }
                             },
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                ''
+                            leading: ClayContainer(
+                              color: Colors.white,
+                              borderRadius: 100,
+                              curveType: CurveType.convex,
+                              depth: 8,
+                              child: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  ''
+                                ),
+                                backgroundColor: Colors.black12,
                               ),
-                              backgroundColor: Colors.black12,
                             ),
-                            title: Text(
+                            title: ClayText(
                               'Name: ${_astroList.elementAt(index).name}',
                               style: TextStyle(
                                 color: Settings.isLightTheme ? Colors.black : Colors.white,
                               ),
+                              emboss: true,
+                              depth: 10,
+                              textColor: Colors.black,
                             ),
                             subtitle: Text(
                               'Craft: ${_astroList.elementAt(index).craft}',
