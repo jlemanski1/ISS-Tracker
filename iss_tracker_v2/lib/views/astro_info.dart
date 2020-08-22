@@ -159,14 +159,7 @@ class _AstroInfoState extends State<AstroInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.white, Colors.white]
-              : [Color(0xFF121212), Color(0xFF121212)],
-          ),
-        ),
+        color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
         child: Column(
           children: <Widget>[
             Row(

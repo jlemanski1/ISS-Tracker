@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
+import 'package:clay_containers/widgets/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:flutter_beautiful_popup/main.dart';
@@ -144,6 +145,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /*
       appBar: AppBar(
         backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
         centerTitle: true,
@@ -154,19 +156,19 @@ class _NextPassTimesState extends State<NextPassTimes> {
           ),
         ),
       ),
+      */
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.cyan[400]]
-              : [Colors.black87, Colors.black],
-          ),
-        ),
+        color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Center(
           child: Column(
             children: <Widget>[
+              ClayContainer(
+                color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                height: 100,
+                customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
+              ),
+              Padding(padding: EdgeInsets.only(top: 30),),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
