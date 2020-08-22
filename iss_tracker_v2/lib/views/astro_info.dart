@@ -168,7 +168,7 @@ class _AstroInfoState extends State<AstroInfo> {
                   padding: EdgeInsets.only(top: 24.0),
                   child: ClayContainer(
                     emboss: Settings.isLightTheme ? false : true,
-                    depth: 20,
+                    depth: 50,
                     color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                     height: 150,
                     width: 150,
@@ -239,7 +239,7 @@ class _AstroInfoState extends State<AstroInfo> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.only(top: Settings.isLightTheme ? 0: 8)),
                         ClayContainer(
-                          depth: 20,
+                          depth: 40,
                           color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                           emboss: index % 2 == 1 ? false : true,
                           child: ListTile(
@@ -256,7 +256,7 @@ class _AstroInfoState extends State<AstroInfo> {
                               color: Colors.white,
                               borderRadius: 100,
                               curveType: CurveType.convex,
-                              depth: 8,
+                              depth: 30,
                               spread: Settings.isLightTheme ? 10 : 0,
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(

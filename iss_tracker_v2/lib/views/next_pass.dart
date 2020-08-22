@@ -230,13 +230,28 @@ class _NextPassTimesState extends State<NextPassTimes> {
           child: Column(
             children: <Widget>[
               ClayContainer(
+                depth: 50,
                 color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
-                height: 100,
+                height: 150,
                 customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
-              
+                child: Column(
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.only(top: 40),),
+                    Text(
+                      'Overhead Pass Times',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'WorkSans',
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.only(bottom: 25)),
+                    _nextPassInfoButtons(),
+                  ],
+                ),
               ),
               Padding(padding: EdgeInsets.only(top: 30),),
-              _nextPassInfoButtons(),
+  
               Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(
