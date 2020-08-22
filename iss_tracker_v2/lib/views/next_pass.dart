@@ -113,6 +113,72 @@ class _NextPassTimesState extends State<NextPassTimes> {
     }
   }
 
+  Row _nextPassInfoButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.info,
+          color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
+        ),
+          onPressed: () {
+            popup1.show(
+              title: 'Spot the ISS!',
+              content: "The space station looks like an airplane or a very bright star moving across the sky, except it "
+                +"doesn’t have flashing lights or change direction. It will also be moving considerably faster than a typical "
+                +"airplane (airplanes generally fly at about 965 Km/h); the space station flies at 28,000 Km/h.",
+              actions: [
+                popup1.button(
+                  label: 'Close',
+                  onPressed: Navigator.of(context).pop,
+                ),
+              ],
+            );
+          }
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.insert_chart,
+            color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
+          ),
+          onPressed: () {
+            popup2.show(
+              title: 'Where do I look?',
+              content: "The space station is visible because it reflects the light of the Sun, just as the moon does. It's "
+                +"not bright enough to see during the day; It can only be spotted at dawn or dusk. You can spot it with your "
+                +"bare eyes, no special equipment required!",
+              actions: [
+                popup2.button(
+                  label: 'Close',
+                  onPressed: Navigator.of(context).pop,
+                ),
+              ],
+            );
+          },
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.local_airport,
+            color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],  
+          ),
+          onPressed: () {
+            popup3.show(
+              title: 'Caution',
+              content: "The times are less accurate for later times as the orbit of the ISS decays unpredictably over time. "
+                +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
+                +"re-boost, and debris avoidance. The soonest times will be most accurate.",
+              actions: [
+                popup3.button(
+                  label: 'Close',
+                  onPressed: Navigator.of(context).pop,
+                ),
+              ],
+            );
+          },
+        ),
+      ],
+    );
+  }
 
   @override
   void initState() {
@@ -167,72 +233,10 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                 height: 100,
                 customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
+              
               ),
               Padding(padding: EdgeInsets.only(top: 30),),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.info,
-                    color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
-                  ),
-                    onPressed: () {
-                      popup1.show(
-                        title: 'Spot the ISS!',
-                        content: "The space station looks like an airplane or a very bright star moving across the sky, except it "
-                          +"doesn’t have flashing lights or change direction. It will also be moving considerably faster than a typical "
-                          +"airplane (airplanes generally fly at about 965 Km/h); the space station flies at 28,000 Km/h.",
-                        actions: [
-                          popup1.button(
-                            label: 'Close',
-                            onPressed: Navigator.of(context).pop,
-                          ),
-                        ],
-                      );
-                    }
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.insert_chart,
-                      color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
-                    ),
-                    onPressed: () {
-                      popup2.show(
-                        title: 'Where do I look?',
-                        content: "The space station is visible because it reflects the light of the Sun, just as the moon does. It's "
-                          +"not bright enough to see during the day; It can only be spotted at dawn or dusk. You can spot it with your "
-                          +"bare eyes, no special equipment required!",
-                        actions: [
-                          popup2.button(
-                            label: 'Close',
-                            onPressed: Navigator.of(context).pop,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.local_airport,
-                      color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],  
-                    ),
-                    onPressed: () {
-                      popup3.show(
-                        title: 'Caution',
-                        content: "The times are less accurate for later times as the orbit of the ISS decays unpredictably over time. "
-                          +"Station controllers will also periodically move the craft to higher and lower orbits for docking, "
-                          +"re-boost, and debris avoidance. The soonest times will be most accurate.",
-                        actions: [
-                          popup3.button(
-                            label: 'Close',
-                            onPressed: Navigator.of(context).pop,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ],
-              ),
+              _nextPassInfoButtons(),
               Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(
