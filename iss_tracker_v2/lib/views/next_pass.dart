@@ -236,7 +236,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
                 child: Column(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(top: 40),),
+                    Padding(padding: EdgeInsets.only(top: 45),),
                     Text(
                       'Overhead Pass Times',
                       style: TextStyle(
@@ -245,7 +245,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                         fontFamily: 'WorkSans',
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(bottom: 25)),
+                    Padding(padding: EdgeInsets.only(bottom: 20)),
                     _nextPassInfoButtons(),
                   ],
                 ),
@@ -256,7 +256,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
               Text('The ISS will pass over your current location on:',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 16,
                 color: Settings.isLightTheme ? Colors.blueGrey[900] : Colors.blueGrey[100],
                 ),
               ),
@@ -287,26 +287,31 @@ class _NextPassTimesState extends State<NextPassTimes> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          ListTile(
-                            leading: Text(
-                              '${(new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).hour)}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Colors.accents[index + 10]), // Closest appear green (green = good)
-                                textAlign: TextAlign.center,
-                              ),
-                            title: Text(
-                              'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).toString().substring(0, DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime).toString().length - 4)}'
-                              +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}',
-                              style: TextStyle(
-                                color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[200],
-                              ),
-                              ),
-                            subtitle: Text(
-                              'Visible for ${_nextPasses.elementAt(index).duration} seconds',
-                              style: TextStyle(
-                                color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[400],
+                          ClayContainer(
+                            depth: 40,
+                            color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                            emboss: index % 2 == 1 ? false : true,
+                            child: ListTile(
+                              leading: Text(
+                                '${(new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).hour)}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  color: Colors.accents[index + 10]), // Closest appear green (green = good)
+                                  textAlign: TextAlign.center,
+                                ),
+                              title: Text(
+                                'Starting: ${new DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).toString().substring(0, DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime).toString().length - 4)}'
+                                +' ${DateTime.fromMillisecondsSinceEpoch(_nextPasses.elementAt(index).risetime * 1000).timeZoneName}',
+                                style: TextStyle(
+                                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[200],
+                                ),
+                                ),
+                              subtitle: Text(
+                                'Visible for ${_nextPasses.elementAt(index).duration} seconds',
+                                style: TextStyle(
+                                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[400],
+                                ),
                               ),
                             ),
                           ),
