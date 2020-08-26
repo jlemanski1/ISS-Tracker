@@ -240,6 +240,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                     Text(
                       'Overhead Pass Times',
                       style: TextStyle(
+                        color: Settings.isLightTheme ? Colors.black : Colors.white,
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'WorkSans',
@@ -264,7 +265,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 // Show loading circle until list loads then build tiles
                 child: _nextPasses.length == 0 ? Center(
                   child: ClayContainer(
-                    color: Colors.white,
+                    color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                     emboss: true,
                     height: 75,
                     width: 75,
