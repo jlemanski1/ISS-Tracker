@@ -226,9 +226,20 @@ class _AstroInfoState extends State<AstroInfo> {
             Expanded (
               flex: 1,
               child: _astroList.length == 0 ? Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.black,
-                )
+                child: ClayContainer(
+                  color: Colors.white,
+                    emboss: true,
+                    height: 75,
+                    width: 75,
+                    borderRadius: 50,
+                    depth: 40,
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.black,
+                      ),
+                    ),
+                  )
                 ) :
                 ListView.builder(
                   padding: EdgeInsets.all(8.0),
