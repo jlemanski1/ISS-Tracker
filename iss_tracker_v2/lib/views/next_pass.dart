@@ -263,8 +263,19 @@ class _NextPassTimesState extends State<NextPassTimes> {
               Expanded(
                 // Show loading circle until list loads then build tiles
                 child: _nextPasses.length == 0 ? Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.black,
+                  child: ClayContainer(
+                    color: Colors.white,
+                    emboss: true,
+                    height: 75,
+                    width: 75,
+                    borderRadius: 50,
+                    depth: 40,
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.black,
+                      ),
+                    ),
                   )
                 ) :
                 ListView.builder(
