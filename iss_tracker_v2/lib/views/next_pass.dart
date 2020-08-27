@@ -234,6 +234,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
                 emboss: Settings.isLightTheme ? false : true,
                 height: 150,
+                width: MediaQuery.of(context).size.width,
                 customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
                 child: Column(
                   children: <Widget>[
@@ -253,7 +254,6 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 30),),
-  
               Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
               Text('The ISS will pass over your current location on:',
               style: TextStyle(

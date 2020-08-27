@@ -1,3 +1,4 @@
+import 'package:clay_containers/widgets/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/news_card.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
@@ -18,26 +19,24 @@ class _SpaceNewsState extends State<SpaceNews> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
-        centerTitle: true,
-        title: Text("Space News",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'WorkSans',
-          ),
-        ),
-      ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
-              : [Colors.black87, Colors.black],
+        color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              ClayContainer(
+                depth: 50,
+                height: 75,
+                width: MediaQuery.of(context).size.width,
+                color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
+                emboss: Settings.isLightTheme ? false : true,
+                customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
+                child: Text('sfsd'),
+              ),
+              Expanded(child: NewsCard()),
+            ],
           )
-        ),
-        child: NewsCard()
+        )
       ),
     );
   }
