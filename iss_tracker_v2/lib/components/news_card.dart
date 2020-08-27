@@ -40,18 +40,8 @@ class _NewsCardState extends State<NewsCard> {
     }
   }
 
-  Container loadingIndicator() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
-            : [Colors.black87, Colors.black],
-        )
-      ),
-      child: Center(child: CircularProgressIndicator(),),
-    );
+  Center loadingIndicator() {
+    return Center(child: CircularProgressIndicator(),);
   }
 
   @override

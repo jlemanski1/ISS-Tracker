@@ -31,7 +31,20 @@ class _SpaceNewsState extends State<SpaceNews> {
                 color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
                 emboss: Settings.isLightTheme ? false : true,
                 customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
-                child: Text('sfsd'),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Center(
+                    child: Text(
+                      'Space News',
+                      style: TextStyle(
+                        color: Settings.isLightTheme ? Colors.black : Colors.white,
+                        fontFamily: 'WorkSans',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Expanded(child: NewsCard()),
             ],
