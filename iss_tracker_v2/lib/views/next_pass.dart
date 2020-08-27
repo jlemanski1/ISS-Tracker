@@ -231,7 +231,8 @@ class _NextPassTimesState extends State<NextPassTimes> {
             children: <Widget>[
               ClayContainer(
                 depth: 50,
-                color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
+                emboss: Settings.isLightTheme ? false : true,
                 height: 150,
                 customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
                 child: Column(
@@ -241,7 +242,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                       'Overhead Pass Times',
                       style: TextStyle(
                         color: Settings.isLightTheme ? Colors.black : Colors.white,
-                        fontSize: 26,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'WorkSans',
                       ),
@@ -265,7 +266,7 @@ class _NextPassTimesState extends State<NextPassTimes> {
                 // Show loading circle until list loads then build tiles
                 child: _nextPasses.length == 0 ? Center(
                   child: ClayContainer(
-                    color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                    color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
                     emboss: true,
                     height: 75,
                     width: 75,

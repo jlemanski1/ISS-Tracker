@@ -169,7 +169,7 @@ class _AstroInfoState extends State<AstroInfo> {
                   child: ClayContainer(
                     emboss: Settings.isLightTheme ? false : true,
                     depth: 50,
-                    color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                    color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
                     height: 150,
                     width: 150,
                     customBorderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
