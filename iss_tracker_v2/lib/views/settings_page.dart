@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:clay_containers/widgets/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:iss_tracker_v2/components/settings.dart';
@@ -38,96 +39,116 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[400],
-        centerTitle: true,
-        title: Text(
-          "Settings",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'WorkSans',
-          ),
-        ),
-      ),
       body: Container(
-        child: SettingsList(
-          sections: [
-            SettingsSection(
-              title: 'Units',
-              tiles: [
-                SettingsTile.switchTile(
-                  title: 'Units',
-                  subtitle: 'Metric',
-                  leading: Icon(Icons.import_export),
-                  onToggle: (bool value) {
-                    setState(() {
-                      Settings.isMetric = value;            
-                    });
-                  },
-                  switchValue: Settings.isMetric,
+        child: Column(
+          children: <Widget>[
+            ClayContainer(
+              color: Colors.white,
+              width: MediaQuery.of(context).size.width,
+              height: 75,
+              depth: 50,
+              customBorderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Settings",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'WorkSans',
+                    fontSize: 24,
+                    color: Colors.black,
+                    ),
+                  ),
                 ),
-              ],
+              ),
             ),
-            SettingsSection(
-              title: 'Theme',
-              tiles: [
-                SettingsTile.switchTile(
-                  title: 'Toggle Theme',
-                  subtitle: Settings.isLightTheme ? 'Light Mode' : 'Dark Mode',
-                  leading: Icon(Icons.threesixty),
-                  onToggle: (bool value) {
-                    setState(() {
-                      Settings.isLightTheme = value;
-                    });
-                    Settings.saveTheme();
-                  },
-                  switchValue: Settings.isLightTheme,
-                )
-              ],
-            ),
-            SettingsSection(
-              title: 'Misc',
-              tiles: [
-                SettingsTile(
-                  title: 'Terms of Service',
-                  leading: Icon(Icons.description),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => WebView(
-                        initialUrl: 'https://iss-tracker.flycricket.io/terms.html',
-                        onWebViewCreated: (WebViewController webViewController) {
-                          _webController.complete(webViewController);
-                        },
-                      )
-                    ));
-                  },
+            Padding(padding: const EdgeInsets.only(bottom: 8.0)),
+            Expanded(
+              child: Container(
+                color: Settings.isLightTheme ? Colors.white : Colors.black,
+                child: SettingsList(
+                  sections: [
+                    SettingsSection(
+                      title: 'Units',
+                      tiles: [
+                        SettingsTile.switchTile(
+                          title: 'Units',
+                          subtitle: 'Metric',
+                          leading: Icon(Icons.import_export),
+                          onToggle: (bool value) {
+                            setState(() {
+                              Settings.isMetric = value;            
+                            });
+                          },
+                          switchValue: Settings.isMetric,
+                        ),
+                      ],
+                    ),
+                    SettingsSection(
+                      title: 'Theme',
+                      tiles: [
+                        SettingsTile.switchTile(
+                          title: 'Toggle Theme',
+                          subtitle: Settings.isLightTheme ? 'Light Mode' : 'Dark Mode',
+                          leading: Icon(Icons.threesixty),
+                          onToggle: (bool value) {
+                            setState(() {
+                              Settings.isLightTheme = value;
+                            });
+                            Settings.saveTheme();
+                          },
+                          switchValue: Settings.isLightTheme,
+                        )
+                      ],
+                    ),
+                    SettingsSection(
+                      title: 'Misc',
+                      tiles: [
+                        SettingsTile(
+                          title: 'Terms of Service',
+                          leading: Icon(Icons.description),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => WebView(
+                                initialUrl: 'https://iss-tracker.flycricket.io/terms.html',
+                                onWebViewCreated: (WebViewController webViewController) {
+                                  _webController.complete(webViewController);
+                                },
+                              )
+                            ));
+                          },
+                        ),
+                        SettingsTile(
+                          title: 'Privacy Policy',
+                          leading: Icon(Icons.spellcheck),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => WebView(
+                                initialUrl: 'https://iss-tracker.flycricket.io/privacy.html',
+                                onWebViewCreated: (WebViewController webViewController) {
+                                  _webController.complete(webViewController);
+                                },
+                              )
+                            ));
+                          },
+                        ),
+                        SettingsTile(
+                          title: 'Rate App!',
+                          leading: Icon(Icons.star),
+                          onTap: () {
+                            StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker_v2');
+                          },
+                        ),
+                        SettingsTile(
+                          title: 'Version Number',
+                          subtitle: '$appVersion+$buildNum',
+                        )
+                      ],
+                    ),
+                  ],
                 ),
-                SettingsTile(
-                  title: 'Privacy Policy',
-                  leading: Icon(Icons.spellcheck),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => WebView(
-                        initialUrl: 'https://iss-tracker.flycricket.io/privacy.html',
-                        onWebViewCreated: (WebViewController webViewController) {
-                          _webController.complete(webViewController);
-                        },
-                      )
-                    ));
-                  },
-                ),
-                SettingsTile(
-                  title: 'Rate App!',
-                  leading: Icon(Icons.star),
-                  onTap: () {
-                    StoreRedirect.redirect(androidAppId: 'tech.jlemanski.iss_tracker_v2');
-                  },
-                ),
-                SettingsTile(
-                  title: 'Version Number',
-                  subtitle: '$appVersion+$buildNum',
-                )
-              ],
+              ),
             ),
           ],
         ),

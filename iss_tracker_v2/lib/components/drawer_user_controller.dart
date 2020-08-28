@@ -135,7 +135,6 @@ class _DrawerUserControllerState extends State<DrawerUserController> with Ticker
                             onDrawerClick();
                           },
                         ),
-
                       Padding(
                         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 8, left: 8),
                         child: SizedBox(

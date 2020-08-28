@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:clay_containers/widgets/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:iss_tracker_v2/components/news_posts.dart';
 import 'package:http/http.dart' as http;
@@ -40,18 +41,8 @@ class _NewsCardState extends State<NewsCard> {
     }
   }
 
-  Container loadingIndicator() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: Settings.isLightTheme ? [Colors.blueGrey[400], Colors.pink[200]]
-            : [Colors.black87, Colors.black],
-        )
-      ),
-      child: Center(child: CircularProgressIndicator(),),
-    );
+  Center loadingIndicator() {
+    return Center(child: CircularProgressIndicator(),);
   }
 
   @override
@@ -71,69 +62,76 @@ class _NewsCardState extends State<NewsCard> {
                 throw 'Could not launch $url';
               }
             },
-            child: Card(
-              color: Colors.transparent,
-              elevation: 2,
-              child: Container(
-                margin: const EdgeInsets.all(6.0),
-                padding: const EdgeInsets.all(6.0),
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 3,
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            flex: 3,
-                            child: Image.network(newsPosts.docs[index].featuredImage),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  '${newsPosts.docs[index].title}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'WorkSans',
-                                    color: Colors.white
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 5,
-                                  textAlign: TextAlign.start,
-                                )
-                              ],
-                            )
-                          ),
-                        ]
-                      ),
-                    ),
-                    Divider(color: Colors.grey,),
-                    Row(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClayContainer(
+                  depth: 50,
+                  spread: Settings.isLightTheme ? 5 : 3,
+                  color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                  emboss: index % 2 == 1 ? false : true,
+                  borderRadius: 10,
+                  child: Container(
+                    margin: const EdgeInsets.all(6.0),
+                    padding: const EdgeInsets.all(6.0),
+                    child: Column(
                       children: <Widget>[
-                        Text(
-                          'Site: ${newsPosts.docs[index].newsSiteLong}',
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.white60
+                        Expanded(
+                          flex: 3,
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 3,
+                                child: Image.network(newsPosts.docs[index].featuredImage),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      '${newsPosts.docs[index].title}',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'WorkSans',
+                                        color: Settings.isLightTheme ? Colors.black : Colors.white,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 5,
+                                      textAlign: TextAlign.start,
+                                    )
+                                  ],
+                                )
+                              ),
+                            ]
                           ),
                         ),
-                        Spacer(),
-                        Text(
-                          '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 8)}',
-                          style: TextStyle(
-                            color: Colors.white60
-                          ),
-                          textAlign: TextAlign.end,
-                        ),
+                        Divider(color: Colors.grey,),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Site: ${newsPosts.docs[index].newsSiteLong}',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Settings.isLightTheme ? Colors.black : Colors.white60,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 8)}',
+                              style: TextStyle(
+                                color: Settings.isLightTheme ? Colors.black : Colors.white60,
+                              ),
+                              textAlign: TextAlign.end,
+                            ),
+                          ],
+                        )
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               )
-            ),
+            
           ),
         );
       },

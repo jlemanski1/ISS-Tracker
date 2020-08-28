@@ -6,11 +6,11 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 import 'package:iss_tracker_v2/components/settings.dart';
 import 'package:iss_tracker_v2/components/wiki_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:clay_containers/clay_containers.dart';
 
 /* More info
 International Space Station Size & Mass
@@ -158,45 +158,59 @@ class _AstroInfoState extends State<AstroInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
-        centerTitle: true,
-        title: Text(
-          'Astronauts',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            fontFamily: 'WorkSans',
-          ),
-        ),
-      ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: Settings.isLightTheme ? [Colors.white, Colors.lightBlue[100]]
-              : [Colors.black87, Colors.black],
-          ),
-        ),
+        color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 32.0, left: 8.0, bottom: 24.0),
-              child: Text(
-                "There are ${_astroList.length} people currently in space, they are:",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'WorkSans',
-                  color: Settings.isLightTheme ? Colors.black : Colors.blueGrey[300],
-                  fontSize: 24.0
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 24.0),
+                  child: ClayContainer(
+                    emboss: Settings.isLightTheme ? false : true,
+                    depth: 50,
+                    color: Settings.isLightTheme ? Colors.white : Color(0xFF393b44),
+                    height: 150,
+                    width: 150,
+                    customBorderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 18.0),
+                        child: ClayText(
+                          '${_astroList.length}',
+                          style: TextStyle(
+                            fontSize: 75,
+                          ),
+                          emboss: false,
+                          depth: 10,
+                          spread: Settings.isLightTheme ? 10 : 0,
+                          textColor: Settings.isLightTheme ? Colors.black87 : Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                textAlign: TextAlign.center,
-                softWrap: true,
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 10.0),
+                  child: Center(
+                    child: ClayText(
+                      "People in Space",
+                      textColor: Settings.isLightTheme ? Colors.black87 : Colors.white,
+                      spread: Settings.isLightTheme ? 10: 0,
+                      depth: 10,
+                      emboss: true,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'WorkSans',
+                        fontSize: 24.0
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0.0),
+              padding: const EdgeInsets.only(top: 48, bottom: 12),
               child: Text(
                 'Tap on the tiles to learn more about each crew member',
                 style: TextStyle(
@@ -212,9 +226,20 @@ class _AstroInfoState extends State<AstroInfo> {
             Expanded (
               flex: 1,
               child: _astroList.length == 0 ? Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.black,
-                )
+                child: ClayContainer(
+                  color: Colors.white,
+                    emboss: true,
+                    height: 75,
+                    width: 75,
+                    borderRadius: 50,
+                    depth: 40,
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.black,
+                      ),
+                    ),
+                  )
                 ) :
                 ListView.builder(
                   padding: EdgeInsets.all(8.0),
@@ -223,17 +248,12 @@ class _AstroInfoState extends State<AstroInfo> {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Neumorphic(
-                          style: NeumorphicStyle(
-                          shape: NeumorphicShape.convex,
-                          boxShape: NeumorphicBoxShape.stadium(),
-                          color: Colors.white70,
-                          lightSource: LightSource.topLeft,
-                          shadowDarkColor: Colors.black,
-                          shadowDarkColorEmboss: Colors.black,
-                          oppositeShadowLightSource: true,
-                          depth: -10,
-                          ),
+                        Padding(padding: EdgeInsets.only(top: Settings.isLightTheme ? 0: 8)),
+                        ClayContainer(
+                          depth: 40,
+                          borderRadius: 10,
+                          color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                          emboss: index % 2 == 1 ? false : true,
                           child: ListTile(
                             onTap: () async {
                               // Navigate to astronaut's wiki page
@@ -244,17 +264,28 @@ class _AstroInfoState extends State<AstroInfo> {
                                 throw 'Could not launch $url';
                               }
                             },
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                ''
+                            leading: ClayContainer(
+                              color: Colors.white,
+                              borderRadius: 100,
+                              curveType: CurveType.convex,
+                              depth: 30,
+                              spread: Settings.isLightTheme ? 10 : 0,
+                              child: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  ''
+                                ),
+                                backgroundColor: Colors.black12,
                               ),
-                              backgroundColor: Colors.black12,
                             ),
-                            title: Text(
+                            title: ClayText(
                               'Name: ${_astroList.elementAt(index).name}',
                               style: TextStyle(
                                 color: Settings.isLightTheme ? Colors.black : Colors.white,
                               ),
+                              emboss: true,
+                              depth: 10,
+                              spread: Settings.isLightTheme ? 10 : 0,
+                              textColor: Settings.isLightTheme ? Colors.black : Colors.white,
                             ),
                             subtitle: Text(
                               'Craft: ${_astroList.elementAt(index).craft}',
@@ -265,10 +296,8 @@ class _AstroInfoState extends State<AstroInfo> {
                           ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(vertical: 8.0),
-                        
                       )],
                     );
-                    
                   },
                 ),
             ),
