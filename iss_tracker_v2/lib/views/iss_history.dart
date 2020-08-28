@@ -109,6 +109,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                         fontWeight: FontWeight.bold,
                         fontFamily: 'WorkSans',
                         fontSize: 24,
+                        color: Settings.isLightTheme ? Colors.black : Colors.white,
                       ),
                     ),
                   ),
@@ -120,6 +121,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
                         borderRadius: 10,
                         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                         depth: 40,
@@ -155,6 +157,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
                         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                         borderRadius: 10,
                         depth: 40,
@@ -202,6 +205,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
                         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                         depth: 40,
                         borderRadius: 10,
@@ -241,6 +245,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
                         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                         depth: 40,
                         borderRadius: 10,
@@ -267,6 +272,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
                         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                         depth: 40,
                         borderRadius: 10,
@@ -314,6 +320,7 @@ class _ISSHistoryState extends State<ISSHistory> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
                         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                         depth: 40,
                         borderRadius: 10,
@@ -350,39 +357,43 @@ class _ISSHistoryState extends State<ISSHistory> {
                         ),
                       ),
                     ),
-                    ClayContainer(
-                      color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
-                      depth: 40,
-                      borderRadius: 10,
-                      emboss: true,
-                      child: Column(
-                        children: <Widget> [
-                          headerDivider(
-                            header: '2016',
-                            textColour: Colors.orange[600],
-                            dividerColour: Colors.orangeAccent,
-                          ),
-                          historyTile(
-                            lineX: 0.2,
-                            leftText: 'May 28',
-                            rightText: "BEAM, or Bigelow Expandable Activity Module arrived at the ISS on April 10th,"
-                              +" and was expanded and pressurized for use on May 28th. BEAM is an experiment to test &"
-                              +" validate expandable habitats for future crews traveling deep space.",
-                          ),
-                          Divider(
-                            height: 16.0,
-                            thickness: 2.0,
-                            color: Colors.white54,
-                          ),
-                          historyTile(
-                            lineX: 0.2,
-                            leftText: 'July 18',
-                            rightText: "The 2nd iteration of the International Docking Adapter, IDA-2, was launched on the SpaceX"
-                              +" CRS-18 mission in July 2019. It's first docking was achievched with the arrival of Crew Dragon"
-                              +" Demo-1, March 3 2019. IDA-3 was launched in July 2019 to provide additional docking to the station",
-                          ),
-                          Padding(padding: const EdgeInsets.only(bottom: 16.0),),
-                        ]
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClayContainer(
+                        spread: Settings.isLightTheme ? 5 : 3,
+                        color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+                        depth: 40,
+                        borderRadius: 10,
+                        emboss: true,
+                        child: Column(
+                          children: <Widget> [
+                            headerDivider(
+                              header: '2016',
+                              textColour: Colors.orange[600],
+                              dividerColour: Colors.orangeAccent,
+                            ),
+                            historyTile(
+                              lineX: 0.2,
+                              leftText: 'May 28',
+                              rightText: "BEAM, or Bigelow Expandable Activity Module arrived at the ISS on April 10th,"
+                                +" and was expanded and pressurized for use on May 28th. BEAM is an experiment to test &"
+                                +" validate expandable habitats for future crews traveling deep space.",
+                            ),
+                            Divider(
+                              height: 16.0,
+                              thickness: 2.0,
+                              color: Colors.white54,
+                            ),
+                            historyTile(
+                              lineX: 0.2,
+                              leftText: 'July 18',
+                              rightText: "The 2nd iteration of the International Docking Adapter, IDA-2, was launched on the SpaceX"
+                                +" CRS-18 mission in July 2019. It's first docking was achievched with the arrival of Crew Dragon"
+                                +" Demo-1, March 3 2019. IDA-3 was launched in July 2019 to provide additional docking to the station",
+                            ),
+                            Padding(padding: const EdgeInsets.only(bottom: 16.0),),
+                          ]
+                        ),
                       ),
                     ),
                     
