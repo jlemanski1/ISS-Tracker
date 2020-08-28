@@ -115,6 +115,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                     child: Text(
                     "HD Earth View",
                     style: TextStyle(
+                      color: Settings.isLightTheme ? Colors.black : Colors.white,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'WorkSans',
                       fontSize: 24,
@@ -192,7 +193,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                           'The High Definition Earth Viewing (HDEV) investigation places four different commercial'
                           +' high definition cameras external to the ISS on the Columbus External Facility',
                           style: TextStyle(
-                            color: Colors.blueGrey[200],
+                            color: Settings.isLightTheme ? Colors.blueGrey[800] : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -210,7 +211,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                           "Assessing the hardware's ability to survive and function in the extreme radioactive"
                           +" of Low Earth Orbit (LEO) while taking Earth imagery.",
                           style: TextStyle(
-                            color: Colors.blueGrey[200],
+                            color: Settings.isLightTheme ? Colors.blueGrey[800] : Colors.white,
                           ),
                         ),
                       ),
@@ -227,7 +228,8 @@ class _LivestreamPageState extends State<LivestreamPage> {
                           'NASA HUNCH program students fabricated some of the HDEV flight components'
                           +' and most of the HDEV operation is performed by student teams.',
                           style: TextStyle(
-                            color: Colors.blueGrey[200],
+                            color: Settings.isLightTheme ? Colors.blueGrey[800] : Colors.white,
+                            fontSize: 14.0,
                           ),
                         ),
                       )
@@ -241,17 +243,18 @@ class _LivestreamPageState extends State<LivestreamPage> {
                 child: ClayContainer(
                   depth: 40,
                   borderRadius: 10,
+                  emboss: true,
                   spread: Settings.isLightTheme ? 5 : 3,
                   color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                   child: ListTile(
                     leading: Icon(
                       Icons.web,
-                      color: Colors.white,
+                      color: Settings.isLightTheme ? Colors.black : Colors.white,
                     ),
                     title: Text(
                       'View NASA mission page for more information.',
                       style: TextStyle(
-                        color: Colors.blueGrey[100],
+                        color: Settings.isLightTheme ? Colors.black : Colors.white,
                         fontSize: 14,
                       ),
                     ),
