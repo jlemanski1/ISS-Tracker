@@ -66,6 +66,7 @@ class _NewsCardState extends State<NewsCard> {
                 padding: const EdgeInsets.all(8.0),
                 child: ClayContainer(
                   depth: 50,
+                  spread: Settings.isLightTheme ? 5 : 3,
                   color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                   emboss: index % 2 == 1 ? false : true,
                   borderRadius: 10,
