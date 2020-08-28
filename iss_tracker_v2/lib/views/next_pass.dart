@@ -284,13 +284,14 @@ class _NextPassTimesState extends State<NextPassTimes> {
                   padding: EdgeInsets.all(8.0),
                   itemCount: _nextPasses.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ClayContainer(
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClayContainer(
                             depth: 40,
+                            borderRadius: 10,
                             color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                             emboss: index % 2 == 1 ? false : true,
                             child: ListTile(
@@ -317,9 +318,10 @@ class _NextPassTimesState extends State<NextPassTimes> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     );
+                    
                   },
                 ),
               )

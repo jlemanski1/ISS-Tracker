@@ -251,6 +251,7 @@ class _AstroInfoState extends State<AstroInfo> {
                         Padding(padding: EdgeInsets.only(top: Settings.isLightTheme ? 0: 8)),
                         ClayContainer(
                           depth: 40,
+                          borderRadius: 10,
                           color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
                           emboss: index % 2 == 1 ? false : true,
                           child: ListTile(
