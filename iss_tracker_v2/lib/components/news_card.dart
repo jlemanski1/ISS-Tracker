@@ -93,7 +93,7 @@ class _NewsCardState extends State<NewsCard> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'WorkSans',
-                                        color: Colors.white
+                                        color: Settings.isLightTheme ? Colors.black : Colors.white,
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 5,
@@ -112,14 +112,14 @@ class _NewsCardState extends State<NewsCard> {
                               'Site: ${newsPosts.docs[index].newsSiteLong}',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                color: Colors.white60
+                                color: Settings.isLightTheme ? Colors.black : Colors.white60,
                               ),
                             ),
                             Spacer(),
                             Text(
                               '${newsPosts.docs[index].publishedDate.toString().substring(0, newsPosts.docs[index].publishedDate.toString().length - 8)}',
                               style: TextStyle(
-                                color: Colors.white60
+                                color: Settings.isLightTheme ? Colors.black : Colors.white60,
                               ),
                               textAlign: TextAlign.end,
                             ),
