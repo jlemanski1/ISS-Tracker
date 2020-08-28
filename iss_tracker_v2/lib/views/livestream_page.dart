@@ -29,7 +29,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
     initialVideoId: _videoId,
     flags: const YoutubePlayerFlags(
       mute: true,
-      autoPlay: false,  //TODO:CHANGE
+      autoPlay: true,
       disableDragSeek: true,
       loop: false,
       isLive: true,
@@ -152,7 +152,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                     title: Text(
                       'HDEV payload reached end-of-life Aug. 22, 2019',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Settings.isLightTheme ? Colors.black : Colors.white,
                         fontSize: 14.0,
                       ),
                       textAlign: TextAlign.start,
@@ -160,7 +160,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                     subtitle: Text(
                       'A continuous feed of past recordings will be shown.',
                       style: TextStyle(
-                        color: Colors.blueGrey[200],
+                        color: Settings.isLightTheme ? Colors.black : Colors.white,
                         fontSize: 12.0,
                       ),
                       textAlign: TextAlign.start,
@@ -193,7 +193,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                           +' high definition cameras external to the ISS on the Columbus External Facility',
                           style: TextStyle(
                             color: Colors.blueGrey[200],
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -252,6 +252,7 @@ class _LivestreamPageState extends State<LivestreamPage> {
                       'View NASA mission page for more information.',
                       style: TextStyle(
                         color: Colors.blueGrey[100],
+                        fontSize: 14,
                       ),
                     ),
                     onTap: () async {

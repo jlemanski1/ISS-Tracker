@@ -46,7 +46,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.LiveStream,
-        labelName: 'Earth Live View',
+        labelName: 'HD Earth View',
         icon: Icon(SpaceIcons.satellite),
       ),
       DrawerList(
