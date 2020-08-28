@@ -20,7 +20,7 @@ class _SpaceNewsState extends State<SpaceNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
+        color: Settings.isLightTheme ? Colors.grey[200] : Color(0xFF121212),
         child: Center(
           child: Column(
             children: <Widget>[
