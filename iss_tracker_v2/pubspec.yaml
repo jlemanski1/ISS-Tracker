@@ -15,19 +15,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^0.5.27+3
-  http: ^0.12.1
+  google_maps_flutter: ^0.5.31
+  http: ^0.12.2
   location: ^3.0.2
   flutter_beautiful_popup: ^1.5.0
-  settings_ui: ^0.1.1
+  settings_ui: ^0.4.0
   webview_flutter: ^0.3.22+1
   store_redirect: ^1.0.2
-  youtube_player_flutter: ^7.0.0+6
-  url_launcher: ^5.4.11
-  package_info: ^0.4.1
+  youtube_player_flutter: ^7.0.0+7
+  url_launcher: ^5.5.2
+  package_info: ^0.4.3
   flutter_svg: ^0.18.1
   timeline_tile: ^0.1.2
-  shared_preferences: ^0.5.8
+  shared_preferences: ^0.5.10
   clay_containers: ^0.2.2
 
 dev_dependencies:
