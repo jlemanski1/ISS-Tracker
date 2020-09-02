@@ -25,7 +25,7 @@ dependencies:
   youtube_player_flutter: ^7.0.0+6
   url_launcher: ^5.4.11
   package_info: ^0.4.1
-  flutter_svg: ^0.17.4
+  flutter_svg: ^0.18.1
   timeline_tile: ^0.1.2
   shared_preferences: ^0.5.8
   clay_containers: ^0.2.2
