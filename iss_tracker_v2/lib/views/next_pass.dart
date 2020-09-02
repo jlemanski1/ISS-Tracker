@@ -211,18 +211,6 @@ class _NextPassTimesState extends State<NextPassTimes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*
-      appBar: AppBar(
-        backgroundColor: Settings.isLightTheme ? Colors.blueGrey[400] : Colors.black54,
-        centerTitle: true,
-        title: Text("Overhead Pass Times",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'WorkSans',
-          ),
-        ),
-      ),
-      */
       body: Container(
         color: Settings.isLightTheme ? Colors.white : Color(0xFF121212),
         padding: EdgeInsets.symmetric(vertical: 8.0),
