@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
-import 'package:clay_containers/widgets/clay_containers.dart';
+import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:flutter_beautiful_popup/main.dart';

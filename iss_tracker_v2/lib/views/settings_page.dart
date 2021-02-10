@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:clay_containers/widgets/clay_containers.dart';
+import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:iss_tracker_v2/components/settings.dart';

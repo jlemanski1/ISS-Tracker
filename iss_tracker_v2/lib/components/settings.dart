@@ -15,6 +15,10 @@ class Settings {
 
   static void getLightMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    Settings.isLightTheme = prefs.getBool('isLightTheme');
+    if (prefs.getBool('isLightTheme') == null) {
+      Settings.saveTheme();
+    } else {
+      Settings.isLightTheme = prefs.getBool('isLightTheme');
+    }
   }
 }

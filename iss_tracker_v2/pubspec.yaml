@@ -27,7 +27,7 @@ dependencies:
   package_info: ^0.4.3
   flutter_svg: ^0.18.1
   timeline_tile: ^0.1.2
-  shared_preferences: ^0.5.10
+  shared_preferences: ^0.5.12+4
   clay_containers: ^0.2.2
 
 dev_dependencies:
